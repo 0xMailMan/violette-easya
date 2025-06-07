@@ -17,6 +17,7 @@ interface CameraCaptureProps {
 export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCaptureProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const mountedRef = useRef(true)
   const [facingMode, setFacingMode] = useState<'user' | 'environment'>('environment')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -31,19 +32,41 @@ export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCapt
   
   const toast = useToast()
 
-  const stopCamera = useCallback(() => {
-    if (camera.stream) {
-      camera.stream.getTracks().forEach(track => track.stop())
-      setCameraStream(null)
-    }
-    setCameraActive(false)
-  }, [camera.stream, setCameraActive, setCameraStream])
+  // Stable function references using useRef
+  const stopCameraRef = useRef<() => void>()
+  const startCameraRef = useRef<() => Promise<void>>()
 
-  const startCamera = useCallback(async () => {
+  stopCameraRef.current = () => {
+    try {
+      if (camera.stream) {
+        camera.stream.getTracks().forEach(track => {
+          try {
+            track.stop()
+          } catch (error) {
+            console.warn('Error stopping camera track:', error)
+          }
+        })
+        setCameraStream(null)
+      }
+      setCameraActive(false)
+    } catch (error) {
+      console.warn('Error stopping camera:', error)
+    }
+  }
+
+  startCameraRef.current = async () => {
+    // Prevent multiple simultaneous calls
+    if (isLoading || !mountedRef.current) return
+    
     setIsLoading(true)
     setError(null)
 
     try {
+      // Check if camera API is available
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error('Camera API not supported')
+      }
+
       const constraints = {
         video: {
           facingMode,
@@ -55,34 +78,63 @@ export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCapt
 
       const stream = await navigator.mediaDevices.getUserMedia(constraints)
       
-      if (videoRef.current) {
+      // Check if component is still mounted
+      if (videoRef.current && mountedRef.current) {
         videoRef.current.srcObject = stream
-        videoRef.current.play()
+        try {
+          await videoRef.current.play()
+        } catch (playError) {
+          console.warn('Video play failed:', playError)
+        }
       }
       
-      setCameraStream(stream)
-      setCameraPermission(true)
-      setCameraActive(true)
+      // Only update state if component is still mounted
+      if (videoRef.current && mountedRef.current) {
+        setCameraStream(stream)
+        setCameraPermission(true)
+        setCameraActive(true)
+      } else {
+        // Component unmounted, clean up stream
+        stream.getTracks().forEach(track => track.stop())
+      }
       
     } catch (err) {
       console.error('Camera access error:', err)
       const errorMessage = err instanceof Error ? err.message : 'Camera access failed'
       
-      if (errorMessage.includes('Permission denied') || errorMessage.includes('NotAllowedError')) {
-        setError('Camera permission denied. Please allow camera access and try again.')
-        setCameraPermission(false)
-        toast.error('Camera permission required')
-      } else if (errorMessage.includes('NotFoundError') || errorMessage.includes('DevicesNotFoundError')) {
-        setError('No camera found on this device.')
-        toast.error('No camera available')
-      } else {
-        setError('Failed to access camera. Please try again.')
-        toast.error('Camera error')
+      // Only update error state if component is still mounted
+      if (mountedRef.current) {
+        if (errorMessage.includes('Permission denied') || errorMessage.includes('NotAllowedError')) {
+          setError('Camera permission denied. Please allow camera access and try again.')
+          setCameraPermission(false)
+          toast.error('Camera permission required')
+        } else if (errorMessage.includes('NotFoundError') || errorMessage.includes('DevicesNotFoundError')) {
+          setError('No camera found on this device.')
+          toast.error('No camera available')
+        } else if (errorMessage.includes('not supported')) {
+          setError('Camera not supported on this device.')
+          toast.error('Camera not supported')
+        } else {
+          setError('Failed to access camera. Please try again.')
+          toast.error('Camera error')
+        }
       }
     } finally {
-      setIsLoading(false)
+      // Only update loading state if component is still mounted
+      if (mountedRef.current) {
+        setIsLoading(false)
+      }
     }
-  }, [facingMode, setCameraActive, setCameraPermission, setCameraStream, toast])
+  }
+
+  // Stable wrapper functions
+  const stopCamera = useCallback(() => {
+    stopCameraRef.current?.()
+  }, [])
+
+  const startCamera = useCallback(async () => {
+    await startCameraRef.current?.()
+  }, [])
 
   const capturePhoto = useCallback(() => {
     if (!videoRef.current || !canvasRef.current) return
@@ -118,9 +170,23 @@ export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCapt
     toast.success('Photo captured!')
   }, [setCapturedPhoto, onPhotoCapture, toast, stopCamera])
 
-  const switchCamera = useCallback(() => {
-    setFacingMode(prev => prev === 'user' ? 'environment' : 'user')
-  }, [])
+  const switchCamera = useCallback(async () => {
+    if (!mountedRef.current || isLoading) return
+    
+    // Stop current camera
+    stopCameraRef.current?.()
+    
+    // Change facing mode
+    const newFacingMode = facingMode === 'user' ? 'environment' : 'user'
+    setFacingMode(newFacingMode)
+    
+    // Wait a bit for cleanup, then restart with new facing mode
+    setTimeout(() => {
+      if (mountedRef.current) {
+        startCameraRef.current?.()
+      }
+    }, 200)
+  }, [facingMode, isLoading])
 
   const handleClose = useCallback(() => {
     stopCamera()
@@ -131,31 +197,40 @@ export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCapt
 
   // Initialize camera on mount
   useEffect(() => {
-    startCamera()
-    return () => stopCamera()
-  }, [startCamera, stopCamera]) // Only run on mount/unmount
-
-  // Restart camera when facing mode changes
-  useEffect(() => {
-    if (camera.isActive) {
-      stopCamera()
-      setTimeout(() => startCamera(), 100)
+    mountedRef.current = true
+    
+    const initCamera = async () => {
+      if (mountedRef.current) {
+        await startCamera()
+      }
     }
-  }, [facingMode, camera.isActive, startCamera, stopCamera])
+    
+    initCamera()
+    
+    return () => {
+      mountedRef.current = false
+      stopCamera()
+    }
+  }, []) // Empty dependency array - only run on mount/unmount
+
+  // No automatic restart - handled manually in switchCamera function
 
   // Handle visibility change to manage camera resources
   useEffect(() => {
     const handleVisibilityChange = () => {
+      if (!mountedRef.current) return
+      
+      // Only stop camera when hidden, don't auto-restart
       if (document.hidden) {
-        stopCamera()
-      } else if (!camera.isActive) {
-        startCamera()
+        stopCameraRef.current?.()
       }
     }
 
     document.addEventListener('visibilitychange', handleVisibilityChange)
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
-  }, [camera.isActive, startCamera, stopCamera])
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, []) // No dependencies - just manage visibility
 
   if (error) {
     return (

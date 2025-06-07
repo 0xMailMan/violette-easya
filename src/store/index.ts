@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { AppState, DiaryEntry, LocationData, UserPreferences } from '@/types'
+import { safeStorage } from '@/lib/storage'
 
 interface AppStore extends AppState {
   // User actions
@@ -266,7 +267,15 @@ export const useAppStore = create<AppStore>()(
           recentEntries: state.diary.recentEntries,
           draftEntries: state.diary.draftEntries
         }
-      })
+      }),
+      // Add storage error handling
+      onRehydrateStorage: () => (state, error) => {
+        if (error) {
+          console.warn('Failed to rehydrate storage:', error)
+        }
+      },
+      // Use safe storage adapter
+      storage: safeStorage
     }
   )
 ) 

@@ -8,6 +8,8 @@ import { CameraCapture } from '@/components/Camera/CameraCapture'
 import { TabNavigation } from '@/components/Navigation/TabNavigation'
 import { Modal } from '@/components/UI/Modal'
 import { ToastContainer } from '@/components/UI/Toast'
+import { StorageDebugger } from '@/components/Debug/StorageDebugger'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { formatDate, formatTime } from '@/lib/utils'
 
 export default function HomePage() {
@@ -35,7 +37,8 @@ export default function HomePage() {
   const recentEntries = diary.recentEntries.slice(0, 5) // Show last 5 entries
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-20">
+    <ErrorBoundary>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-20">
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-lg mx-auto px-4 py-6">
@@ -200,6 +203,10 @@ export default function HomePage() {
 
       {/* Toast Container */}
       <ToastContainer />
+      
+      {/* Storage Debugger (development only) */}
+      <StorageDebugger />
     </div>
+    </ErrorBoundary>
   )
 }
