@@ -50,7 +50,7 @@ export function StorageDebugger({ showInProduction = false }: StorageDebuggerPro
                   <strong>Tips:</strong>
                 </p>
                 <ul className="text-xs text-yellow-600 mt-1 space-y-1">
-                  <li>• Ensure you're using HTTPS in production</li>
+                  <li>• Ensure you&apos;re using HTTPS in production</li>
                   <li>• Check browser privacy settings</li>
                   <li>• Disable conflicting browser extensions</li>
                   <li>• Try incognito mode to test without extensions</li>

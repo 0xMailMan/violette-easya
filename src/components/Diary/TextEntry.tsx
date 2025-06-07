@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
+import Image from 'next/image'
 import { PaperAirplaneIcon, PhotoIcon } from '@heroicons/react/24/outline'
 import { useAppStore } from '@/store'
 import { Button } from '@/components/UI/Button'
@@ -176,9 +177,11 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
           <div className="grid grid-cols-3 gap-2">
             {photos.map((photo, index) => (
               <div key={index} className="relative group">
-                <img
+                <Image
                   src={photo}
                   alt={`Entry photo ${index + 1}`}
+                  width={120}
+                  height={80}
                   className="w-full h-20 object-cover rounded-lg"
                 />
                 <button

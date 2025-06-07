@@ -211,7 +211,7 @@ export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCapt
       mountedRef.current = false
       stopCamera()
     }
-  }, []) // Empty dependency array - only run on mount/unmount
+  }, [startCamera, stopCamera]) // Include dependencies
 
   // No automatic restart - handled manually in switchCamera function
 
