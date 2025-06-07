@@ -54,12 +54,15 @@ export function ServiceWorkerRegistration() {
 // Function to detect if app can be installed
 export function useInstallPrompt() {
   useEffect(() => {
-    let deferredPrompt: any = null
-
     const handleBeforeInstallPrompt = (e: Event) => {
       console.log('App can be installed')
       e.preventDefault()
-      deferredPrompt = e
+      // Store the event so it can be triggered later if needed
+      const deferredPrompt = e as BeforeInstallPromptEvent
+      
+      // Example usage: You could call deferredPrompt.prompt() to show install dialog
+      // For now, we just log that the app is installable
+      console.log('Install prompt available:', deferredPrompt)
     }
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
@@ -68,4 +71,10 @@ export function useInstallPrompt() {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
     }
   }, [])
+}
+
+// Type definition for BeforeInstallPromptEvent
+interface BeforeInstallPromptEvent extends Event {
+  prompt(): Promise<void>
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
 } 

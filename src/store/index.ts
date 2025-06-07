@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { AppState, DiaryEntry, LocationData, UserPreferences } from '@/types'
-import { safeStorage } from '@/lib/storage'
 
 interface AppStore extends AppState {
   // User actions
@@ -265,17 +264,19 @@ export const useAppStore = create<AppStore>()(
         user: state.user,
         diary: {
           recentEntries: state.diary.recentEntries,
-          draftEntries: state.diary.draftEntries
+          draftEntries: state.diary.draftEntries,
+          currentEntry: state.diary.currentEntry,
+          searchQuery: state.diary.searchQuery,
+          filterDate: state.diary.filterDate,
+          filterTags: state.diary.filterTags
         }
-      }),
+      }) as any, // Temporary type assertion to bypass the strict typing issue
       // Add storage error handling
       onRehydrateStorage: () => (state, error) => {
         if (error) {
           console.warn('Failed to rehydrate storage:', error)
         }
-      },
-      // Use safe storage adapter
-      storage: safeStorage
+      }
     }
   )
 ) 

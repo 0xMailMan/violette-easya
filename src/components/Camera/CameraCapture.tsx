@@ -33,8 +33,8 @@ export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCapt
   const toast = useToast()
 
   // Stable function references using useRef
-  const stopCameraRef = useRef<() => void>()
-  const startCameraRef = useRef<() => Promise<void>>()
+  const stopCameraRef = useRef<(() => void) | undefined>(undefined)
+  const startCameraRef = useRef<(() => Promise<void>) | undefined>(undefined)
 
   stopCameraRef.current = () => {
     try {

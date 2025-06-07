@@ -103,12 +103,22 @@ export function detectStorageIssues(): string[] {
 }
 
 // Detect browser extension conflicts
+// Type definitions for browser extension objects
+interface WindowWithExtensions extends Window {
+  ethereum?: unknown
+  chrome?: {
+    runtime?: unknown
+  }
+}
+
 function detectExtensionConflicts(): string[] {
   const conflicts: string[] = []
   
   if (typeof window !== 'undefined') {
+    const extendedWindow = window as WindowWithExtensions
+    
     // Check for MetaMask
-    if ((window as any).ethereum) {
+    if (extendedWindow.ethereum) {
       conflicts.push('MetaMask/Web3 wallet')
     }
     
@@ -121,7 +131,7 @@ function detectExtensionConflicts(): string[] {
     }
     
     // Check for common extension patterns
-    if ((window as any).chrome && (window as any).chrome.runtime) {
+    if (extendedWindow.chrome?.runtime) {
       conflicts.push('Chrome extension')
     }
   }
