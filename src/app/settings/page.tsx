@@ -109,14 +109,15 @@ export default function SettingsPage() {
   const storageLimit = 1000 // Example limit
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50/30 dark:from-gray-900 dark:to-purple-900/10">
+    <div className="min-h-screen" style={{ backgroundColor: 'rgb(254, 252, 247)' }}>
       {/* Header */}
-      <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm border-b border-purple-100 dark:border-purple-800/30">
+      <header className="bg-white/80 backdrop-blur-md shadow-sm border-b border-purple-100">
         <div className="max-w-lg mx-auto px-4 py-6">
           <div className="flex items-center space-x-3">
             <button 
               onClick={() => setMenuOpen(!ui.isMenuOpen)}
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20"
+              className="p-2 transition-colors rounded-lg hover:bg-purple-50"
+              style={{ color: '#C9A0DC' }}
             >
               <Bars3Icon className="h-6 w-6" />
             </button>
@@ -130,9 +131,9 @@ export default function SettingsPage() {
       {/* Main Content */}
       <main className="max-w-lg mx-auto px-4 py-6 space-y-6">
         {/* Appearance */}
-        <section className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center">
+        <section className="bg-white rounded-lg shadow-sm border border-gray-200">
+          <div className="p-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900 flex items-center">
               <CogIcon className="h-5 w-5 mr-2" />
               Appearance
             </h2>
@@ -141,7 +142,7 @@ export default function SettingsPage() {
           <div className="p-4 space-y-4">
             {/* Theme */}
             <div>
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-2">
+              <label className="text-sm font-medium text-gray-700 block mb-2">
                 Theme
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -155,8 +156,8 @@ export default function SettingsPage() {
                     onClick={() => handleThemeChange(value as 'light' | 'dark' | 'system')}
                     className={`flex flex-col items-center p-3 rounded-lg border transition-colors ${
                       user.preferences.theme === value
-                        ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300'
-                        : 'border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:bg-gray-50'
                     }`}
                   >
                     <Icon className="h-5 w-5 mb-1" />
@@ -168,7 +169,7 @@ export default function SettingsPage() {
 
             {/* Font Size */}
             <div>
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-2">
+              <label className="text-sm font-medium text-gray-700 block mb-2">
                 Font Size
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -182,8 +183,8 @@ export default function SettingsPage() {
                     onClick={() => handleFontSizeChange(value as 'small' | 'medium' | 'large')}
                     className={`p-2 text-center rounded-lg border transition-colors ${
                       user.preferences.fontSize === value
-                        ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300'
-                        : 'border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        ? 'border-purple-500 bg-purple-50 text-purple-700'
+                        : 'border-gray-200 hover:bg-gray-50'
                     }`}
                   >
                     <span className={`${
@@ -201,12 +202,12 @@ export default function SettingsPage() {
 
         {/* Toast Testing (Development) */}
         {process.env.NODE_ENV === 'development' && (
-          <section className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <section className="bg-white rounded-lg shadow-sm border border-gray-200">
+            <div className="p-4 border-b border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900">
                 🧪 Toast Testing
               </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-sm text-gray-500 mt-1">
                 Test the new collapsible error/warning notifications
               </p>
             </div>
@@ -246,7 +247,7 @@ export default function SettingsPage() {
                   Test Info
                 </Button>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
+              <p className="text-xs text-gray-500">
                 Error and warning messages will auto-collapse to small icons after 3 seconds. 
                 Success and info messages behave normally (disappear after 5 seconds).
               </p>
@@ -255,9 +256,9 @@ export default function SettingsPage() {
         )}
 
         {/* Privacy & Data */}
-        <section className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center">
+        <section className="bg-white rounded-lg shadow-sm border border-gray-200">
+          <div className="p-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900 flex items-center">
               <ShieldCheckIcon className="h-5 w-5 mr-2" />
               Privacy & Data
             </h2>
@@ -269,10 +270,10 @@ export default function SettingsPage() {
               <div className="flex items-center space-x-3">
                 <MapPinIcon className="h-5 w-5 text-gray-400" />
                 <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <p className="text-sm font-medium text-gray-900">
                     Location Services
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-gray-500">
                     Add location to diary entries
                   </p>
                 </div>
@@ -282,7 +283,7 @@ export default function SettingsPage() {
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                   user.preferences.locationEnabled
                     ? 'bg-purple-500'
-                    : 'bg-gray-200 dark:bg-gray-600'
+                    : 'bg-gray-200'
                 }`}
               >
                 <span
@@ -298,10 +299,10 @@ export default function SettingsPage() {
               <div className="flex items-center space-x-3">
                 <CloudArrowUpIcon className="h-5 w-5 text-gray-400" />
                 <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  <p className="text-sm font-medium text-gray-900">
                     Auto Save
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-gray-500">
                     Automatically save drafts while typing
                   </p>
                 </div>
@@ -311,7 +312,7 @@ export default function SettingsPage() {
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                   user.preferences.autoSave
                     ? 'bg-purple-500'
-                    : 'bg-gray-200 dark:bg-gray-600'
+                    : 'bg-gray-200'
                 }`}
               >
                 <span
@@ -325,9 +326,9 @@ export default function SettingsPage() {
         </section>
 
         {/* Storage */}
-        <section className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+        <section className="bg-white rounded-lg shadow-sm border border-gray-200">
+          <div className="p-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">
               Storage
             </h2>
           </div>
@@ -336,14 +337,14 @@ export default function SettingsPage() {
             {/* Storage Usage */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                <span className="text-sm font-medium text-gray-700">
                   Diary Entries
                 </span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
+                <span className="text-sm text-gray-500">
                   {storageUsed} / {storageLimit}
                 </span>
               </div>
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div className="w-full bg-gray-200 rounded-full h-2">
                 <div
                   className="bg-purple-500 h-2 rounded-full transition-all"
                   style={{ width: `${Math.min((storageUsed / storageLimit) * 100, 100)}%` }}
@@ -375,27 +376,27 @@ export default function SettingsPage() {
         </section>
 
         {/* About */}
-        <section className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+        <section className="bg-white rounded-lg shadow-sm border border-gray-200">
+          <div className="p-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">
               About
             </h2>
           </div>
           
           <div className="p-4 space-y-2">
             <div className="flex justify-between">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Version</span>
-              <span className="text-sm font-medium text-gray-900 dark:text-gray-100">1.0.0</span>
+              <span className="text-sm text-gray-600">Version</span>
+              <span className="text-sm font-medium text-gray-900">1.0.0</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Total Entries</span>
-              <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+              <span className="text-sm text-gray-600">Total Entries</span>
+              <span className="text-sm font-medium text-gray-900">
                 {diary.recentEntries.length}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Drafts</span>
-              <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+              <span className="text-sm text-gray-600">Drafts</span>
+              <span className="text-sm font-medium text-gray-900">
                 {diary.draftEntries.length}
               </span>
             </div>

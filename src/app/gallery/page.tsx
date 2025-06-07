@@ -74,15 +74,16 @@ export default function GalleryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50/30 dark:from-gray-900 dark:to-purple-900/10">
+    <div className="min-h-screen" style={{ backgroundColor: 'rgb(254, 252, 247)' }}>
       {/* Header */}
-      <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm border-b border-purple-100 dark:border-purple-800/30">
+      <header className="bg-white/80 backdrop-blur-md shadow-sm border-b border-purple-100">
         <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <button 
                 onClick={() => setMenuOpen(!ui.isMenuOpen)}
-                className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                className="p-2 transition-colors rounded-lg hover:bg-purple-50"
+                style={{ color: '#C9A0DC' }}
               >
                 <Bars3Icon className="h-6 w-6" />
               </button>
@@ -110,7 +111,7 @@ export default function GalleryPage() {
               placeholder="Search entries, tags, or locations..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-gray-100"
+              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             />
             {searchQuery && (
               <button
@@ -124,9 +125,9 @@ export default function GalleryPage() {
 
           {/* Filters */}
           {showFilters && (
-            <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg space-y-4">
+            <div className="mt-4 p-4 bg-gray-50 rounded-lg space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="font-medium text-gray-900 dark:text-gray-100">Filters</h3>
+                <h3 className="font-medium text-gray-900">Filters</h3>
                 <Button variant="ghost" size="sm" onClick={clearFilters}>
                   Clear all
                 </Button>
@@ -134,7 +135,7 @@ export default function GalleryPage() {
 
               {/* Filter Type */}
               <div>
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 block">
+                <label className="text-sm font-medium text-gray-700 mb-2 block">
                   Show
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -150,7 +151,7 @@ export default function GalleryPage() {
                       className={`px-3 py-1 text-sm rounded-md transition-colors ${
                         filterType === filter.value
                           ? 'bg-purple-500 text-white'
-                          : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-500'
+                          : 'bg-white text-gray-700 hover:bg-gray-100'
                       }`}
                     >
                       {filter.label}
@@ -162,7 +163,7 @@ export default function GalleryPage() {
               {/* Mood Filter */}
               {filterType === 'mood' && (
                 <div>
-                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 block">
+                  <label className="text-sm font-medium text-gray-700 mb-2 block">
                     Mood
                   </label>
                   <div className="grid grid-cols-6 gap-2">
@@ -172,8 +173,8 @@ export default function GalleryPage() {
                         onClick={() => setSelectedMood(mood.value === selectedMood ? '' : mood.value)}
                         className={`flex flex-col items-center p-2 rounded-lg border transition-colors ${
                           selectedMood === mood.value
-                            ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20'
-                            : 'border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600'
+                            ? 'border-purple-500 bg-purple-50'
+                            : 'border-gray-200 hover:bg-gray-100'
                         }`}
                       >
                         <span className="text-lg mb-1">{mood.emoji}</span>
@@ -192,7 +193,7 @@ export default function GalleryPage() {
       <main className="max-w-4xl mx-auto px-4 py-6">
         {/* Results Summary */}
         <div className="mb-6 flex items-center justify-between">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-gray-500">
             {filteredEntries.length} {filteredEntries.length === 1 ? 'entry' : 'entries'}
           </p>
         </div>
@@ -203,7 +204,7 @@ export default function GalleryPage() {
             {filteredEntries.map(entry => (
               <div
                 key={entry.id}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
+                className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
                 onClick={() => setSelectedEntry(entry.id)}
               >
                 {/* Photos */}
@@ -229,10 +230,10 @@ export default function GalleryPage() {
                   {/* Header */}
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-2">
-                      <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                      <span className="text-sm font-medium text-gray-900">
                         {formatDate(entry.createdAt, 'medium')}
                       </span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                      <span className="text-xs text-gray-500">
                         {formatTime(entry.createdAt)}
                       </span>
                     </div>
@@ -244,7 +245,7 @@ export default function GalleryPage() {
                   </div>
 
                   {/* Text Content */}
-                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-3">
+                  <p className="text-gray-700 text-sm leading-relaxed mb-3">
                     {entry.content.length > 120 
                       ? `${entry.content.substring(0, 120)}...`
                       : entry.content
@@ -257,13 +258,13 @@ export default function GalleryPage() {
                       {entry.tags.slice(0, 3).map(tag => (
                         <span
                           key={tag}
-                          className="inline-block px-2 py-0.5 text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full"
+                          className="inline-block px-2 py-0.5 text-xs bg-purple-100 text-purple-800 rounded-full"
                         >
                           #{tag}
                         </span>
                       ))}
                       {entry.tags.length > 3 && (
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                        <span className="text-xs text-gray-500">
                           +{entry.tags.length - 3}
                         </span>
                       )}
@@ -272,7 +273,7 @@ export default function GalleryPage() {
 
                   {/* Location */}
                   {entry.location && (
-                    <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center">
+                    <div className="text-xs text-gray-500 flex items-center">
                       <svg className="h-3 w-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -288,16 +289,16 @@ export default function GalleryPage() {
           /* Empty State */
           <div className="text-center py-12">
             <div className="mb-6">
-              <div className="mx-auto h-24 w-24 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                <svg className="h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mx-auto h-24 w-24 bg-gray-100 rounded-full flex items-center justify-center">
+                <svg className="h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
+            <h3 className="text-lg font-medium text-gray-900 mb-2">
               {searchQuery || filterType !== 'all' ? 'No matching entries' : 'No entries yet'}
             </h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-6 max-w-sm mx-auto">
+            <p className="text-gray-500 mb-6 max-w-sm mx-auto">
               {searchQuery || filterType !== 'all' 
                 ? 'Try adjusting your search or filters'
                 : 'Start writing in your diary to see your entries here'
@@ -338,8 +339,8 @@ export default function GalleryPage() {
             )}
 
             {/* Content */}
-            <div className="prose prose-sm dark:prose-invert max-w-none">
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
+            <div className="prose prose-sm max-w-none">
+              <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
                 {selectedEntryData.content}
               </p>
             </div>
@@ -350,7 +351,7 @@ export default function GalleryPage() {
                 <span className="text-lg">
                   {moods.find(m => m.value === selectedEntryData.mood)?.emoji}
                 </span>
-                <span className="text-sm text-gray-600 dark:text-gray-400">
+                <span className="text-sm text-gray-600">
                   Feeling {moods.find(m => m.value === selectedEntryData.mood)?.label.toLowerCase()}
                 </span>
               </div>
@@ -362,7 +363,7 @@ export default function GalleryPage() {
                 {selectedEntryData.tags.map(tag => (
                   <span
                     key={tag}
-                    className="inline-block px-3 py-1 text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full"
+                    className="inline-block px-3 py-1 text-sm bg-purple-100 text-purple-800 rounded-full"
                   >
                     #{tag}
                   </span>
@@ -372,7 +373,7 @@ export default function GalleryPage() {
 
             {/* Location */}
             {selectedEntryData.location && (
-              <div className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
+              <div className="text-sm text-gray-500 flex items-center">
                 <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -382,7 +383,7 @@ export default function GalleryPage() {
             )}
 
             {/* Timestamp */}
-            <div className="text-xs text-gray-400 pt-2 border-t border-gray-200 dark:border-gray-700">
+            <div className="text-xs text-gray-400 pt-2 border-t border-gray-200">
               Created on {formatDate(selectedEntryData.createdAt, 'long')} at {formatTime(selectedEntryData.createdAt)}
             </div>
           </div>

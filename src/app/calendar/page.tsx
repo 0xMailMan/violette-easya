@@ -84,15 +84,16 @@ export default function CalendarPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50/30 dark:from-gray-900 dark:to-purple-900/10">
+    <div className="min-h-screen" style={{ backgroundColor: 'rgb(254, 252, 247)' }}>
       {/* Header */}
-      <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm border-b border-purple-100 dark:border-purple-800/30">
+      <header className="bg-white/80 backdrop-blur-md shadow-sm border-b border-purple-100">
         <div className="max-w-lg mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <button 
                 onClick={() => setMenuOpen(!ui.isMenuOpen)}
-                className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                className="p-2 transition-colors rounded-lg hover:bg-purple-50"
+                style={{ color: '#C9A0DC' }}
               >
                 <Bars3Icon className="h-6 w-6" />
               </button>
@@ -110,8 +111,8 @@ export default function CalendarPage() {
       {/* Main Content */}
       <main className="max-w-lg mx-auto px-4 py-6">
         {/* Calendar Navigation */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
+          <div className="flex items-center justify-between p-4 border-b border-gray-200">
             <Button
               variant="ghost"
               size="sm"
@@ -120,7 +121,7 @@ export default function CalendarPage() {
               <ChevronLeftIcon className="h-5 w-5" />
             </Button>
             
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <h2 className="text-lg font-semibold text-gray-900">
               {MONTHS[month]} {year}
             </h2>
             
@@ -140,7 +141,7 @@ export default function CalendarPage() {
               {DAYS.map(day => (
                 <div
                   key={day}
-                  className="text-center text-xs font-medium text-gray-500 dark:text-gray-400 py-2"
+                  className="text-center text-xs font-medium text-gray-500 py-2"
                 >
                   {day}
                 </div>
@@ -169,8 +170,8 @@ export default function CalendarPage() {
                       ${isSelected
                         ? 'bg-purple-500 text-white'
                         : isToday
-                        ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
-                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                        ? 'bg-purple-100 text-purple-600'
+                        : 'text-gray-700 hover:bg-gray-100'
                       }
                     `}
                   >
@@ -190,12 +191,12 @@ export default function CalendarPage() {
 
         {/* Selected Date Entries */}
         {selectedDate && (
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+            <div className="p-4 border-b border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900">
                 {formatDate(selectedDate, 'long')}
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-gray-500">
                 {selectedEntries.length} {selectedEntries.length === 1 ? 'entry' : 'entries'}
               </p>
             </div>
@@ -205,7 +206,7 @@ export default function CalendarPage() {
                 {selectedEntries.map(entry => (
                   <div key={entry.id} className="border-l-4 border-purple-500 pl-4">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                      <span className="text-sm font-medium text-gray-900">
                         {new Date(entry.createdAt).toLocaleTimeString([], { 
                           hour: '2-digit', 
                           minute: '2-digit' 
@@ -229,7 +230,7 @@ export default function CalendarPage() {
                       )}
                     </div>
                     
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                    <p className="text-sm text-gray-700 mb-2">
                       {entry.content.length > 150 
                         ? `${entry.content.substring(0, 150)}...`
                         : entry.content
@@ -249,8 +250,8 @@ export default function CalendarPage() {
                           />
                         ))}
                         {entry.photos.length > 3 && (
-                          <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded flex items-center justify-center">
-                            <span className="text-xs text-gray-500 dark:text-gray-400">
+                          <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center">
+                            <span className="text-xs text-gray-500">
                               +{entry.photos.length - 3}
                             </span>
                           </div>
@@ -263,13 +264,13 @@ export default function CalendarPage() {
                         {entry.tags.slice(0, 3).map(tag => (
                           <span
                             key={tag}
-                            className="inline-block px-2 py-0.5 text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full"
+                            className="inline-block px-2 py-0.5 text-xs bg-purple-100 text-purple-800 rounded-full"
                           >
                             #{tag}
                           </span>
                         ))}
                         {entry.tags.length > 3 && (
-                          <span className="text-xs text-gray-500 dark:text-gray-400">
+                          <span className="text-xs text-gray-500">
                             +{entry.tags.length - 3} more
                           </span>
                         )}
@@ -281,13 +282,13 @@ export default function CalendarPage() {
             ) : (
               <div className="p-8 text-center">
                 <div className="mb-4">
-                  <div className="mx-auto h-16 w-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                    <svg className="h-8 w-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="mx-auto h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center">
+                    <svg className="h-8 w-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
                   </div>
                 </div>
-                <p className="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500">
                   No entries for this date
                 </p>
               </div>

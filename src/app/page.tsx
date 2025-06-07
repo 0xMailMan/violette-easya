@@ -71,7 +71,7 @@ export default function HomePage() {
         </header>
 
         {/* Main Content */}
-        <main className="max-w-lg mx-auto px-4 py-6 pb-48 space-y-6">
+        <main className="max-w-lg mx-auto px-4 py-6 pb-80 space-y-6">
           {/* Violette Message - Like messaging app */}
           <section className="mb-6">
             <div className="flex items-start space-x-3">
@@ -91,8 +91,6 @@ export default function HomePage() {
               </div>
             </div>
           </section>
-
-
 
           {/* Recent Entries */}
           {recentEntries.length > 0 && (
@@ -203,7 +201,7 @@ export default function HomePage() {
         </main>
 
         {/* New Entry Form - Sticky bottom */}
-        <section className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+        <section className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-8">
           <div className="max-w-lg mx-auto">
             <TextEntry />
           </div>

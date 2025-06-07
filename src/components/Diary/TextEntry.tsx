@@ -165,13 +165,13 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
     : "start typing..."
 
   return (
-    <div className={`violette-card rounded-lg shadow-sm ${className}`}>
-      <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-6">
+    <div className={`violette-card rounded-lg shadow-sm ${className}`} style={{ padding: '24px' }}>
+      <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-8">
         {/* Photo Preview Area */}
         {photos.length > 0 && (
-          <div className="p-4 pb-0">
+          <div className="p-6 pb-0">
             <div className="relative">
-              <div className="grid grid-cols-1 gap-2">
+              <div className="grid grid-cols-1 gap-3">
                 {photos.map((photo, index) => (
                   <div key={index} className="relative group">
                     <Image
@@ -199,53 +199,61 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
         )}
 
         {/* Camera and Location Buttons */}
-        <div className="px-4 flex justify-center space-x-8 py-4">
-          <button
-            type="button"
-            onClick={handleCameraClick}
-            className="flex flex-col items-center justify-center violette-button"
-          >
-            <Image
-              src="/violette-camera.svg"
-              alt="Camera"
-              width={48}
-              height={48}
-              className="h-12 w-12"
-            />
-          </button>
-          
-          <div className="flex flex-col items-center">
+        <div className="px-8 flex justify-center space-x-16 py-8">
+          <div className="flex flex-col items-center h-32">
             <button
               type="button"
-              className="flex flex-col items-center justify-center violette-button"
+              onClick={handleCameraClick}
+              className="flex flex-col items-center justify-center violette-button p-4"
+            >
+              <Image
+                src="/violette-camera.svg"
+                alt="Camera"
+                width={80}
+                height={80}
+                className="h-16 w-16"
+              />
+            </button>
+            <span className="mt-3 text-xs text-gray-400 text-center opacity-50">take a photo</span>
+          </div>
+          
+          <div className="flex flex-col items-center h-32">
+            <button
+              type="button"
+              className="flex flex-col items-center justify-center violette-button p-4"
             >
               <Image
                 src="/violette-location.svg"
                 alt="Location"
-                width={48}
-                height={48}
-                className="h-12 w-12"
+                width={80}
+                height={80}
+                className="h-16 w-16"
               />
             </button>
-            <span className="mt-2 text-xs text-gray-500 text-center">tap to turn off location</span>
+            <span className="mt-3 text-xs text-gray-400 text-center opacity-50">tap to turn off location</span>
           </div>
         </div>
 
-        {/* Upload Instead Button */}
-        <div className="px-4 py-2">
-          <Button
+        {/* Upload Button */}
+        <div className="px-8 py-6 flex justify-center" style={{ background: 'transparent' }}>
+          <button
             type="button"
             onClick={handleUploadClick}
-            variant="secondary"
-            className="w-full bg-red-100 hover:bg-red-200 text-red-700 border-red-200 hover:border-red-300"
+            className="violette-button p-4"
           >
-            Upload Instead
-          </Button>
+            <Image
+              src="/violette-upload.svg"
+              alt="Upload"
+              width={80}
+              height={80}
+              className="h-16 w-16"
+            />
+          </button>
         </div>
 
         {/* Main Text Area */}
-        <div className="px-4 pb-4">
-          <div className="relative bg-gray-50 rounded-lg p-3">
+        <div className="px-8 pb-8">
+          <div className="relative bg-gray-100 rounded-2xl border border-gray-300 shadow-lg px-8 py-6">
             <textarea
               {...register('content', { 
                 required: false,
@@ -259,15 +267,15 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
                 textareaRef.current = e
               }}
               placeholder={placeholder}
-              className="w-full resize-none border-none outline-none text-gray-900 placeholder-gray-500 bg-transparent"
-              rows={isExpanded ? 4 : 2}
+              className="w-full resize-none border-none outline-none text-gray-900 placeholder-gray-500 bg-transparent text-lg"
+              rows={isExpanded ? 4 : 3}
               onFocus={handleFocus}
-              style={{ minHeight: '60px' }}
+              style={{ minHeight: '80px' }}
             />
             
             {/* Character Count */}
             {isExpanded && (
-              <div className="absolute bottom-2 right-2 text-xs text-gray-400">
+              <div className="absolute bottom-3 right-8 text-sm text-gray-400">
                 {charCount.toLocaleString()} characters
               </div>
             )}
