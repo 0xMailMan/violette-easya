@@ -73,17 +73,27 @@ function firestoreToEntry(doc: any): DiaryEntry {
 
 // Convert DiaryEntry to Firestore document
 function entryToFirestore(entry: DiaryEntry, userId: string): Partial<FirestoreEntry> {
-  return {
+  const firestoreData: any = {
     userId,
     content: entry.content,
     photos: entry.photos,
-    location: entry.location,
-    mood: entry.mood,
     tags: entry.tags,
-    aiAnalysis: entry.aiAnalysis,
     isDraft: entry.isDraft,
     updatedAt: serverTimestamp()
   }
+  
+  // Only include fields that aren't undefined (Firestore doesn't support undefined)
+  if (entry.location !== undefined) {
+    firestoreData.location = entry.location
+  }
+  if (entry.mood !== undefined) {
+    firestoreData.mood = entry.mood
+  }
+  if (entry.aiAnalysis !== undefined) {
+    firestoreData.aiAnalysis = entry.aiAnalysis
+  }
+  
+  return firestoreData
 }
 
 export class FirestoreService {

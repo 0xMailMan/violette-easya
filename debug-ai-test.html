@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Analysis Debug Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        .success { color: green; }
+        .error { color: red; }
+        .loading { color: blue; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        textarea { width: 100%; height: 100px; margin: 10px 0; }
+        pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🧪 AI Analysis Debug Test</h1>
+    
+    <div class="test-section">
+        <h2>1. Backend Health Check</h2>
+        <button onclick="testBackendHealth()">Test Backend Health</button>
+        <div id="health-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Text Analysis Test</h2>
+        <textarea id="text-input" placeholder="Enter text to analyze...">I had a wonderful day at the beach today!</textarea>
+        <br>
+        <button onclick="testTextAnalysis()">Analyze Text</button>
+        <div id="text-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Photo Upload Test</h2>
+        <input type="file" id="photo-input" accept="image/*">
+        <br>
+        <button onclick="testPhotoAnalysis()">Analyze Photo</button>
+        <div id="photo-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Complete Workflow Test</h2>
+        <button onclick="testCompleteWorkflow()">Test Complete Workflow</button>
+        <div id="workflow-result"></div>
+    </div>
+
+    <script>
+        const AI_SERVER_URL = 'http://localhost:8000';
+
+        function log(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : 'loading';
+            element.innerHTML += `<div class="${className}">[${new Date().toLocaleTimeString()}] ${message}</div>`;
+        }
+
+        function clearLog(elementId) {
+            document.getElementById(elementId).innerHTML = '';
+        }
+
+        async function testBackendHealth() {
+            clearLog('health-result');
+            log('health-result', 'Testing backend health...', 'loading');
+            
+            try {
+                const response = await fetch(`${AI_SERVER_URL}/health`);
+                const result = await response.json();
+                
+                if (result.status === 'healthy') {
+                    log('health-result', '✅ Backend is healthy', 'success');
+                    log('health-result', `Anthropic connected: ${result.anthropicConnected}`, 'success');
+                } else {
+                    log('health-result', '❌ Backend is not healthy', 'error');
+                }
+            } catch (error) {
+                log('health-result', `❌ Backend connection failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testTextAnalysis() {
+            clearLog('text-result');
+            const text = document.getElementById('text-input').value;
+            
+            if (!text.trim()) {
+                log('text-result', '❌ Please enter some text', 'error');
+                return;
+            }
+
+            log('text-result', 'Analyzing text...', 'loading');
+            
+            try {
+                const response = await fetch(`${AI_SERVER_URL}/api/ai/analyze`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    log('text-result', '✅ Text analysis successful', 'success');
+                    log('text-result', `Description: ${result.data.description.substring(0, 100)}...`, 'success');
+                    log('text-result', `Sentiment: ${result.data.sentiment}`, 'success');
+                    log('text-result', `Themes: ${result.data.themes.join(', ')}`, 'success');
+                } else {
+                    log('text-result', `❌ Text analysis failed: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                log('text-result', `❌ Request failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testPhotoAnalysis() {
+            clearLog('photo-result');
+            const fileInput = document.getElementById('photo-input');
+            
+            if (!fileInput.files[0]) {
+                log('photo-result', '❌ Please select a photo', 'error');
+                return;
+            }
+
+            log('photo-result', 'Converting photo to base64...', 'loading');
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = async function(e) {
+                try {
+                    const dataUrl = e.target.result;
+                    const base64 = dataUrl.split(',')[1];
+                    
+                    log('photo-result', 'Analyzing photo...', 'loading');
+                    
+                    const response = await fetch(`${AI_SERVER_URL}/api/ai/analyze`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ photo: base64 })
+                    });
+
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        log('photo-result', '✅ Photo analysis successful', 'success');
+                        log('photo-result', `Description: ${result.data.description.substring(0, 100)}...`, 'success');
+                        log('photo-result', `Confidence: ${result.data.confidence}`, 'success');
+                        log('photo-result', `Themes: ${result.data.themes.join(', ')}`, 'success');
+                    } else {
+                        log('photo-result', `❌ Photo analysis failed: ${result.error}`, 'error');
+                    }
+                } catch (error) {
+                    log('photo-result', `❌ Request failed: ${error.message}`, 'error');
+                }
+            };
+            
+            reader.readAsDataURL(file);
+        }
+
+        async function testCompleteWorkflow() {
+            clearLog('workflow-result');
+            log('workflow-result', 'Testing complete workflow...', 'loading');
+            
+            // Test 1: Backend health
+            log('workflow-result', '1. Testing backend health...', 'loading');
+            try {
+                const healthResponse = await fetch(`${AI_SERVER_URL}/health`);
+                const healthResult = await healthResponse.json();
+                
+                if (healthResult.status === 'healthy') {
+                    log('workflow-result', '✅ Backend healthy', 'success');
+                } else {
+                    log('workflow-result', '❌ Backend not healthy', 'error');
+                    return;
+                }
+            } catch (error) {
+                log('workflow-result', `❌ Backend check failed: ${error.message}`, 'error');
+                return;
+            }
+
+            // Test 2: Text analysis
+            log('workflow-result', '2. Testing text analysis...', 'loading');
+            try {
+                const textResponse = await fetch(`${AI_SERVER_URL}/api/ai/analyze`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: 'Testing AI analysis workflow' })
+                });
+
+                const textResult = await textResponse.json();
+                
+                if (textResult.success) {
+                    log('workflow-result', '✅ Text analysis working', 'success');
+                } else {
+                    log('workflow-result', `❌ Text analysis failed: ${textResult.error}`, 'error');
+                    return;
+                }
+            } catch (error) {
+                log('workflow-result', `❌ Text analysis error: ${error.message}`, 'error');
+                return;
+            }
+
+            // Test 3: Embedding generation
+            log('workflow-result', '3. Testing embedding generation...', 'loading');
+            try {
+                const embeddingResponse = await fetch(`${AI_SERVER_URL}/api/ai/generate-embedding`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ description: 'Test embedding' })
+                });
+
+                const embeddingResult = await embeddingResponse.json();
+                
+                if (embeddingResult.success) {
+                    log('workflow-result', '✅ Embedding generation working', 'success');
+                } else {
+                    log('workflow-result', `❌ Embedding failed: ${embeddingResult.error}`, 'error');
+                    return;
+                }
+            } catch (error) {
+                log('workflow-result', `❌ Embedding error: ${error.message}`, 'error');
+                return;
+            }
+
+            log('workflow-result', '🎉 All workflow tests passed!', 'success');
+            log('workflow-result', 'Your AI backend is working correctly.', 'success');
+        }
+
+        // Auto-run health check on page load
+        window.onload = function() {
+            testBackendHealth();
+        };
+    </script>
+</body>
+</html> 

@@ -11,7 +11,7 @@ interface AppStore extends AppState {
   setDid: (didId: string) => void
 
   // Diary actions
-  createEntry: (entry: Omit<DiaryEntry, 'id' | 'createdAt' | 'updatedAt'>) => Promise<void>
+  createEntry: (entry: Omit<DiaryEntry, 'id' | 'createdAt' | 'updatedAt'>) => Promise<DiaryEntry>
   updateEntry: (id: string, updates: Partial<DiaryEntry>) => Promise<void>
   deleteEntry: (id: string) => Promise<void>
   saveDraft: (entry: Partial<DiaryEntry>) => Promise<void>
@@ -120,6 +120,8 @@ export const useAppStore = create<AppStore>()(
               currentEntry: null
             }
           }))
+          
+          return newEntry
         } catch (error) {
           console.error('Error creating entry:', error)
           // Fallback to local storage if Firestore fails
@@ -137,6 +139,8 @@ export const useAppStore = create<AppStore>()(
               currentEntry: null
             }
           }))
+          
+          return newEntry
         }
       },
 

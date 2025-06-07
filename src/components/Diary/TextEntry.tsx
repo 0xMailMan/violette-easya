@@ -12,6 +12,7 @@ import { MoodSelector } from './MoodSelector'
 import { TagManager } from './TagManager'
 import { debounce } from '@/lib/utils'
 import { DiaryEntryFormData } from '@/types'
+import { useEntryWithAI } from '@/hooks/useEntryWithAI'
 
 interface TextEntryProps {
   onSubmit?: (data: DiaryEntryFormData) => void
@@ -34,6 +35,7 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
   } = useAppStore()
   
   const toast = useToast()
+  const { isProcessing, createEntryWithAI } = useEntryWithAI()
   
   const { register, handleSubmit, watch, setValue, reset, formState: { isDirty } } = useForm<DiaryEntryFormData>({
     defaultValues: {
@@ -106,19 +108,33 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
     }
   }, [location.isEnabled, location.currentLocation, currentLocation, setValue])
 
-  const onFormSubmit = (data: DiaryEntryFormData) => {
-    if (!data.content.trim()) {
-      toast.warning('Please write something before saving')
+  const onFormSubmit = async (data: DiaryEntryFormData) => {
+    if (!data.content.trim() && (!data.photos || data.photos.length === 0)) {
+      toast.warning('Please write something or add a photo before saving')
       return
     }
 
     if (onSubmit) {
       onSubmit(data)
     } else {
-      createEntry({ ...data, isDraft: false })
-      toast.success('Entry saved!')
-      reset()
-      setIsExpanded(false)
+      console.log('📝 TextEntry: Creating entry with AI analysis...')
+      
+      const createdEntry = await createEntryWithAI({
+        content: data.content,
+        photos: data.photos,
+        tags: data.tags,
+        mood: data.mood,
+        location: data.location,
+        isDraft: false
+      })
+      
+      if (createdEntry) {
+        toast.success('Entry saved with AI analysis!')
+        reset()
+        setIsExpanded(false)
+      } else {
+        toast.error('Failed to save entry')
+      }
     }
   }
 
@@ -311,11 +327,20 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
             {/* Submit Button */}
             <Button
               type="submit"
-              disabled={!content.trim()}
+              disabled={(!content.trim() && photos.length === 0) || isProcessing}
               className="w-full"
             >
-              <PaperAirplaneIcon className="h-4 w-4 mr-2" />
-              Save Entry
+              {isProcessing ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  Analyzing with AI...
+                </>
+              ) : (
+                <>
+                  <PaperAirplaneIcon className="h-4 w-4 mr-2" />
+                  Save with AI Analysis
+                </>
+              )}
             </Button>
           </div>
         )}

@@ -92,7 +92,10 @@ Format as JSON with this structure:
       });
 
       const content = response.content[0].text;
-      analysis = JSON.parse(content);
+      // Extract JSON from Claude's response, handling markdown formatting
+      const jsonMatch = content.match(/```json\s*([\s\S]*?)\s*```/) || content.match(/\{[\s\S]*\}/);
+      const jsonString = jsonMatch ? (jsonMatch[1] || jsonMatch[0]) : content;
+      analysis = JSON.parse(jsonString.trim());
     }
 
     // Photo analysis (if provided)
@@ -137,7 +140,10 @@ Format your response as JSON with the following structure:
       });
 
       const photoContent = photoResponse.content[0].text;
-      const photoAnalysis = JSON.parse(photoContent);
+      // Extract JSON from Claude's response, handling markdown formatting
+      const photoJsonMatch = photoContent.match(/```json\s*([\s\S]*?)\s*```/) || photoContent.match(/\{[\s\S]*\}/);
+      const photoJsonString = photoJsonMatch ? (photoJsonMatch[1] || photoJsonMatch[0]) : photoContent;
+      const photoAnalysis = JSON.parse(photoJsonString.trim());
 
       // Combine text and photo analysis
       analysis.description = analysis.description 
