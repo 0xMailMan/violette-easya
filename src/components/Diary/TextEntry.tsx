@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import Image from 'next/image'
-import { PaperAirplaneIcon, PhotoIcon, CameraIcon, MapPinIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { PaperAirplaneIcon, CameraIcon, MapPinIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useAppStore } from '@/store'
 import { Button } from '@/components/UI/Button'
 import { useToast } from '@/components/UI/Toast'

@@ -11,7 +11,7 @@ import { ToastContainer } from '@/components/UI/Toast'
 import { StorageDebugger } from '@/components/Debug/StorageDebugger'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { formatDate, formatTime } from '@/lib/utils'
-import { Bars3Icon, MapPinIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon } from '@heroicons/react/24/outline'
 
 export default function HomePage() {
   const { 
@@ -75,7 +75,7 @@ export default function HomePage() {
               </div>
             </div>
             <h2 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-6">
-              What's on your mind?
+              What&apos;s on your mind?
             </h2>
           </section>
 

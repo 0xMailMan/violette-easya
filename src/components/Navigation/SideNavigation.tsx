@@ -68,7 +68,6 @@ interface SideNavigationProps {
 
 export function SideNavigation({ isOpen, onClose }: SideNavigationProps) {
   const pathname = usePathname()
-  const { user } = useAppStore()
 
   // Prevent body scroll when menu is open
   useEffect(() => {

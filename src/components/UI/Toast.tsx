@@ -8,7 +8,6 @@ import {
   ExclamationTriangleIcon, 
   InformationCircleIcon,
   XMarkIcon,
-  ChevronUpIcon,
   ChevronDownIcon
 } from '@heroicons/react/24/outline'
 import { useAppStore } from '@/store'

@@ -270,7 +270,7 @@ export const useAppStore = create<AppStore>()(
           filterDate: state.diary.filterDate,
           filterTags: state.diary.filterTags
         }
-      }) as any, // Temporary type assertion to bypass the strict typing issue
+      }),
       // Add storage error handling
       onRehydrateStorage: () => (state, error) => {
         if (error) {

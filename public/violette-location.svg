@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 159.54 147.36">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c9a0dc;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: none;
+        opacity: .6;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 3.7px;
+      }
+
+      .cls-4 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-8 {
+        fill: #e6e6e6;
+        font-family: GreycliffCF-DemiBold, 'Greycliff CF';
+        font-size: 15px;
+        font-weight: 300;
+      }
+    </style>
+  </defs>
+  <g id="Design">
+    <g>
+      <rect class="cls-1" x="19.76" width="120.02" height="120.02" rx="15.44" ry="15.44"/>
+      <text class="cls-8" transform="translate(3.09 143.12)"><tspan class="cls-5" x="0" y="0">t</tspan><tspan x="5.23" y="0">ap </tspan><tspan class="cls-6" x="26.82" y="0">t</tspan><tspan x="32.05" y="0">o turn </tspan><tspan class="cls-7" x="74.91" y="0">of</tspan><tspan x="88.99" y="0">f lo</tspan><tspan class="cls-4" x="109.96" y="0">c</tspan><tspan x="117.63" y="0">ation</tspan></text>
+      <g>
+        <path class="cls-2" d="M79.77,28.37c11.19,0,20.26,9.07,20.26,20.26s-20.26,37.16-20.26,37.16c0,0-20.26-25.97-20.26-37.16s9.07-20.26,20.26-20.26ZM79.77,59.39c5.61,0,10.16-4.55,10.16-10.16s-4.55-10.16-10.16-10.16-10.16,4.55-10.16,10.16,4.55,10.16,10.16,10.16Z"/>
+        <ellipse class="cls-3" cx="79.77" cy="85.67" rx="21.49" ry="5.98"/>
+      </g>
+    </g>
+  </g>
+</svg>
