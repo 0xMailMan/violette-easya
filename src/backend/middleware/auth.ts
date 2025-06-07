@@ -5,7 +5,7 @@ import { Timestamp } from 'firebase-admin/firestore';
 import { AuthSystem, SessionToken, AuthResult } from '../../types/backend';
 import config from '../config';
 import firebaseService from '../database/firebase';
-import blockchainService from '../services/blockchain';
+// import blockchainService from '../services/blockchain';
 
 // Extend Express Request interface to include user data
 declare global {
@@ -67,7 +67,8 @@ class AuthService implements AuthSystem {
   async authenticateWithDID(didId: string, signature: string): Promise<AuthResult> {
     try {
       // Resolve DID to get user information
-      const didResolution = await blockchainService.resolveDID(didId);
+      // const didResolution = await blockchainService.resolveDID(didId);
+    const didResolution = null; // Blockchain disabled for now
       
       if (!didResolution) {
         return {

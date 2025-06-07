@@ -12,7 +12,8 @@
     "backend:build": "tsc -p src/backend/tsconfig.json",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:anthropic": "node test-anthropic.js"
+    "test:anthropic": "node test-anthropic.js",
+    "ai-server": "node src/backend/ai-server.js"
   },
   "dependencies": {
     "react": "^19.0.0",

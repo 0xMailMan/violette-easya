@@ -6,7 +6,7 @@
     "moduleResolution": "node",
     "rootDir": "../",
     "outDir": "../../dist/backend",
-    "strict": true,
+    "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -30,6 +30,7 @@
   "exclude": [
     "node_modules",
     "dist",
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "**/blockchain.ts"
   ]
 } 

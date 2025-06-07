@@ -19,7 +19,7 @@ router.post('/anonymous', (0, error_handler_1.asyncHandler)(async (req, res) => 
         res.status(201).json(response);
     }
     catch (error) {
-        throw new Error(`Anonymous session creation failed: ${error.message}`);
+        throw new Error(`Anonymous session creation failed: ${error instanceof Error ? error.message : String(error)}`);
     }
 }));
 // POST /api/auth/did - Authenticate with DID
@@ -52,7 +52,7 @@ router.post('/did', (0, error_handler_1.asyncHandler)(async (req, res) => {
         }
     }
     catch (error) {
-        throw new Error(`DID authentication failed: ${error.message}`);
+        throw new Error(`DID authentication failed: ${error instanceof Error ? error.message : String(error)}`);
     }
 }));
 // POST /api/auth/refresh - Refresh session token
@@ -84,7 +84,7 @@ router.post('/refresh', auth_1.authMiddleware, (0, error_handler_1.asyncHandler)
         res.status(200).json(response);
     }
     catch (error) {
-        throw new Error(`Session refresh failed: ${error.message}`);
+        throw new Error(`Session refresh failed: ${error instanceof Error ? error.message : String(error)}`);
     }
 }));
 // GET /api/auth/verify - Verify current session

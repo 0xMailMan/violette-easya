@@ -15,7 +15,7 @@ const routes_1 = require("./routes");
 const error_handler_1 = require("./middleware/error-handler");
 const logging_1 = require("./middleware/logging");
 const firebase_1 = __importDefault(require("./database/firebase"));
-const blockchain_1 = __importDefault(require("./services/blockchain"));
+// import blockchainService from './services/blockchain';
 const config_2 = __importDefault(require("./config"));
 class VioletteBackendServer {
     constructor() {
@@ -80,18 +80,18 @@ class VioletteBackendServer {
         // Health check endpoint
         this.app.get('/health', async (req, res) => {
             try {
-                const [firebaseHealth, blockchainHealth] = await Promise.all([
+                const [firebaseHealth] = await Promise.all([
                     firebase_1.default.healthCheck(),
-                    blockchain_1.default.healthCheck(),
+                    // blockchainService.healthCheck(),
                 ]);
-                const status = firebaseHealth && blockchainHealth ? 'healthy' : 'unhealthy';
+                const status = firebaseHealth ? 'healthy' : 'unhealthy';
                 const statusCode = status === 'healthy' ? 200 : 503;
                 res.status(statusCode).json({
                     status,
                     timestamp: new Date().toISOString(),
                     services: {
                         firebase: firebaseHealth ? 'up' : 'down',
-                        blockchain: blockchainHealth ? 'up' : 'down',
+                        blockchain: 'disabled',
                     },
                 });
             }
@@ -99,7 +99,7 @@ class VioletteBackendServer {
                 res.status(503).json({
                     status: 'unhealthy',
                     timestamp: new Date().toISOString(),
-                    error: error.message,
+                    error: error instanceof Error ? error.message : String(error),
                 });
             }
         });
@@ -188,7 +188,7 @@ class VioletteBackendServer {
                 });
             }
             // Close database connections
-            await blockchain_1.default.disconnect();
+            // await blockchainService.disconnect();
             console.log('✅ Database connections closed');
             console.log('✅ Graceful shutdown completed');
             process.exit(0);

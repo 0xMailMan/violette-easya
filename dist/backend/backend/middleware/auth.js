@@ -9,7 +9,6 @@ const uuid_1 = require("uuid");
 const firestore_1 = require("firebase-admin/firestore");
 const config_1 = __importDefault(require("../config"));
 const firebase_1 = __importDefault(require("../database/firebase"));
-const blockchain_1 = __importDefault(require("../services/blockchain"));
 class AuthService {
     constructor() {
         this.JWT_ALGORITHM = 'HS256';
@@ -52,7 +51,8 @@ class AuthService {
     async authenticateWithDID(didId, signature) {
         try {
             // Resolve DID to get user information
-            const didResolution = await blockchain_1.default.resolveDID(didId);
+            // const didResolution = await blockchainService.resolveDID(didId);
+            const didResolution = null; // Blockchain disabled for now
             if (!didResolution) {
                 return {
                     success: false,
@@ -246,7 +246,7 @@ const optionalAuthMiddleware = async (req, res, next) => {
         }
         catch (error) {
             // Invalid token, but continue without auth
-            console.warn('Invalid token in optional auth:', error.message);
+            console.warn('Invalid token in optional auth:', error instanceof Error ? error.message : String(error));
         }
         next();
     }
