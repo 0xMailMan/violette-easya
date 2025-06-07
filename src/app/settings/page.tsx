@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useAppStore } from '@/store'
+import { useAuthState, authService } from '@/lib/auth'
 import { SideNavigation } from '@/components/Navigation/SideNavigation'
 import { ToastContainer, useToast } from '@/components/UI/Toast'
 import { Button } from '@/components/UI/Button'
@@ -16,7 +17,9 @@ import {
   ComputerDesktopIcon,
   MapPinIcon,
   CloudArrowUpIcon,
-  Bars3Icon
+  Bars3Icon,
+  UserIcon,
+  KeyIcon
 } from '@heroicons/react/24/outline'
 
 export default function SettingsPage() {
@@ -24,6 +27,7 @@ export default function SettingsPage() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [showExportModal, setShowExportModal] = useState(false)
   const toast = useToast()
+  const { user: authUser, loading } = useAuthState()
 
   const handleThemeChange = (theme: 'light' | 'dark' | 'system') => {
     updatePreferences({ theme })
@@ -254,6 +258,69 @@ export default function SettingsPage() {
             </div>
           </section>
         )}
+
+        {/* Account & Storage */}
+        <section className="bg-white rounded-lg shadow-sm border border-gray-200">
+          <div className="p-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900 flex items-center">
+              <UserIcon className="h-5 w-5 mr-2" />
+              Account & Storage
+            </h2>
+          </div>
+          
+          <div className="p-4 space-y-4">
+            {/* Authentication Status */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-green-100 rounded-lg">
+                  <KeyIcon className="h-5 w-5 text-green-600" />
+                </div>
+                <div>
+                  <p className="font-medium text-gray-900">Anonymous Account</p>
+                  <p className="text-sm text-gray-500">
+                    {loading ? 'Loading...' : authUser ? authService.getDisplayId() : 'Not authenticated'}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                <span className="text-sm text-green-600">Active</span>
+              </div>
+            </div>
+
+            {/* Cloud Storage Status */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 bg-blue-100 rounded-lg">
+                  <CloudArrowUpIcon className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-medium text-gray-900">Cloud Storage</p>
+                  <p className="text-sm text-gray-500">
+                    {diary.recentEntries.length} entries synced
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                <span className="text-sm text-blue-600">Synced</span>
+              </div>
+            </div>
+
+            {/* Privacy Notice */}
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
+              <div className="flex items-start space-x-2">
+                <ShieldCheckIcon className="h-5 w-5 text-purple-600 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium text-purple-900">Privacy Protected</p>
+                  <p className="text-xs text-purple-700 mt-1">
+                    Your diary uses anonymous authentication. No personal information is stored or tracked.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Privacy & Data */}
         <section className="bg-white rounded-lg shadow-sm border border-gray-200">

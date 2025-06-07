@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { ServiceWorkerRegistration } from '@/components/PWA/ServiceWorkerRegistration'
+import { FirestoreProvider } from '@/components/FirestoreProvider'
 
 export const metadata: Metadata = {
   title: 'Diary App',
@@ -83,9 +84,11 @@ export default function RootLayout({
       </head>
       <body className="h-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-50 antialiased">
         <ServiceWorkerRegistration />
-        <div className="mobile-container safe-area-inset">
-          {children}
-        </div>
+        <FirestoreProvider>
+          <div className="mobile-container safe-area-inset">
+            {children}
+          </div>
+        </FirestoreProvider>
       </body>
     </html>
   )

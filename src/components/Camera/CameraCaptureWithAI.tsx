@@ -47,7 +47,7 @@ export function CameraCaptureWithAI({ onClose, className }: CameraCaptureWithAIP
         aiAnalysis: aiAnalysis
       }
       
-      createEntry(entryData)
+      await createEntry(entryData)
       setShowAIResults(true)
       
       // Reset state after showing success
@@ -69,7 +69,7 @@ export function CameraCaptureWithAI({ onClose, className }: CameraCaptureWithAIP
         mood: undefined,
         location: undefined
       }
-      createEntry(entryData)
+      await createEntry(entryData)
     }
   }, [capturedPhoto, entryContent, createEntry, analyzePhoto, onClose])
 

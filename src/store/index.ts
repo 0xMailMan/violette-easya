@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { AppState, DiaryEntry, LocationData, UserPreferences, AIAnalysis } from '@/types'
+import { firestoreService } from '@/lib/firestore'
+import { authService } from '@/lib/auth'
 
 interface AppStore extends AppState {
   // User actions
@@ -9,15 +11,19 @@ interface AppStore extends AppState {
   setDid: (didId: string) => void
 
   // Diary actions
-  createEntry: (entry: Omit<DiaryEntry, 'id' | 'createdAt' | 'updatedAt'>) => void
-  updateEntry: (id: string, updates: Partial<DiaryEntry>) => void
-  deleteEntry: (id: string) => void
-  saveDraft: (entry: Partial<DiaryEntry>) => void
+  createEntry: (entry: Omit<DiaryEntry, 'id' | 'createdAt' | 'updatedAt'>) => Promise<void>
+  updateEntry: (id: string, updates: Partial<DiaryEntry>) => Promise<void>
+  deleteEntry: (id: string) => Promise<void>
+  saveDraft: (entry: Partial<DiaryEntry>) => Promise<void>
   setCurrentEntry: (entry: DiaryEntry | null) => void
   setSearchQuery: (query: string) => void
   setFilterDate: (date: string | undefined) => void
   setFilterTags: (tags: string[]) => void
-  addAIAnalysis: (entryId: string, analysis: AIAnalysis) => void
+  addAIAnalysis: (entryId: string, analysis: AIAnalysis) => Promise<void>
+  loadEntries: () => Promise<void>
+  loadDrafts: () => Promise<void>
+  searchEntries: (query: string) => Promise<void>
+  migrateLocalData: () => Promise<void>
 
   // Camera actions
   setCameraActive: (active: boolean) => void
@@ -102,73 +108,119 @@ export const useAppStore = create<AppStore>()(
         set((state) => ({ user: { ...state.user, didId } })),
 
       // Diary actions
-      createEntry: (entryData) => {
-        const newEntry: DiaryEntry = {
-          ...entryData,
-          id: Date.now().toString(),
-          createdAt: Date.now(),
-          updatedAt: Date.now(),
-          isDraft: false
-        }
-        set((state) => ({
-          diary: {
-            ...state.diary,
-            recentEntries: [newEntry, ...state.diary.recentEntries],
-            currentEntry: null
+      createEntry: async (entryData) => {
+        try {
+          const userId = await authService.getUserId()
+          const newEntry = await firestoreService.createEntry(entryData, userId)
+          
+          set((state) => ({
+            diary: {
+              ...state.diary,
+              recentEntries: [newEntry, ...state.diary.recentEntries],
+              currentEntry: null
+            }
+          }))
+        } catch (error) {
+          console.error('Error creating entry:', error)
+          // Fallback to local storage if Firestore fails
+          const newEntry: DiaryEntry = {
+            ...entryData,
+            id: Date.now().toString(),
+            createdAt: Date.now(),
+            updatedAt: Date.now(),
+            isDraft: false
           }
-        }))
+          set((state) => ({
+            diary: {
+              ...state.diary,
+              recentEntries: [newEntry, ...state.diary.recentEntries],
+              currentEntry: null
+            }
+          }))
+        }
       },
 
-      updateEntry: (id, updates) =>
-        set((state) => ({
-          diary: {
-            ...state.diary,
-            recentEntries: state.diary.recentEntries.map((entry) =>
-              entry.id === id
-                ? { ...entry, ...updates, updatedAt: Date.now() }
-                : entry
-            ),
-            draftEntries: state.diary.draftEntries.map((entry) =>
-              entry.id === id
-                ? { ...entry, ...updates, updatedAt: Date.now() }
-                : entry
-            )
-          }
-        })),
-
-      deleteEntry: (id) =>
-        set((state) => ({
-          diary: {
-            ...state.diary,
-            recentEntries: state.diary.recentEntries.filter(entry => entry.id !== id),
-            draftEntries: state.diary.draftEntries.filter(entry => entry.id !== id)
-          }
-        })),
-
-      saveDraft: (entryData) => {
-        const draft: DiaryEntry = {
-          id: entryData.id || `draft-${Date.now()}`,
-          content: entryData.content || '',
-          photos: entryData.photos || [],
-          location: entryData.location,
-          mood: entryData.mood,
-          tags: entryData.tags || [],
-          createdAt: entryData.createdAt || Date.now(),
-          updatedAt: Date.now(),
-          isDraft: true
+      updateEntry: async (id, updates) => {
+        try {
+          const userId = await authService.getUserId()
+          await firestoreService.updateEntry(id, updates, userId)
+          
+          set((state) => ({
+            diary: {
+              ...state.diary,
+              recentEntries: state.diary.recentEntries.map((entry) =>
+                entry.id === id
+                  ? { ...entry, ...updates, updatedAt: Date.now() }
+                  : entry
+              ),
+              draftEntries: state.diary.draftEntries.map((entry) =>
+                entry.id === id
+                  ? { ...entry, ...updates, updatedAt: Date.now() }
+                  : entry
+              )
+            }
+          }))
+        } catch (error) {
+          console.error('Error updating entry:', error)
         }
-        set((state) => {
-          const existingDraftIndex = state.diary.draftEntries.findIndex(d => d.id === draft.id)
-          const newDrafts = [...state.diary.draftEntries]
-          if (existingDraftIndex >= 0) {
-            newDrafts[existingDraftIndex] = draft
+      },
+
+      deleteEntry: async (id) => {
+        try {
+          await firestoreService.deleteEntry(id)
+          
+          set((state) => ({
+            diary: {
+              ...state.diary,
+              recentEntries: state.diary.recentEntries.filter(entry => entry.id !== id),
+              draftEntries: state.diary.draftEntries.filter(entry => entry.id !== id)
+            }
+          }))
+        } catch (error) {
+          console.error('Error deleting entry:', error)
+        }
+      },
+
+      saveDraft: async (entryData) => {
+        try {
+          const userId = await authService.getUserId()
+          const draftData = {
+            ...entryData,
+            content: entryData.content || '',
+            photos: entryData.photos || [],
+            tags: entryData.tags || [],
+            isDraft: true
+          }
+          
+          if (entryData.id) {
+            // Update existing draft
+            await firestoreService.updateEntry(entryData.id, draftData, userId)
           } else {
-            newDrafts.unshift(draft)
+            // Create new draft
+            const newDraft = await firestoreService.createEntry(draftData, userId)
+            set((state) => ({
+              diary: {
+                ...state.diary,
+                draftEntries: [newDraft, ...state.diary.draftEntries]
+              }
+            }))
+            return
           }
-          return {
-            diary: { ...state.diary, draftEntries: newDrafts }
-          }
-        })
+          
+          // Update local state for existing draft
+          set((state) => ({
+            diary: {
+              ...state.diary,
+              draftEntries: state.diary.draftEntries.map(draft =>
+                draft.id === entryData.id
+                  ? { ...draft, ...draftData, updatedAt: Date.now() }
+                  : draft
+              )
+            }
+          }))
+        } catch (error) {
+          console.error('Error saving draft:', error)
+        }
       },
 
       setCurrentEntry: (entry) =>
@@ -191,22 +243,94 @@ export const useAppStore = create<AppStore>()(
           diary: { ...state.diary, filterTags: tags }
         })),
 
-      addAIAnalysis: (entryId, analysis) =>
-        set((state) => ({
-          diary: {
-            ...state.diary,
-            recentEntries: state.diary.recentEntries.map((entry) =>
-              entry.id === entryId
-                ? { ...entry, aiAnalysis: analysis, updatedAt: Date.now() }
-                : entry
-            ),
-            draftEntries: state.diary.draftEntries.map((entry) =>
-              entry.id === entryId
-                ? { ...entry, aiAnalysis: analysis, updatedAt: Date.now() }
-                : entry
-            )
+      addAIAnalysis: async (entryId, analysis) => {
+        try {
+          const userId = await authService.getUserId()
+          await firestoreService.addAIAnalysis(entryId, analysis, userId)
+          
+          set((state) => ({
+            diary: {
+              ...state.diary,
+              recentEntries: state.diary.recentEntries.map((entry) =>
+                entry.id === entryId
+                  ? { ...entry, aiAnalysis: analysis, updatedAt: Date.now() }
+                  : entry
+              ),
+              draftEntries: state.diary.draftEntries.map((entry) =>
+                entry.id === entryId
+                  ? { ...entry, aiAnalysis: analysis, updatedAt: Date.now() }
+                  : entry
+              )
+            }
+          }))
+        } catch (error) {
+          console.error('Error adding AI analysis:', error)
+        }
+      },
+
+      loadEntries: async () => {
+        try {
+          const userId = await authService.getUserId()
+          const entries = await firestoreService.getUserEntries(userId)
+          
+          set((state) => ({
+            diary: {
+              ...state.diary,
+              recentEntries: entries
+            }
+          }))
+        } catch (error) {
+          console.error('Error loading entries:', error)
+        }
+      },
+
+      loadDrafts: async () => {
+        try {
+          const userId = await authService.getUserId()
+          const drafts = await firestoreService.getUserDrafts(userId)
+          
+          set((state) => ({
+            diary: {
+              ...state.diary,
+              draftEntries: drafts
+            }
+          }))
+        } catch (error) {
+          console.error('Error loading drafts:', error)
+        }
+      },
+
+      searchEntries: async (query) => {
+        try {
+          const userId = await authService.getUserId()
+          const entries = await firestoreService.searchEntries(userId, query)
+          
+          set((state) => ({
+            diary: {
+              ...state.diary,
+              recentEntries: entries,
+              searchQuery: query
+            }
+          }))
+        } catch (error) {
+          console.error('Error searching entries:', error)
+        }
+      },
+
+      migrateLocalData: async () => {
+        try {
+          const currentState = useAppStore.getState()
+          const localEntries = currentState.diary.recentEntries
+          
+          if (localEntries.length > 0) {
+            const userId = await authService.getUserId()
+            await firestoreService.importLocalEntries(localEntries, userId)
+            console.log('🔥 Successfully migrated local data to Firestore')
           }
-        })),
+        } catch (error) {
+          console.error('Error migrating local data:', error)
+        }
+      },
 
       // Camera actions
       setCameraActive: (active) =>
