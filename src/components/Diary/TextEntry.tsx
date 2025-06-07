@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import Image from 'next/image'
-import { PaperAirplaneIcon, PhotoIcon } from '@heroicons/react/24/outline'
+import { PaperAirplaneIcon, PhotoIcon, CameraIcon, MapPinIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useAppStore } from '@/store'
 import { Button } from '@/components/UI/Button'
 import { useToast } from '@/components/UI/Toast'
@@ -122,8 +122,32 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
     }
   }
 
-  const handlePhotoClick = () => {
+  const handleCameraClick = () => {
     setActiveModal('camera')
+  }
+
+  const handleUploadClick = () => {
+    // Create a file input element
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = 'image/*'
+    input.multiple = true
+    input.onchange = (e) => {
+      const files = (e.target as HTMLInputElement).files
+      if (files) {
+        Array.from(files).forEach(file => {
+          const reader = new FileReader()
+          reader.onload = (e) => {
+            const result = e.target?.result as string
+            if (result) {
+              setValue('photos', [...photos, result], { shouldDirty: true })
+            }
+          }
+          reader.readAsDataURL(file)
+        })
+      }
+    }
+    input.click()
   }
 
   const removePhoto = (photoIndex: number) => {
@@ -138,67 +162,107 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
 
   const placeholder = isExpanded 
     ? "What's on your mind today? Share your thoughts, experiences, or anything that matters to you..."
-    : "How was your day? Tap to start writing..."
+    : "start typing..."
 
   return (
-    <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 ${className}`}>
-      <form onSubmit={handleSubmit(onFormSubmit)} className="p-4 space-y-4">
-        {/* Main Text Area */}
-        <div className="relative">
-          <textarea
-            {...register('content', { 
-              required: false,
-              onChange: (e) => {
-                setCharCount(e.target.value?.length || 0)
-                adjustTextareaHeight()
-              }
-            })}
-            ref={(e) => {
-              register('content').ref(e)
-              textareaRef.current = e
-            }}
-            placeholder={placeholder}
-            className="w-full resize-none border-none outline-none text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 bg-transparent"
-            rows={isExpanded ? 6 : 3}
-            onFocus={handleFocus}
-            style={{ minHeight: '80px' }}
-          />
-          
-          {/* Character Count */}
-          {isExpanded && (
-            <div className="absolute bottom-2 right-2 text-xs text-gray-400">
-              {charCount.toLocaleString()} characters
-            </div>
-          )}
-        </div>
-
-        {/* Photos Preview */}
+    <div className={`violette-card rounded-lg shadow-sm ${className}`}>
+      <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4">
+        {/* Photo Preview Area */}
         {photos.length > 0 && (
-          <div className="grid grid-cols-3 gap-2">
-            {photos.map((photo, index) => (
-              <div key={index} className="relative group">
-                <Image
-                  src={photo}
-                  alt={`Entry photo ${index + 1}`}
-                  width={120}
-                  height={80}
-                  className="w-full h-20 object-cover rounded-lg"
-                />
-                <button
-                  type="button"
-                  onClick={() => removePhoto(index)}
-                  className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  ×
-                </button>
+          <div className="p-4 pb-0">
+            <div className="relative">
+              <div className="grid grid-cols-1 gap-2">
+                {photos.map((photo, index) => (
+                  <div key={index} className="relative group">
+                    <Image
+                      src={photo}
+                      alt={`Entry photo ${index + 1}`}
+                      width={400}
+                      height={300}
+                      className="w-full h-48 object-cover rounded-lg border-2 border-purple-200 dark:border-purple-700"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removePhoto(index)}
+                      className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-lg transition-colors"
+                    >
+                      <XMarkIcon className="h-5 w-5" />
+                    </button>
+                    <div className="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs">
+                      preview
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         )}
 
+        {/* Camera and Location Buttons */}
+        <div className="px-4 flex justify-center space-x-4 pb-6">
+          <button
+            type="button"
+            onClick={handleCameraClick}
+            className="flex flex-col items-center justify-center w-20 h-20 violette-button rounded-2xl"
+          >
+            <CameraIcon className="h-8 w-8 text-purple-600 dark:text-purple-400 mb-1" />
+          </button>
+          
+          <button
+            type="button"
+            className="flex flex-col items-center justify-center w-20 h-20 violette-button rounded-2xl relative"
+          >
+            <MapPinIcon className="h-8 w-8 text-purple-600 dark:text-purple-400 mb-1" />
+            <span className="absolute -bottom-6 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">tap to turn off location</span>
+          </button>
+        </div>
+
+        {/* Upload Instead Button */}
+        <div className="px-4">
+          <Button
+            type="button"
+            onClick={handleUploadClick}
+            variant="secondary"
+            className="w-full bg-red-100 hover:bg-red-200 text-red-700 border-red-200 hover:border-red-300"
+          >
+            Upload Instead
+          </Button>
+        </div>
+
+        {/* Main Text Area */}
+        <div className="px-4 pb-4">
+          <div className="relative bg-gray-50 dark:bg-gray-700 rounded-lg p-3">
+            <textarea
+              {...register('content', { 
+                required: false,
+                onChange: (e) => {
+                  setCharCount(e.target.value?.length || 0)
+                  adjustTextareaHeight()
+                }
+              })}
+              ref={(e) => {
+                register('content').ref(e)
+                textareaRef.current = e
+              }}
+              placeholder={placeholder}
+              className="w-full resize-none border-none outline-none text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 bg-transparent"
+              rows={isExpanded ? 4 : 2}
+              onFocus={handleFocus}
+              style={{ minHeight: '60px' }}
+            />
+            
+            {/* Character Count */}
+            {isExpanded && (
+              <div className="absolute bottom-2 right-2 text-xs text-gray-400">
+                {charCount.toLocaleString()} characters
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Expanded Options */}
         {isExpanded && (
-          <div className="space-y-4 border-t border-gray-100 dark:border-gray-700 pt-4">
+          <div className="px-4 pb-4 space-y-4 border-t border-gray-100 dark:border-gray-700 pt-4">
             {/* Mood Selector */}
             <MoodSelector
               value={watch('mood')}
@@ -221,40 +285,16 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
                 }
               }}
             />
-          </div>
-        )}
 
-        {/* Action Buttons */}
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
-          <div className="flex space-x-2">
-            {/* Photo Button */}
+            {/* Submit Button */}
             <Button
-              type="button"
-              variant="ghost"
-              size="sm"
-              onClick={handlePhotoClick}
-              className="text-gray-500 hover:text-purple-600"
+              type="submit"
+              disabled={!content.trim()}
+              className="w-full"
             >
-              <PhotoIcon className="h-5 w-5 mr-1" />
-              Photo
+              <PaperAirplaneIcon className="h-4 w-4 mr-2" />
+              Save Entry
             </Button>
-          </div>
-
-          {/* Submit Button */}
-          <Button
-            type="submit"
-            disabled={!content.trim()}
-            className="min-w-[100px]"
-          >
-            <PaperAirplaneIcon className="h-4 w-4 mr-2" />
-            Save
-          </Button>
-        </div>
-
-        {/* Auto-save Indicator */}
-        {user.preferences.autoSave && isDirty && content.trim() && (
-          <div className="text-xs text-gray-400 text-center">
-            Auto-saving draft...
           </div>
         )}
       </form>

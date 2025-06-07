@@ -271,3 +271,39 @@ input:focus, textarea:focus {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Violette theme enhancements */
+.violette-gradient {
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%);
+}
+
+.violette-avatar {
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+}
+
+.violette-button {
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  transition: all 0.2s ease;
+}
+
+.violette-button:hover {
+  background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%);
+  border-color: rgba(139, 92, 246, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
+.violette-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .violette-card {
+    background: rgba(31, 41, 55, 0.8);
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+}

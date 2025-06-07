@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { useAppStore } from '@/store'
-import { TabNavigation } from '@/components/Navigation/TabNavigation'
+import { SideNavigation } from '@/components/Navigation/SideNavigation'
 import { ToastContainer } from '@/components/UI/Toast'
 import { Button } from '@/components/UI/Button'
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
+import { ChevronLeftIcon, ChevronRightIcon, Bars3Icon } from '@heroicons/react/24/outline'
 import { formatDate } from '@/lib/utils'
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -16,7 +16,7 @@ const MONTHS = [
 ]
 
 export default function CalendarPage() {
-  const { diary } = useAppStore()
+  const { diary, ui, setMenuOpen } = useAppStore()
   const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
@@ -84,14 +84,22 @@ export default function CalendarPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50/30 dark:from-gray-900 dark:to-purple-900/10">
       {/* Header */}
-      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+      <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm border-b border-purple-100 dark:border-purple-800/30">
         <div className="max-w-lg mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-              Calendar
-            </h1>
+            <div className="flex items-center space-x-3">
+              <button 
+                onClick={() => setMenuOpen(!ui.isMenuOpen)}
+                className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20"
+              >
+                <Bars3Icon className="h-6 w-6" />
+              </button>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">
+                Calendar
+              </h1>
+            </div>
             <Button variant="outline" size="sm" onClick={goToToday}>
               Today
             </Button>
@@ -288,8 +296,11 @@ export default function CalendarPage() {
         )}
       </main>
 
-      {/* Tab Navigation */}
-      <TabNavigation />
+      {/* Side Navigation */}
+      <SideNavigation 
+        isOpen={ui.isMenuOpen} 
+        onClose={() => setMenuOpen(false)} 
+      />
 
       {/* Toast Container */}
       <ToastContainer />
