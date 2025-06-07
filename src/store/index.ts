@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { AppState, DiaryEntry, LocationData, UserPreferences } from '@/types'
+import { AppState, DiaryEntry, LocationData, UserPreferences, AIAnalysis } from '@/types'
 
 interface AppStore extends AppState {
   // User actions
@@ -17,6 +17,7 @@ interface AppStore extends AppState {
   setSearchQuery: (query: string) => void
   setFilterDate: (date: string | undefined) => void
   setFilterTags: (tags: string[]) => void
+  addAIAnalysis: (entryId: string, analysis: AIAnalysis) => void
 
   // Camera actions
   setCameraActive: (active: boolean) => void
@@ -188,6 +189,23 @@ export const useAppStore = create<AppStore>()(
       setFilterTags: (tags) =>
         set((state) => ({
           diary: { ...state.diary, filterTags: tags }
+        })),
+
+      addAIAnalysis: (entryId, analysis) =>
+        set((state) => ({
+          diary: {
+            ...state.diary,
+            recentEntries: state.diary.recentEntries.map((entry) =>
+              entry.id === entryId
+                ? { ...entry, aiAnalysis: analysis, updatedAt: Date.now() }
+                : entry
+            ),
+            draftEntries: state.diary.draftEntries.map((entry) =>
+              entry.id === entryId
+                ? { ...entry, aiAnalysis: analysis, updatedAt: Date.now() }
+                : entry
+            )
+          }
         })),
 
       // Camera actions

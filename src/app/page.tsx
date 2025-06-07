@@ -4,14 +4,14 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import { useAppStore } from '@/store'
 import { TextEntry } from '@/components/Diary/TextEntry'
-import { CameraCapture } from '@/components/Camera/CameraCapture'
+import { CameraCaptureWithAI } from '@/components/Camera/CameraCaptureWithAI'
 import { SideNavigation } from '@/components/Navigation/SideNavigation'
 import { Modal } from '@/components/UI/Modal'
 import { ToastContainer } from '@/components/UI/Toast'
 import { StorageDebugger } from '@/components/Debug/StorageDebugger'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { formatDate, formatTime } from '@/lib/utils'
-import { Bars3Icon } from '@heroicons/react/24/outline'
+import { Bars3Icon, SparklesIcon } from '@heroicons/react/24/outline'
 
 export default function HomePage() {
   const { 
@@ -31,10 +31,7 @@ export default function HomePage() {
     }
   }, [user.isOnboarded, completeOnboarding])
 
-  const handleCameraCapture = (photoDataUrl: string) => {
-    setCapturedPhoto(photoDataUrl)
-    setActiveModal(null)
-  }
+
 
   const handleMenuToggle = () => {
     setMenuOpen(!ui.isMenuOpen)
@@ -179,6 +176,27 @@ export default function HomePage() {
                       </div>
                     )}
 
+                    {/* AI Analysis Preview */}
+                    {entry.aiAnalysis && (
+                      <div className="mt-3 p-2 bg-purple-50 rounded-lg border border-purple-100">
+                        <div className="flex items-center space-x-1 mb-1">
+                          <SparklesIcon className="h-3 w-3 text-purple-500" />
+                          <span className="text-xs font-medium text-purple-700">AI Analysis</span>
+                        </div>
+                        <p className="text-xs text-purple-600 leading-relaxed">
+                          {entry.aiAnalysis.description.length > 120 
+                            ? `${entry.aiAnalysis.description.substring(0, 120)}...`
+                            : entry.aiAnalysis.description
+                          }
+                        </p>
+                        {entry.aiAnalysis.merkleRoot && (
+                          <div className="mt-1 text-xs text-purple-500">
+                            Merkle: {entry.aiAnalysis.merkleRoot.substring(0, 8)}...
+                          </div>
+                        )}
+                      </div>
+                    )}
+
                     {/* Location */}
                     {entry.location && (
                       <div className="mt-3 text-xs text-gray-500 flex items-center">
@@ -221,8 +239,7 @@ export default function HomePage() {
           showCloseButton={false}
           className="p-0"
         >
-          <CameraCapture
-            onPhotoCapture={handleCameraCapture}
+          <CameraCaptureWithAI
             onClose={() => setActiveModal(null)}
           />
         </Modal>

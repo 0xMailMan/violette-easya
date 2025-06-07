@@ -7,7 +7,7 @@ import { SideNavigation } from '@/components/Navigation/SideNavigation'
 import { ToastContainer } from '@/components/UI/Toast'
 import { Button } from '@/components/UI/Button'
 import { Modal } from '@/components/UI/Modal'
-import { MagnifyingGlassIcon, FunnelIcon, XMarkIcon, Bars3Icon } from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon, FunnelIcon, XMarkIcon, Bars3Icon, SparklesIcon, HashtagIcon, BeakerIcon } from '@heroicons/react/24/outline'
 import { formatDate, formatTime } from '@/lib/utils'
 
 type FilterType = 'all' | 'photos' | 'mood' | 'location'
@@ -271,6 +271,27 @@ export default function GalleryPage() {
                     </div>
                   )}
 
+                  {/* AI Analysis Badge */}
+                  {entry.aiAnalysis && (
+                    <div className="mb-2">
+                      <div className="flex items-center space-x-1 text-xs">
+                        <SparklesIcon className="h-3 w-3 text-purple-500" />
+                        <span className="text-purple-600 font-medium">AI Analyzed</span>
+                        <span className="text-gray-400">•</span>
+                        <span className="text-gray-500">
+                          {entry.aiAnalysis.confidence > 0.8 ? '99%' : 
+                           entry.aiAnalysis.confidence > 0.6 ? '85%' : '70%'} confident
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-600 mt-1 line-clamp-2">
+                        {entry.aiAnalysis.description.length > 80 
+                          ? `${entry.aiAnalysis.description.substring(0, 80)}...`
+                          : entry.aiAnalysis.description
+                        }
+                      </p>
+                    </div>
+                  )}
+
                   {/* Location */}
                   {entry.location && (
                     <div className="text-xs text-gray-500 flex items-center">
@@ -379,6 +400,97 @@ export default function GalleryPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 {selectedEntryData.location.address || selectedEntryData.location.city || 'Unknown location'}
+              </div>
+            )}
+
+            {/* AI Analysis */}
+            {selectedEntryData.aiAnalysis && (
+              <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg p-4 border border-purple-100">
+                <div className="flex items-center space-x-2 mb-3">
+                  <SparklesIcon className="h-5 w-5 text-purple-600" />
+                  <h3 className="font-semibold text-purple-900">AI Analysis</h3>
+                  <span className="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">
+                    {Math.round(selectedEntryData.aiAnalysis.confidence * 100)}% confident
+                  </span>
+                </div>
+                
+                <div className="space-y-3">
+                  {/* Description */}
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-700 mb-1">Description</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {selectedEntryData.aiAnalysis.description}
+                    </p>
+                  </div>
+
+                  {/* Sentiment */}
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-700 mb-1">Sentiment</h4>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-20 bg-gray-200 rounded-full h-2">
+                        <div 
+                          className={`h-2 rounded-full ${
+                            selectedEntryData.aiAnalysis.sentiment > 0.6 ? 'bg-green-500' :
+                            selectedEntryData.aiAnalysis.sentiment > 0.3 ? 'bg-yellow-500' : 'bg-red-500'
+                          }`}
+                          style={{ width: `${Math.max(10, selectedEntryData.aiAnalysis.sentiment * 100)}%` }}
+                        />
+                      </div>
+                      <span className="text-xs text-gray-500">
+                        {selectedEntryData.aiAnalysis.sentiment > 0.6 ? 'Positive' :
+                         selectedEntryData.aiAnalysis.sentiment > 0.3 ? 'Neutral' : 'Negative'}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Themes */}
+                  {selectedEntryData.aiAnalysis.themes.length > 0 && (
+                    <div>
+                      <h4 className="text-sm font-medium text-gray-700 mb-1">Themes</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {selectedEntryData.aiAnalysis.themes.map((theme, index) => (
+                          <span
+                            key={index}
+                            className="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full"
+                          >
+                            {theme}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* AI Generated Tags */}
+                  {selectedEntryData.aiAnalysis.tags.length > 0 && (
+                    <div>
+                      <h4 className="text-sm font-medium text-gray-700 mb-1">AI Suggested Tags</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {selectedEntryData.aiAnalysis.tags.map((tag, index) => (
+                          <span
+                            key={index}
+                            className="inline-flex items-center px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full"
+                          >
+                            <HashtagIcon className="h-2.5 w-2.5 mr-0.5" />
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Merkle Root */}
+                  {selectedEntryData.aiAnalysis.merkleRoot && (
+                    <div>
+                      <h4 className="text-sm font-medium text-gray-700 mb-1 flex items-center">
+                        <BeakerIcon className="h-4 w-4 mr-1" />
+                        Merkle Root
+                      </h4>
+                      <code className="text-xs font-mono bg-gray-100 text-gray-800 px-2 py-1 rounded break-all">
+                        {selectedEntryData.aiAnalysis.merkleRoot}
+                      </code>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 
