@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import Image from 'next/image'
 import { useAppStore } from '@/store'
 import { TabNavigation } from '@/components/Navigation/TabNavigation'
 import { ToastContainer } from '@/components/UI/Toast'
@@ -200,9 +201,11 @@ export default function GalleryPage() {
                 {/* Photos */}
                 {entry.photos.length > 0 && (
                   <div className="relative">
-                    <img
+                    <Image
                       src={entry.photos[0]}
                       alt="Entry photo"
+                      width={400}
+                      height={192}
                       className="w-full h-48 object-cover"
                     />
                     {entry.photos.length > 1 && (
@@ -314,10 +317,12 @@ export default function GalleryPage() {
             {selectedEntryData.photos.length > 0 && (
               <div className="grid grid-cols-2 gap-2">
                 {selectedEntryData.photos.map((photo, index) => (
-                  <img
+                  <Image
                     key={index}
                     src={photo}
                     alt={`Entry photo ${index + 1}`}
+                    width={200}
+                    height={128}
                     className="w-full h-32 object-cover rounded-lg"
                   />
                 ))}

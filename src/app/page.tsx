@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Image from 'next/image'
 import { useAppStore } from '@/store'
 import { TextEntry } from '@/components/Diary/TextEntry'
 import { CameraButton } from '@/components/Camera/CameraButton'
@@ -114,10 +115,12 @@ export default function HomePage() {
                   {entry.photos.length > 0 && (
                     <div className="mt-3 grid grid-cols-3 gap-2">
                       {entry.photos.slice(0, 3).map((photo, index) => (
-                        <img
+                        <Image
                           key={index}
                           src={photo}
                           alt={`Entry photo ${index + 1}`}
+                          width={120}
+                          height={80}
                           className="w-full h-20 object-cover rounded-lg"
                         />
                       ))}

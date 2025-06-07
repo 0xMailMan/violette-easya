@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useAppStore } from '@/store'
 import { TabNavigation } from '@/components/Navigation/TabNavigation'
 import { ToastContainer } from '@/components/UI/Toast'
@@ -230,10 +231,12 @@ export default function CalendarPage() {
                     {entry.photos.length > 0 && (
                       <div className="flex space-x-2 mb-2">
                         {entry.photos.slice(0, 3).map((photo, index) => (
-                          <img
+                          <Image
                             key={index}
                             src={photo}
                             alt={`Entry photo ${index + 1}`}
+                            width={48}
+                            height={48}
                             className="w-12 h-12 object-cover rounded"
                           />
                         ))}
