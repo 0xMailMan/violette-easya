@@ -33,39 +33,45 @@ export function CameraCaptureWithAI({ onClose, className }: CameraCaptureWithAIP
   const handleSaveEntry = useCallback(async () => {
     if (!capturedPhoto) return
 
-    // Create diary entry first
-    const entryData = {
-      content: entryContent || 'Photo captured',
-      photos: [capturedPhoto],
-      tags: [],
-      mood: undefined,
-      location: undefined
-    }
-    
-    createEntry(entryData)
-    
-    // Get the entry ID (it's based on timestamp)
-    const entryId = Date.now().toString()
-    
-    // Analyze photo with AI
-    const aiAnalysis = await analyzePhoto(capturedPhoto, entryContent)
-    
-    if (aiAnalysis) {
-      // Add AI analysis to the entry
-      addAIAnalysis(entryId, aiAnalysis)
+    try {
+      // Analyze photo with AI first
+      const aiAnalysis = await analyzePhoto(capturedPhoto, entryContent)
+      
+      // Create diary entry with AI analysis included
+      const entryData = {
+        content: entryContent || 'Photo captured',
+        photos: [capturedPhoto],
+        tags: aiAnalysis?.tags || [],
+        mood: undefined,
+        location: undefined,
+        aiAnalysis: aiAnalysis
+      }
+      
+      createEntry(entryData)
       setShowAIResults(true)
+      
+      // Reset state after showing success
+      setTimeout(() => {
+        setShowPreview(false)
+        setCapturedPhoto(null)
+        setEntryContent('')
+        setShowAIResults(false)
+        if (onClose) onClose()
+      }, 3000) // Show results for 3 seconds
+      
+    } catch (error) {
+      console.error('Error saving entry with AI analysis:', error)
+      // Still create entry without AI analysis if AI fails
+      const entryData = {
+        content: entryContent || 'Photo captured',
+        photos: [capturedPhoto],
+        tags: [],
+        mood: undefined,
+        location: undefined
+      }
+      createEntry(entryData)
     }
-    
-    // Reset state
-    setTimeout(() => {
-      setShowPreview(false)
-      setCapturedPhoto(null)
-      setEntryContent('')
-      setShowAIResults(false)
-      if (onClose) onClose()
-    }, 3000) // Show results for 3 seconds
-    
-  }, [capturedPhoto, entryContent, createEntry, analyzePhoto, addAIAnalysis, onClose])
+  }, [capturedPhoto, entryContent, createEntry, analyzePhoto, onClose])
 
   const handleRetakePhoto = useCallback(() => {
     setShowPreview(false)

@@ -9,6 +9,8 @@ import { SideNavigation } from '@/components/Navigation/SideNavigation'
 import { Modal } from '@/components/UI/Modal'
 import { ToastContainer } from '@/components/UI/Toast'
 import { StorageDebugger } from '@/components/Debug/StorageDebugger'
+import { AIAnalysisDebugger } from '@/components/Debug/AIAnalysisDebugger'
+import { TestAIEntry } from '@/components/Debug/TestAIEntry'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { formatDate, formatTime } from '@/lib/utils'
 import { Bars3Icon, SparklesIcon } from '@heroicons/react/24/outline'
@@ -249,6 +251,12 @@ export default function HomePage() {
         
         {/* Storage Debugger (development only) */}
         <StorageDebugger />
+        
+        {/* AI Analysis Debugger (development only) */}
+        <AIAnalysisDebugger />
+        
+        {/* Test AI Entry Button (development only) */}
+        <TestAIEntry />
       </div>
     </ErrorBoundary>
   )
