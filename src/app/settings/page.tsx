@@ -190,6 +190,61 @@ export default function SettingsPage() {
           </div>
         </section>
 
+        {/* Toast Testing (Development) */}
+        {process.env.NODE_ENV === 'development' && (
+          <section className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                🧪 Toast Testing
+              </h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                Test the new collapsible error/warning notifications
+              </p>
+            </div>
+            
+            <div className="p-4 space-y-3">
+              <div className="grid grid-cols-2 gap-2">
+                <Button
+                  onClick={() => toast.error('This is a test error message that should be collapsible')}
+                  variant="outline"
+                  size="sm"
+                  className="text-red-600 border-red-200 hover:bg-red-50"
+                >
+                  Test Error
+                </Button>
+                <Button
+                  onClick={() => toast.warning('This is a test warning message that should be collapsible')}
+                  variant="outline"
+                  size="sm"
+                  className="text-yellow-600 border-yellow-200 hover:bg-yellow-50"
+                >
+                  Test Warning
+                </Button>
+                <Button
+                  onClick={() => toast.success('This is a success message (normal behavior)')}
+                  variant="outline"
+                  size="sm"
+                  className="text-green-600 border-green-200 hover:bg-green-50"
+                >
+                  Test Success
+                </Button>
+                <Button
+                  onClick={() => toast.info('This is an info message (normal behavior)')}
+                  variant="outline"
+                  size="sm"
+                  className="text-blue-600 border-blue-200 hover:bg-blue-50"
+                >
+                  Test Info
+                </Button>
+              </div>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                Error and warning messages will auto-collapse to small icons after 3 seconds. 
+                Success and info messages behave normally (disappear after 5 seconds).
+              </p>
+            </div>
+          </section>
+        )}
+
         {/* Privacy & Data */}
         <section className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
           <div className="p-4 border-b border-gray-200 dark:border-gray-700">
