@@ -10,7 +10,7 @@ import { errorHandler, notFoundHandler } from './middleware/error-handler';
 import { authMiddleware } from './middleware/auth';
 import { loggingMiddleware } from './middleware/logging';
 import firebaseService from './database/firebase';
-// import blockchainService from './services/blockchain';
+import blockchainService from './services/blockchain';
 import config from './config';
 
 class VioletteBackendServer {
@@ -86,12 +86,12 @@ class VioletteBackendServer {
     // Health check endpoint
     this.app.get('/health', async (req, res) => {
       try {
-        const [firebaseHealth] = await Promise.all([
+        const [firebaseHealth, blockchainHealth] = await Promise.all([
           firebaseService.healthCheck(),
-          // blockchainService.healthCheck(),
+          blockchainService.healthCheck(),
         ]);
 
-        const status = firebaseHealth ? 'healthy' : 'unhealthy';
+        const status = (firebaseHealth && blockchainHealth) ? 'healthy' : 'unhealthy';
         const statusCode = status === 'healthy' ? 200 : 503;
 
         res.status(statusCode).json({
@@ -99,7 +99,7 @@ class VioletteBackendServer {
           timestamp: new Date().toISOString(),
           services: {
             firebase: firebaseHealth ? 'up' : 'down',
-            blockchain: 'disabled',
+            blockchain: blockchainHealth ? 'up' : 'down',
           },
         });
       } catch (error) {
@@ -206,7 +206,7 @@ class VioletteBackendServer {
       }
 
       // Close database connections
-      // await blockchainService.disconnect();
+      await blockchainService.disconnect();
       console.log('✅ Database connections closed');
 
       console.log('✅ Graceful shutdown completed');

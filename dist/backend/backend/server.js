@@ -15,7 +15,7 @@ const routes_1 = require("./routes");
 const error_handler_1 = require("./middleware/error-handler");
 const logging_1 = require("./middleware/logging");
 const firebase_1 = __importDefault(require("./database/firebase"));
-// import blockchainService from './services/blockchain';
+const blockchain_1 = __importDefault(require("./services/blockchain"));
 const config_2 = __importDefault(require("./config"));
 class VioletteBackendServer {
     constructor() {
@@ -80,18 +80,18 @@ class VioletteBackendServer {
         // Health check endpoint
         this.app.get('/health', async (req, res) => {
             try {
-                const [firebaseHealth] = await Promise.all([
+                const [firebaseHealth, blockchainHealth] = await Promise.all([
                     firebase_1.default.healthCheck(),
-                    // blockchainService.healthCheck(),
+                    blockchain_1.default.healthCheck(),
                 ]);
-                const status = firebaseHealth ? 'healthy' : 'unhealthy';
+                const status = (firebaseHealth && blockchainHealth) ? 'healthy' : 'unhealthy';
                 const statusCode = status === 'healthy' ? 200 : 503;
                 res.status(statusCode).json({
                     status,
                     timestamp: new Date().toISOString(),
                     services: {
                         firebase: firebaseHealth ? 'up' : 'down',
-                        blockchain: 'disabled',
+                        blockchain: blockchainHealth ? 'up' : 'down',
                     },
                 });
             }
@@ -188,7 +188,7 @@ class VioletteBackendServer {
                 });
             }
             // Close database connections
-            // await blockchainService.disconnect();
+            await blockchain_1.default.disconnect();
             console.log('✅ Database connections closed');
             console.log('✅ Graceful shutdown completed');
             process.exit(0);

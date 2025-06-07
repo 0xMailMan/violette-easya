@@ -13,6 +13,15 @@ export interface LocationData {
     country?: string;
     timestamp: number;
 }
+export interface AIAnalysis {
+    description: string;
+    sentiment: number;
+    themes: string[];
+    tags: string[];
+    confidence: number;
+    embedding: number[];
+    merkleRoot?: string;
+}
 export interface DiaryEntry {
     id: string;
     content: string;
@@ -23,6 +32,7 @@ export interface DiaryEntry {
     createdAt: number;
     updatedAt: number;
     isDraft: boolean;
+    aiAnalysis?: AIAnalysis;
 }
 export interface User {
     isOnboarded: boolean;
