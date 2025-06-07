@@ -20,7 +20,7 @@ export function CameraButton({
   position = 'bottom-right',
   offset 
 }: CameraButtonProps) {
-  const { setActiveModal, camera } = useAppStore()
+  const { setActiveModal } = useAppStore()
   const toast = useToast()
 
   const handleCameraClick = async () => {
@@ -38,7 +38,7 @@ export function CameraButton({
         toast.warning('Camera permission denied. Please enable in browser settings.')
         return
       }
-    } catch (error) {
+    } catch {
       // Permissions API might not be available, continue anyway
       console.log('Permissions API not available')
     }

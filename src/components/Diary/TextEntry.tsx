@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { PaperAirplaneIcon, PhotoIcon } from '@heroicons/react/24/outline'
 import { useAppStore } from '@/store'
@@ -26,7 +26,6 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
   const { 
     createEntry, 
     saveDraft, 
-    diary,
     user,
     camera,
     location,
@@ -59,12 +58,15 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
   }, [])
 
   // Debounced auto-save
-  const debouncedSave = useCallback(
-    debounce((formData: DiaryEntryFormData) => {
-      if (user.preferences.autoSave && isDirty) {
-        saveDraft(formData)
+  const debouncedSave = useMemo(
+    () => {
+      const saveFunction = (formData: DiaryEntryFormData) => {
+        if (user.preferences.autoSave && isDirty) {
+          saveDraft(formData)
+        }
       }
-    }, 2000),
+      return debounce(saveFunction, 2000)
+    },
     [saveDraft, user.preferences.autoSave, isDirty]
   )
 
@@ -112,7 +114,7 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
     if (onSubmit) {
       onSubmit(data)
     } else {
-      createEntry(data)
+      createEntry({ ...data, isDraft: false })
       toast.success('Entry saved!')
       reset()
       setIsExpanded(false)
@@ -143,8 +145,17 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
         {/* Main Text Area */}
         <div className="relative">
           <textarea
-            ref={textareaRef}
-            {...register('content', { required: false })}
+            {...register('content', { 
+              required: false,
+              onChange: (e) => {
+                setCharCount(e.target.value?.length || 0)
+                adjustTextareaHeight()
+              }
+            })}
+            ref={(e) => {
+              register('content').ref(e)
+              textareaRef.current = e
+            }}
             placeholder={placeholder}
             className="w-full resize-none border-none outline-none text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 bg-transparent"
             rows={isExpanded ? 6 : 3}

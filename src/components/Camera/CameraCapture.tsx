@@ -108,12 +108,15 @@ export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCapt
     
     setCapturedPhoto(photoDataUrl)
     
+    // Stop camera immediately after capturing photo
+    stopCamera()
+    
     if (onPhotoCapture) {
       onPhotoCapture(photoDataUrl)
     }
     
     toast.success('Photo captured!')
-  }, [setCapturedPhoto, onPhotoCapture, toast])
+  }, [setCapturedPhoto, onPhotoCapture, toast, stopCamera])
 
   const switchCamera = useCallback(() => {
     setFacingMode(prev => prev === 'user' ? 'environment' : 'user')
@@ -130,7 +133,7 @@ export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCapt
   useEffect(() => {
     startCamera()
     return () => stopCamera()
-  }, []) // Only run on mount/unmount
+  }, [startCamera, stopCamera]) // Only run on mount/unmount
 
   // Restart camera when facing mode changes
   useEffect(() => {
@@ -138,7 +141,7 @@ export function CameraCapture({ onPhotoCapture, onClose, className }: CameraCapt
       stopCamera()
       setTimeout(() => startCamera(), 100)
     }
-  }, [facingMode])
+  }, [facingMode, camera.isActive, startCamera, stopCamera])
 
   // Handle visibility change to manage camera resources
   useEffect(() => {

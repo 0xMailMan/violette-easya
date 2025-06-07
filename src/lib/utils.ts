@@ -41,12 +41,12 @@ export function generateId() {
   return Math.random().toString(36).substring(2) + Date.now().toString(36)
 }
 
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
+export function debounce<T extends unknown[]>(
+  func: (...args: T) => void,
   waitFor: number
-): (...args: Parameters<T>) => void {
+): (...args: T) => void {
   let timeout: NodeJS.Timeout
-  return (...args: Parameters<T>) => {
+  return (...args: T) => {
     clearTimeout(timeout)
     timeout = setTimeout(() => func(...args), waitFor)
   }
@@ -56,7 +56,7 @@ export function isValidUrl(string: string) {
   try {
     new URL(string)
     return true
-  } catch (_) {
+  } catch {
     return false
   }
 }

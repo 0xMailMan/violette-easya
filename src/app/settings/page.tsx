@@ -7,7 +7,6 @@ import { ToastContainer, useToast } from '@/components/UI/Toast'
 import { Button } from '@/components/UI/Button'
 import { Modal } from '@/components/UI/Modal'
 import { 
-  UserIcon, 
   CogIcon, 
   ShieldCheckIcon,
   DocumentArrowDownIcon,
@@ -92,7 +91,7 @@ export default function SettingsPage() {
 
       toast.success(`Diary exported as ${format.toUpperCase()}`)
       setShowExportModal(false)
-    } catch (error) {
+    } catch {
       toast.error('Failed to export diary')
     }
   }
@@ -144,7 +143,7 @@ export default function SettingsPage() {
                 ].map(({ value, icon: Icon, label }) => (
                   <button
                     key={value}
-                    onClick={() => handleThemeChange(value as any)}
+                    onClick={() => handleThemeChange(value as 'light' | 'dark' | 'system')}
                     className={`flex flex-col items-center p-3 rounded-lg border transition-colors ${
                       user.preferences.theme === value
                         ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300'
@@ -171,7 +170,7 @@ export default function SettingsPage() {
                 ].map(({ value, label }) => (
                   <button
                     key={value}
-                    onClick={() => handleFontSizeChange(value as any)}
+                    onClick={() => handleFontSizeChange(value as 'small' | 'medium' | 'large')}
                     className={`p-2 text-center rounded-lg border transition-colors ${
                       user.preferences.fontSize === value
                         ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300'

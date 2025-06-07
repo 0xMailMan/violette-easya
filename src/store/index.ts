@@ -48,7 +48,7 @@ const defaultPreferences: UserPreferences = {
 
 export const useAppStore = create<AppStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       // Initial state
       user: {
         isOnboarded: false,

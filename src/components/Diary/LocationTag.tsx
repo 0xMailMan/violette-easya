@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { MapPinIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 import { useAppStore } from '@/store'
 import { useToast } from '@/components/UI/Toast'
@@ -23,7 +23,7 @@ export function LocationTag({ location, enabled, onToggle, className }: Location
   
   const toast = useToast()
 
-  const requestLocation = async () => {
+  const requestLocation = useCallback(async () => {
     if (!navigator.geolocation) {
       toast.error('Geolocation is not supported by this browser')
       return
@@ -60,7 +60,7 @@ export function LocationTag({ location, enabled, onToggle, className }: Location
           locationData.city = data.city
           locationData.country = data.countryName
         }
-      } catch (geoError) {
+      } catch {
         console.log('Reverse geocoding failed, using coordinates only')
       }
 
@@ -80,7 +80,7 @@ export function LocationTag({ location, enabled, onToggle, className }: Location
         toast.error('Failed to get location')
       }
     }
-  }
+  }, [toast, setCurrentLocation, setLocationPermission])
 
   const toggleLocation = async () => {
     if (!enabled) {
@@ -102,7 +102,7 @@ export function LocationTag({ location, enabled, onToggle, className }: Location
     if (enabled && !locationState.currentLocation && locationState.hasPermission !== false) {
       requestLocation()
     }
-  }, [enabled, locationState.currentLocation, locationState.hasPermission])
+  }, [enabled, locationState.currentLocation, locationState.hasPermission, requestLocation])
 
   const displayLocation = location || locationState.currentLocation
   const displayText = displayLocation?.address || 

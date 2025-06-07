@@ -9,12 +9,10 @@ import { Modal } from '@/components/UI/Modal'
 import { MagnifyingGlassIcon, FunnelIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { formatDate, formatTime } from '@/lib/utils'
 
-type ViewMode = 'grid' | 'list'
 type FilterType = 'all' | 'photos' | 'mood' | 'location'
 
 export default function GalleryPage() {
   const { diary } = useAppStore()
-  const [viewMode, setViewMode] = useState<ViewMode>('grid')
   const [searchQuery, setSearchQuery] = useState('')
   const [filterType, setFilterType] = useState<FilterType>('all')
   const [selectedMood, setSelectedMood] = useState<string>('')

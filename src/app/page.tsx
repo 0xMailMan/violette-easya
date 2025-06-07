@@ -15,7 +15,6 @@ export default function HomePage() {
     user, 
     diary, 
     ui, 
-    camera,
     setActiveModal,
     setCapturedPhoto,
     completeOnboarding 
