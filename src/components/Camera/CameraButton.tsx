@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { CameraIcon } from '@heroicons/react/24/outline'
 import { FloatingActionButton } from '@/components/UI/FloatingActionButton'
 import { useAppStore } from '@/store'
@@ -59,7 +60,13 @@ export function CameraButton({
       className="bg-purple-500 hover:bg-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-200"
       aria-label="Open camera"
     >
-      <CameraIcon className="h-7 w-7" />
+      <Image
+        src="/violette-camera.svg"
+        alt="Camera"
+        width={28}
+        height={28}
+        className="h-7 w-7"
+      />
     </FloatingActionButton>
   )
 } 

@@ -166,7 +166,7 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
 
   return (
     <div className={`violette-card rounded-lg shadow-sm ${className}`}>
-      <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-6">
         {/* Photo Preview Area */}
         {photos.length > 0 && (
           <div className="p-4 pb-0">
@@ -179,7 +179,7 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
                       alt={`Entry photo ${index + 1}`}
                       width={400}
                       height={300}
-                      className="w-full h-48 object-cover rounded-lg border-2 border-purple-200 dark:border-purple-700"
+                      className="w-full h-48 object-cover rounded-lg border-2 border-purple-200"
                     />
                     <button
                       type="button"
@@ -199,26 +199,40 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
         )}
 
         {/* Camera and Location Buttons */}
-        <div className="px-4 flex justify-center space-x-4 pb-6">
+        <div className="px-4 flex justify-center space-x-8 py-4">
           <button
             type="button"
             onClick={handleCameraClick}
-            className="flex flex-col items-center justify-center w-20 h-20 violette-button rounded-2xl"
+            className="flex flex-col items-center justify-center violette-button"
           >
-            <CameraIcon className="h-8 w-8 text-purple-600 dark:text-purple-400 mb-1" />
+            <Image
+              src="/violette-camera.svg"
+              alt="Camera"
+              width={48}
+              height={48}
+              className="h-12 w-12"
+            />
           </button>
           
-          <button
-            type="button"
-            className="flex flex-col items-center justify-center w-20 h-20 violette-button rounded-2xl relative"
-          >
-            <MapPinIcon className="h-8 w-8 text-purple-600 dark:text-purple-400 mb-1" />
-            <span className="absolute -bottom-6 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">tap to turn off location</span>
-          </button>
+          <div className="flex flex-col items-center">
+            <button
+              type="button"
+              className="flex flex-col items-center justify-center violette-button"
+            >
+              <Image
+                src="/violette-location.svg"
+                alt="Location"
+                width={48}
+                height={48}
+                className="h-12 w-12"
+              />
+            </button>
+            <span className="mt-2 text-xs text-gray-500 text-center">tap to turn off location</span>
+          </div>
         </div>
 
         {/* Upload Instead Button */}
-        <div className="px-4">
+        <div className="px-4 py-2">
           <Button
             type="button"
             onClick={handleUploadClick}
@@ -231,7 +245,7 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
 
         {/* Main Text Area */}
         <div className="px-4 pb-4">
-          <div className="relative bg-gray-50 dark:bg-gray-700 rounded-lg p-3">
+          <div className="relative bg-gray-50 rounded-lg p-3">
             <textarea
               {...register('content', { 
                 required: false,
@@ -245,7 +259,7 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
                 textareaRef.current = e
               }}
               placeholder={placeholder}
-              className="w-full resize-none border-none outline-none text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 bg-transparent"
+              className="w-full resize-none border-none outline-none text-gray-900 placeholder-gray-500 bg-transparent"
               rows={isExpanded ? 4 : 2}
               onFocus={handleFocus}
               style={{ minHeight: '60px' }}
@@ -262,7 +276,7 @@ export function TextEntry({ onSubmit, initialData, className }: TextEntryProps) 
 
         {/* Expanded Options */}
         {isExpanded && (
-          <div className="px-4 pb-4 space-y-4 border-t border-gray-100 dark:border-gray-700 pt-4">
+          <div className="px-4 pb-4 space-y-4 border-t border-gray-100 pt-4">
             {/* Mood Selector */}
             <MoodSelector
               value={watch('mood')}

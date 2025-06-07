@@ -2,15 +2,15 @@
 @import "tailwindcss";
 
 :root {
-  /* Color System - Purple/Lavender Theme */
+  /* Color System - Purple/Lavender Theme with Cream Background */
   --color-primary: 138 103 239; /* purple-500 */
   --color-primary-dark: 124 88 237; /* purple-600 */
   --color-primary-light: 196 181 253; /* purple-300 */
   --color-secondary: 232 221 255; /* purple-100 */
   
-  --color-background: 255 255 255;
-  --color-surface: 249 250 251; /* gray-50 */
-  --color-surface-elevated: 255 255 255;
+  --color-background: 254 252 247; /* cream background */
+  --color-surface: 252 248 240; /* light cream */
+  --color-surface-elevated: 255 255 255; /* white for elevated surfaces */
   
   --color-text-primary: 17 24 39; /* gray-900 */
   --color-text-secondary: 75 85 99; /* gray-600 */
@@ -53,22 +53,6 @@
   
   /* Touch targets */
   --touch-target: 44px;
-}
-
-/* Dark theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: 17 24 39; /* gray-900 */
-    --color-surface: 31 41 55; /* gray-800 */
-    --color-surface-elevated: 55 65 81; /* gray-700 */
-    
-    --color-text-primary: 249 250 251; /* gray-50 */
-    --color-text-secondary: 209 213 219; /* gray-300 */
-    --color-text-muted: 156 163 175; /* gray-400 */
-    
-    --color-border: 75 85 99; /* gray-600 */
-    --color-border-light: 55 65 81; /* gray-700 */
-  }
 }
 
 /* Base styles */
@@ -278,32 +262,35 @@ input:focus, textarea:focus {
 }
 
 .violette-avatar {
-  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+  background: transparent;
+  box-shadow: none;
 }
 
 .violette-button {
-  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  transition: all 0.2s ease;
+  background: transparent !important;
+  border: none !important;
+  transition: none !important;
 }
 
 .violette-button:hover {
-  background: linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%);
-  border-color: rgba(139, 92, 246, 0.3);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+  background: transparent !important;
+  transform: none !important;
 }
 
 .violette-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(139, 92, 246, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  .violette-card {
-    background: rgba(31, 41, 55, 0.8);
-    border-color: rgba(139, 92, 246, 0.2);
-  }
+.violette-logo {
+  max-height: 14px !important;
+  width: auto !important;
+  height: 14px !important;
+}
+
+.violette-logo-small {
+  max-height: 12px !important;
+  width: auto !important;
+  height: 12px !important;
 }

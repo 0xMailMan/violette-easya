@@ -3,6 +3,7 @@
 import { Fragment, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Transition } from '@headlessui/react'
 import { 
   HomeIcon, 
@@ -116,26 +117,36 @@ export function SideNavigation({ isOpen, onClose }: SideNavigationProps) {
         leaveFrom="translate-x-0"
         leaveTo="-translate-x-full"
       >
-        <div className="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white dark:bg-gray-900 shadow-xl z-50 transform transition-transform">
+        <div className="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-xl z-50 transform transition-transform">
           <div className="flex flex-col h-full">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-full violette-avatar flex items-center justify-center">
-                  <UserIcon className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                                      <Image
+                      src="/violette-avatar.png"
+                      alt="Violette Avatar"
+                      width={28}
+                      height={28}
+                      className="w-7 h-7 rounded-full"
+                    />
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">
-                    Violette
-                  </h2>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <Image
+                    src="/violette-logo.svg"
+                    alt="Violette"
+                    width={40}
+                    height={16}
+                    className="violette-logo-small"
+                  />
+                  <p className="text-sm text-gray-500">
                     Personal Diary
                   </p>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="p-2 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
               >
                 <XMarkIcon className="h-6 w-6" />
               </button>
@@ -156,20 +167,20 @@ export function SideNavigation({ isOpen, onClose }: SideNavigationProps) {
                       className={cn(
                         'flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 group',
                         isActive
-                          ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300'
-                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-purple-600 dark:hover:text-purple-400'
+                          ? 'bg-purple-50 text-purple-700'
+                          : 'text-gray-700 hover:bg-gray-50 hover:text-purple-600'
                       )}
                     >
                       <Icon className={cn(
                         'h-6 w-6 transition-colors',
                         isActive 
-                          ? 'text-purple-600 dark:text-purple-400' 
-                          : 'text-gray-500 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400'
+                          ? 'text-purple-600' 
+                          : 'text-gray-500 group-hover:text-purple-600'
                       )} />
                       <div className="flex-1">
                         <div className="font-medium">{item.label}</div>
                         {item.description && (
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
+                          <div className="text-xs text-gray-500">
                             {item.description}
                           </div>
                         )}
@@ -181,12 +192,12 @@ export function SideNavigation({ isOpen, onClose }: SideNavigationProps) {
             </nav>
 
             {/* Footer */}
-            <div className="p-6 border-t border-gray-200 dark:border-gray-700">
-              <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+            <div className="p-6 border-t border-gray-200">
+              <div className="flex items-center space-x-2 text-sm text-gray-500">
                 <HeartIcon className="h-4 w-4 text-red-500" />
                 <span>Made with love for your memories</span>
               </div>
-              <div className="mt-2 text-xs text-gray-400 dark:text-gray-500">
+              <div className="mt-2 text-xs text-gray-400">
                 Version 1.0.0
               </div>
             </div>

@@ -44,65 +44,75 @@ export default function HomePage() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-purple-50/30 dark:from-gray-900 dark:to-purple-900/10">
+      <div className="min-h-screen" style={{ backgroundColor: 'rgb(254, 252, 247)' }}>
         {/* Header */}
-        <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm border-b border-purple-100 dark:border-purple-800/30">
-          <div className="max-w-lg mx-auto px-4 py-4">
+        <header className="bg-white/80 backdrop-blur-md shadow-sm border-b border-purple-100">
+          <div className="max-w-lg mx-auto px-8 py-16">
             <div className="flex items-center justify-between">
               <button 
                 onClick={handleMenuToggle}
-                className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                className="p-2 pl-6 transition-colors rounded-lg hover:bg-purple-50"
+                style={{ color: '#C9A0DC' }}
               >
                 <Bars3Icon className="h-6 w-6" />
               </button>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">
-                Violette
-              </h1>
+              <div className="px-8">
+                <Image
+                  src="/violette-logo.svg"
+                  alt="Violette"
+                  width={40}
+                  height={20}
+                  className="violette-logo"
+                />
+              </div>
               <div className="w-10" /> {/* Spacer for centering */}
             </div>
           </div>
         </header>
 
         {/* Main Content */}
-        <main className="max-w-lg mx-auto px-4 py-6 space-y-6">
-          {/* Avatar and Greeting */}
-          <section className="text-center">
-            <div className="mb-4">
-              <div className="w-20 h-20 mx-auto rounded-full violette-avatar flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-white/50 dark:bg-gray-800/50 flex items-center justify-center">
-                  <span className="text-2xl">👤</span>
-                </div>
+        <main className="max-w-lg mx-auto px-4 py-6 pb-48 space-y-6">
+          {/* Violette Message - Like messaging app */}
+          <section className="mb-6">
+            <div className="flex items-start space-x-3">
+              <div className="w-12 h-12 rounded-full violette-avatar flex items-center justify-center flex-shrink-0">
+                <Image
+                  src="/violette-avatar.png"
+                  alt="Violette Avatar"
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 rounded-full"
+                />
+              </div>
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 max-w-xs">
+                <p className="text-gray-700 text-sm">
+                  What&apos;s on your mind?
+                </p>
               </div>
             </div>
-            <h2 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-6">
-              What&apos;s on your mind?
-            </h2>
           </section>
 
-          {/* New Entry Form */}
-          <section>
-            <TextEntry />
-          </section>
+
 
           {/* Recent Entries */}
           {recentEntries.length > 0 && (
             <section>
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">
                 Recent Entries
               </h2>
               <div className="space-y-4">
                 {recentEntries.map((entry) => (
                   <div
                     key={entry.id}
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4"
+                    className="bg-white rounded-lg shadow-sm border border-gray-200 p-4"
                   >
                     {/* Entry Header */}
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center space-x-2">
-                        <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                        <span className="text-sm font-medium text-gray-900">
                           {formatDate(entry.createdAt, 'medium')}
                         </span>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                        <span className="text-xs text-gray-500">
                           {formatTime(entry.createdAt)}
                         </span>
                       </div>
@@ -125,8 +135,8 @@ export default function HomePage() {
                     </div>
 
                     {/* Entry Content */}
-                    <div className="prose prose-sm dark:prose-invert max-w-none">
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <div className="prose prose-sm max-w-none">
+                      <p className="text-gray-700 leading-relaxed">
                         {entry.content.length > 200 
                           ? `${entry.content.substring(0, 200)}...` 
                           : entry.content
@@ -148,8 +158,8 @@ export default function HomePage() {
                           />
                         ))}
                         {entry.photos.length > 3 && (
-                          <div className="w-full h-20 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                            <span className="text-sm text-gray-500 dark:text-gray-400">
+                          <div className="w-full h-20 bg-gray-100 rounded-lg flex items-center justify-center">
+                            <span className="text-sm text-gray-500">
                               +{entry.photos.length - 3}
                             </span>
                           </div>
@@ -163,7 +173,7 @@ export default function HomePage() {
                         {entry.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="inline-block px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full"
+                            className="inline-block px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full"
                           >
                             #{tag}
                           </span>
@@ -173,11 +183,14 @@ export default function HomePage() {
 
                     {/* Location */}
                     {entry.location && (
-                      <div className="mt-3 text-xs text-gray-500 dark:text-gray-400 flex items-center">
-                        <svg className="h-3 w-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
+                      <div className="mt-3 text-xs text-gray-500 flex items-center">
+                        <Image
+                          src="/violette-location.svg"
+                          alt="Location"
+                          width={12}
+                          height={12}
+                          className="h-3 w-3 mr-1"
+                        />
                         {entry.location.address || entry.location.city || 'Unknown location'}
                       </div>
                     )}
@@ -187,25 +200,14 @@ export default function HomePage() {
             </section>
           )}
 
-          {/* Empty State */}
-          {recentEntries.length === 0 && (
-            <section className="text-center py-12">
-              <div className="mb-6">
-                <div className="mx-auto h-24 w-24 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
-                  <svg className="h-12 w-12 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
-                Start your diary journey
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400 mb-6 max-w-sm mx-auto">
-                Share your thoughts, capture moments with photos, and create lasting memories.
-              </p>
-            </section>
-          )}
         </main>
+
+        {/* New Entry Form - Sticky bottom */}
+        <section className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+          <div className="max-w-lg mx-auto">
+            <TextEntry />
+          </div>
+        </section>
 
         {/* Side Navigation */}
         <SideNavigation 
