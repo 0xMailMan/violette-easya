@@ -9,3 +9,93 @@
 🧠 AI Analysis: POST http://localhost:8000/api/ai/analyze
 🔢 Embeddings: POST http://localhost:8000/api/ai/generate-embedding
 ✅ Anthropic API connected and ready
+AI analysis error: BadRequestError: 400 {"type":"error","error":{"type":"invalid_request_error","message":"messages.0.content.1.image.source.base64.data: Image does not match the provided media type image/jpeg"}}
+    at APIError.generate (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@anthropic-ai/sdk/error.js:40:20)
+    at Anthropic.makeStatusError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@anthropic-ai/sdk/core.js:275:33)
+    at Anthropic.makeRequest (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@anthropic-ai/sdk/core.js:318:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/ai-server.js:117:29 {
+  status: 400,
+  headers: {
+    'anthropic-organization-id': '80062da3-fa42-4ef5-903c-00d444651b88',
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '94c4415a095d3e05-SIN',
+    connection: 'keep-alive',
+    'content-length': '172',
+    'content-type': 'application/json',
+    date: 'Sun, 08 Jun 2025 00:26:00 GMT',
+    'request-id': 'req_011CPuobeu9UBZ9Hy1hiFwdW',
+    server: 'cloudflare',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    via: '1.1 google',
+    'x-robots-tag': 'none',
+    'x-should-retry': 'false'
+  },
+  error: {
+    type: 'error',
+    error: {
+      type: 'invalid_request_error',
+      message: 'messages.0.content.1.image.source.base64.data: Image does not match the provided media type image/jpeg'
+    }
+  }
+}
+AI analysis error: BadRequestError: 400 {"type":"error","error":{"type":"invalid_request_error","message":"messages.0.content.1.image.source.base64.data: Image does not match the provided media type image/jpeg"}}
+    at APIError.generate (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@anthropic-ai/sdk/error.js:40:20)
+    at Anthropic.makeStatusError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@anthropic-ai/sdk/core.js:275:33)
+    at Anthropic.makeRequest (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@anthropic-ai/sdk/core.js:318:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/ai-server.js:117:29 {
+  status: 400,
+  headers: {
+    'anthropic-organization-id': '80062da3-fa42-4ef5-903c-00d444651b88',
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '94c441a538d75f64-SIN',
+    connection: 'keep-alive',
+    'content-length': '172',
+    'content-type': 'application/json',
+    date: 'Sun, 08 Jun 2025 00:26:13 GMT',
+    'request-id': 'req_011CPuocYQW8Y6BgULNzowSV',
+    server: 'cloudflare',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    via: '1.1 google',
+    'x-robots-tag': 'none',
+    'x-should-retry': 'false'
+  },
+  error: {
+    type: 'error',
+    error: {
+      type: 'invalid_request_error',
+      message: 'messages.0.content.1.image.source.base64.data: Image does not match the provided media type image/jpeg'
+    }
+  }
+}
+AI analysis error: BadRequestError: 400 {"type":"error","error":{"type":"invalid_request_error","message":"messages.0.content.1.image.source.base64: invalid base64 data"}}
+    at APIError.generate (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@anthropic-ai/sdk/error.js:40:20)
+    at Anthropic.makeStatusError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@anthropic-ai/sdk/core.js:275:33)
+    at Anthropic.makeRequest (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@anthropic-ai/sdk/core.js:318:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/ai-server.js:117:29 {
+  status: 400,
+  headers: {
+    'anthropic-organization-id': '80062da3-fa42-4ef5-903c-00d444651b88',
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '94c442bca84eab47-SIN',
+    connection: 'keep-alive',
+    'content-length': '131',
+    'content-type': 'application/json',
+    date: 'Sun, 08 Jun 2025 00:26:57 GMT',
+    'request-id': 'req_011CPuofqS2Stk7FdaJewbMS',
+    server: 'cloudflare',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    via: '1.1 google',
+    'x-robots-tag': 'none',
+    'x-should-retry': 'false'
+  },
+  error: {
+    type: 'error',
+    error: {
+      type: 'invalid_request_error',
+      message: 'messages.0.content.1.image.source.base64: invalid base64 data'
+    }
+  }
+}

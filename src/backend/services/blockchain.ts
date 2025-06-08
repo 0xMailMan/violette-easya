@@ -516,6 +516,102 @@ class BlockchainService implements DIDManagementService, MerkleTreeService {
       };
     }
   }
+
+  // ============================================================================
+  // NFT Storage for Merkle Proofs
+  // ============================================================================
+
+  async storeMerkleAsNFT(params: {
+    didId: string;
+    merkleRoot: string;
+    entryId?: string;
+    metadata?: any;
+    userId: string;
+  }): Promise<{
+    success: boolean;
+    nftTokenId?: string;
+    transactionHash?: string;
+    error?: string;
+  }> {
+    try {
+      await this.ensureConnection();
+
+      // Get DID record to find the associated wallet
+      const didRecord = await firebaseService.getDIDRecord(params.userId);
+      if (!didRecord) {
+        return {
+          success: false,
+          error: 'DID not found for user',
+        };
+      }
+
+      // For demonstration purposes, generate a new wallet to fund and use for NFT minting
+      // In production, you'd either store the private key securely or use a different approach
+      const userWallet = Wallet.generate();
+      
+      // Fund the wallet on testnet
+      if (config.xrpl.isTestnet) {
+        await this.client.fundWallet(userWallet);
+      }
+
+      // Create NFT with merkle proof data
+      const nftMintTx: any = {
+        TransactionType: 'NFTokenMint',
+        Account: userWallet.address,
+        NFTokenTaxon: 1, // Use taxon 1 for merkle proof NFTs
+        Flags: 8, // tfTransferable
+        Memos: [
+          {
+            Memo: {
+              MemoType: Buffer.from('MERKLE_PROOF', 'utf8').toString('hex').toUpperCase(),
+              MemoData: Buffer.from(JSON.stringify({
+                didId: params.didId,
+                merkleRoot: params.merkleRoot,
+                entryId: params.entryId,
+                timestamp: Date.now(),
+                metadata: params.metadata,
+              }), 'utf8').toString('hex').toUpperCase(),
+            },
+          },
+        ],
+      };
+
+      // Submit and wait for validation
+      const prepared = await this.client.autofill(nftMintTx);
+      const signed = userWallet.sign(prepared);
+      const result = await this.client.submitAndWait(signed.tx_blob);
+
+      if ((result.result.meta as any)?.TransactionResult === 'tesSUCCESS') {
+        // Extract NFT Token ID from result
+        const nftTokenId = this.extractNFTTokenId(result);
+
+        // Store NFT record in Firebase (simplified for now)
+        console.log('NFT minted successfully:', {
+          nftTokenId,
+          didId: params.didId,
+          merkleRoot: params.merkleRoot,
+          transactionHash: result.result.hash,
+        });
+
+        return {
+          success: true,
+          nftTokenId,
+          transactionHash: result.result.hash,
+        };
+      } else {
+        return {
+          success: false,
+          error: `Transaction failed: ${(result.result.meta as any)?.TransactionResult}`,
+        };
+      }
+    } catch (error) {
+      console.error('Merkle NFT storage failed:', error);
+      return {
+        success: false,
+        error: error.message,
+      };
+    }
+  }
 }
 
 export const blockchainService = new BlockchainService();

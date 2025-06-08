@@ -18,3 +18,9 @@
  GET / 200 in 60ms
  GET / 200 in 54ms
  GET / 200 in 64ms
+ GET / 200 in 75ms
+ ○ Compiling /_not-found/page ...
+ ✓ Compiled /_not-found/page in 1575ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1616ms
+ GET / 200 in 252ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 52ms

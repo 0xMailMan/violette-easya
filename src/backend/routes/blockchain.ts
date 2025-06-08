@@ -257,4 +257,54 @@ router.get('/network-status', asyncHandler(async (req, res) => {
   res.status(200).json(response);
 }));
 
+// POST /api/blockchain/store-merkle-nft - Store Merkle proof as NFT
+router.post('/store-merkle-nft', [authMiddleware, requirePermission('blockchain')], asyncHandler(async (req, res) => {
+  const { didId, merkleRoot, entryId, metadata } = req.body;
+
+  if (!didId || !merkleRoot) {
+    const response: APIResponse = {
+      success: false,
+      error: 'DID and merkle root are required',
+      timestamp: new Date().toISOString(),
+      requestId: req.requestId!,
+    };
+    res.status(400).json(response);
+    return;
+  }
+
+  try {
+    const result = await blockchainService.storeMerkleAsNFT({
+      didId,
+      merkleRoot,
+      entryId,
+      metadata,
+      userId: req.user!.userId,
+    });
+
+    const response: APIResponse = {
+      success: result.success,
+      data: result.success ? {
+        nftTokenId: result.nftTokenId,
+        transactionHash: result.transactionHash,
+        didId: didId,
+        merkleRoot: merkleRoot,
+      } : undefined,
+      error: result.error,
+      timestamp: new Date().toISOString(),
+      requestId: req.requestId!,
+    };
+
+    res.status(result.success ? 200 : 400).json(response);
+  } catch (error) {
+    const response: APIResponse = {
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString(),
+      requestId: req.requestId!,
+    };
+
+    res.status(500).json(response);
+  }
+}));
+
 export { router as blockchainRoutes }; 

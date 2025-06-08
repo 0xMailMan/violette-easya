@@ -106,6 +106,15 @@ class FirebaseService {
     return this.blockchainRecords().doc(txHash);
   }
 
+  // Entries collection
+  userEntries(userId: string): CollectionReference<any> {
+    return this.db.collection('entries').doc(userId).collection('items') as CollectionReference<any>;
+  }
+
+  userEntry(userId: string, entryId: string): DocumentReference<any> {
+    return this.userEntries(userId).doc(entryId);
+  }
+
   // ============================================================================
   // User Management
   // ============================================================================
@@ -321,6 +330,47 @@ class FirebaseService {
 
   async runTransaction<T>(updateFunction: (transaction: any) => Promise<T>): Promise<T> {
     return this.db.runTransaction(updateFunction);
+  }
+
+  // ============================================================================
+  // Entry Management
+  // ============================================================================
+
+  async createEntry(userId: string, entryData: any): Promise<string> {
+    const docRef = this.userEntries(userId).doc();
+    await docRef.set({
+      ...entryData,
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now(),
+    });
+    return docRef.id;
+  }
+
+  async getEntry(userId: string, entryId: string): Promise<any | null> {
+    const doc = await this.userEntry(userId, entryId).get();
+    return doc.exists ? { id: doc.id, ...doc.data() } : null;
+  }
+
+  async getUserEntries(userId: string): Promise<any[]> {
+    const snapshot = await this.userEntries(userId)
+      .orderBy('createdAt', 'desc')
+      .get();
+    
+    return snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+  }
+
+  async updateEntry(userId: string, entryId: string, updateData: any): Promise<void> {
+    await this.userEntry(userId, entryId).update({
+      ...updateData,
+      updatedAt: Timestamp.now(),
+    });
+  }
+
+  async deleteEntry(userId: string, entryId: string): Promise<void> {
+    await this.userEntry(userId, entryId).delete();
   }
 
   // Health check

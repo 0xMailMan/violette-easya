@@ -4,6 +4,7 @@ import { userRoutes } from './users';
 import { aiRoutes } from './ai';
 import { discoveryRoutes } from './discovery';
 import { blockchainRoutes } from './blockchain';
+import { entriesRoutes } from './entries';
 
 export const createAPIRoutes = (): Router => {
   const router = Router();
@@ -14,6 +15,7 @@ export const createAPIRoutes = (): Router => {
   router.use('/ai', aiRoutes);
   router.use('/discovery', discoveryRoutes);
   router.use('/blockchain', blockchainRoutes);
+  router.use('/entries', entriesRoutes);
 
   return router;
 };

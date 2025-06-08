@@ -20,6 +20,8 @@
     "test:blockchain": "node test-blockchain.js",
     "test:complete": "node test-complete-system.js",
     "test:did": "node test-did-creation.js",
+    "test:workflow": "node test-full-workflow.js",
+    "clear:data": "node clear-test-data.js",
     "debug:ai": "open http://localhost:3000/debug-ai-test.html",
     "ai-server": "node src/backend/ai-server.js",
     "start:all": "./start-all-servers.sh",

@@ -311,3 +311,386 @@ DID resolution failed: Error: DID not found
 [31merror[39m: Request completed with error {"duration":"108ms","method":"GET","requestId":"3a2bf6fa-d2ec-49d4-9671-8826c134aae2","responseSize":131,"service":"violette-backend","statusCode":404,"timestamp":"2025-06-08T00:11:58.660Z","url":"/resolve-did/did:xrpl:rfJYp9xfKSxgx7ANF73ULqt1WbZrJ6eSJw:1d61366f-8e3a-4122-a577-dfbe23341da1","userId":"anon_e1f0e656-07f8-4dbb-b2aa-39b23d413187"}
 [32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:11:58.662Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
 [32minfo[39m: Request completed {"duration":"40ms","method":"POST","requestId":"1ac6ae67-cc69-4dae-9626-f97cf726277e","responseSize":511,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:11:58.702Z","url":"/create-merkle-tree","userId":"anon_e1f0e656-07f8-4dbb-b2aa-39b23d413187"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(276,44): error TS2339: Property 'storeMerkleAsNFT' does not exist on type 'BlockchainService'.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2339 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/services/blockchain.ts(549,48): error TS2339: Property 'getWalletSeed' does not exist on type 'FirebaseService'.
+src/backend/services/blockchain.ts(579,31): error TS2339: Property 'TransactionResult' does not exist on type 'string | TransactionMetadataBase | NFTokenAcceptOfferMetadata | NFTokenCancelOfferMetadata | NFTokenCreateOfferMetadata | NFTokenMintMetadata | PaymentMetadata'.
+  Property 'TransactionResult' does not exist on type 'string'.
+src/backend/services/blockchain.ts(584,31): error TS2339: Property 'storeNFTRecord' does not exist on type 'FirebaseService'.
+src/backend/services/blockchain.ts(602,61): error TS2339: Property 'TransactionResult' does not exist on type 'string | TransactionMetadataBase | NFTokenAcceptOfferMetadata | NFTokenCancelOfferMetadata | NFTokenCreateOfferMetadata | NFTokenMintMetadata | PaymentMetadata'.
+  Property 'TransactionResult' does not exist on type 'string'.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2339, 2339, 2339, 2339 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/services/blockchain.ts(580,31): error TS2339: Property 'TransactionResult' does not exist on type 'string | TransactionMetadataBase | NFTokenAcceptOfferMetadata | NFTokenCancelOfferMetadata | NFTokenCreateOfferMetadata | NFTokenMintMetadata | PaymentMetadata'.
+  Property 'TransactionResult' does not exist on type 'string'.
+src/backend/services/blockchain.ts(585,31): error TS2339: Property 'storeNFTRecord' does not exist on type 'FirebaseService'.
+src/backend/services/blockchain.ts(603,61): error TS2339: Property 'TransactionResult' does not exist on type 'string | TransactionMetadataBase | NFTokenAcceptOfferMetadata | NFTokenCancelOfferMetadata | NFTokenCreateOfferMetadata | NFTokenMintMetadata | PaymentMetadata'.
+  Property 'TransactionResult' does not exist on type 'string'.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2339, 2339, 2339 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:22:22.640Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"395ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:22:23.035Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:22:23.045Z","url":"/api/entries","userAgent":"node"}
+[31merror[39m: Request completed with error {"duration":"1ms","method":"GET","responseSize":121,"service":"violette-backend","statusCode":404,"timestamp":"2025-06-08T00:22:23.046Z","url":"/api/entries"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:22:23.048Z","url":"/health","userAgent":"node"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"1834ms","method":"GET","responseSize":106,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:22:24.882Z","url":"/health"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:22:24.893Z","url":"/api/blockchain/network-status","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"306ms","method":"GET","requestId":"6a3ce52d-0581-4608-a654-d4f128e5c2cc","responseSize":195,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:22:25.199Z","url":"/network-status","userId":"anon_d15a884e-1988-4e6b-80fb-60d91199d91d"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:23:38.620Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"98ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:23:38.718Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:25:53.960Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"60ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:25:54.020Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:26:51.808Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"66ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:26:51.874Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:27:49.999Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"107ms","method":"POST","responseSize":555,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:27:50.106Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:28:03.385Z","url":"/api/entries","userAgent":"node"}
+[31merror[39m: Request completed with error {"duration":"1ms","method":"POST","responseSize":122,"service":"violette-backend","statusCode":404,"timestamp":"2025-06-08T00:28:03.386Z","url":"/api/entries"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:28:22.239Z","url":"/api/auth/anonymous","userAgent":"curl/8.7.1"}
+[32minfo[39m: Request completed {"duration":"67ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:28:22.306Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:28:22.316Z","url":"/api/entries","userAgent":"curl/8.7.1"}
+[31merror[39m: Request completed with error {"duration":"0ms","method":"GET","responseSize":121,"service":"violette-backend","statusCode":404,"timestamp":"2025-06-08T00:28:22.316Z","url":"/api/entries"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/entries.ts(3,30): error TS2307: Cannot find module '../middleware/errorHandler' or its corresponding type declarations.
+src/backend/routes/entries.ts(4,33): error TS2307: Cannot find module '../services/firebase' or its corresponding type declarations.
+src/backend/routes/entries.ts(5,29): error TS2307: Cannot find module '../types/api' or its corresponding type declarations.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2307, 2307, 2307 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/entries.ts(3,30): error TS2307: Cannot find module '../middleware/errorHandler' or its corresponding type declarations.
+src/backend/routes/entries.ts(4,33): error TS2307: Cannot find module '../services/firebase' or its corresponding type declarations.
+src/backend/routes/entries.ts(5,29): error TS2307: Cannot find module '../types/api' or its corresponding type declarations.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2307, 2307, 2307 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/entries.ts(3,30): error TS2307: Cannot find module '../middleware/errorHandler' or its corresponding type declarations.
+src/backend/routes/entries.ts(4,33): error TS2307: Cannot find module '../services/firebase' or its corresponding type declarations.
+src/backend/routes/entries.ts(5,29): error TS2307: Cannot find module '../types/api' or its corresponding type declarations.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2307, 2307, 2307 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/entries.ts(5,29): error TS2307: Cannot find module '../config/types' or its corresponding type declarations.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2307 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:31:59.000Z","url":"/health","userAgent":"curl/8.7.1"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"1958ms","method":"GET","responseSize":106,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:32:00.958Z","url":"/health"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:32:10.536Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"115ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:32:10.651Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:32:24.686Z","url":"/api/entries","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"273ms","method":"POST","requestId":"d84724d4-51cf-4967-a1e4-da0a88234856","responseSize":296668,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:32:24.961Z","url":"/","userId":"anon_fff23c74-375f-4f79-8205-9840dd988009"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:32:24.977Z","url":"/api/blockchain/create-did","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"15435ms","method":"POST","requestId":"6f64a576-8943-4aaa-bf4f-fdefd265414b","responseSize":356,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:32:40.412Z","url":"/create-did","userId":"anon_fff23c74-375f-4f79-8205-9840dd988009"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:32:40.421Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"48ms","method":"POST","requestId":"750edc2a-0c46-4769-98da-6ba7d900a450","responseSize":511,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:32:40.469Z","url":"/create-merkle-tree","userId":"anon_fff23c74-375f-4f79-8205-9840dd988009"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:32:40.472Z","url":"/api/blockchain/store-merkle-nft","userAgent":"node"}
+[31merror[39m: Request completed with error {"duration":"166ms","method":"POST","requestId":"da361038-3a6e-4515-972c-26db4cd36c82","responseSize":131,"service":"violette-backend","statusCode":400,"timestamp":"2025-06-08T00:32:40.638Z","url":"/store-merkle-nft","userId":"anon_fff23c74-375f-4f79-8205-9840dd988009"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:32:40.641Z","url":"/api/entries/KJgPBJMtEEJfGccXTJFk","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"135ms","method":"GET","requestId":"965130f2-ee24-4e1f-826b-32114bcaa41e","responseSize":296712,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:32:40.777Z","url":"/KJgPBJMtEEJfGccXTJFk","userId":"anon_fff23c74-375f-4f79-8205-9840dd988009"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:34:19.449Z","url":"/api/auth/anonymous","userAgent":"curl/8.7.1"}
+[32minfo[39m: Request completed {"duration":"47ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:34:19.496Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:34:19.588Z","url":"/api/blockchain/store-merkle-nft","userAgent":"curl/8.7.1"}
+[31merror[39m: Request completed with error {"duration":"220ms","method":"POST","requestId":"d301c6d8-d9a4-4d81-aedd-64ef0d37d1db","responseSize":131,"service":"violette-backend","statusCode":400,"timestamp":"2025-06-08T00:34:19.808Z","url":"/store-merkle-nft","userId":"anon_68668e8c-608a-4139-b236-fb436273cfc3"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:34:52.649Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"292ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:34:52.941Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:35:05.849Z","url":"/api/entries","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"172ms","method":"POST","requestId":"4b6b9b6f-53ca-4fc2-8686-ac16be1ab25e","responseSize":296649,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:35:06.022Z","url":"/","userId":"anon_5a46f04a-b8a0-476a-b53a-af9bf4b74d5c"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:35:06.039Z","url":"/api/blockchain/create-did","userAgent":"node"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"14701ms","method":"POST","requestId":"20d2254b-5787-457c-872c-6ccffa7baf2d","responseSize":358,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:35:20.740Z","url":"/create-did","userId":"anon_5a46f04a-b8a0-476a-b53a-af9bf4b74d5c"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:35:20.744Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"19ms","method":"POST","requestId":"18050b69-aa60-4fed-bdd4-7358f6c16753","responseSize":511,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:35:20.763Z","url":"/create-merkle-tree","userId":"anon_5a46f04a-b8a0-476a-b53a-af9bf4b74d5c"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:35:20.766Z","url":"/api/blockchain/store-merkle-nft","userAgent":"node"}
+Merkle NFT storage failed: Error: Unknown letter: ":". Allowed: rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@scure/base/index.ts:82:33
+    at Array.map (<anonymous>)
+    at decode (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@scure/base/index.ts:78:20)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@scure/base/index.ts:49:50
+    at Object.decode (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@scure/base/index.ts:49:48)
+    at Codec._decodeRaw (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-address-codec/src/xrp-codec.ts:130:24)
+    at Codec.decodeChecked (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-address-codec/src/xrp-codec.ts:100:27)
+    at Codec.decode (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-address-codec/src/xrp-codec.ts:59:29)
+    at decodeSeed (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-address-codec/src/xrp-codec.ts:201:31)
+    at deriveKeypair (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-keypairs/src/index.ts:53:29)
+[31merror[39m: Request completed with error {"duration":"96ms","method":"POST","requestId":"d81d7bb3-d383-4c8c-bafa-edb0906d79bb","responseSize":208,"service":"violette-backend","statusCode":400,"timestamp":"2025-06-08T00:35:20.862Z","url":"/store-merkle-nft","userId":"anon_5a46f04a-b8a0-476a-b53a-af9bf4b74d5c"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:35:20.864Z","url":"/api/entries/vhk2OqwvIBlSWjisR2fk","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"118ms","method":"GET","requestId":"d7d5ad79-f47d-4e30-8a9b-f18855205e40","responseSize":296693,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:35:20.983Z","url":"/vhk2OqwvIBlSWjisR2fk","userId":"anon_5a46f04a-b8a0-476a-b53a-af9bf4b74d5c"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:35:33.168Z","url":"/api/auth/anonymous","userAgent":"curl/8.7.1"}
+[32minfo[39m: Request completed {"duration":"29ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:35:33.197Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:35:33.208Z","url":"/api/blockchain/store-merkle-nft","userAgent":"curl/8.7.1"}
+[31merror[39m: Request completed with error {"duration":"181ms","method":"POST","requestId":"52e81eb3-07b8-427b-a369-81e10ba63210","responseSize":140,"service":"violette-backend","statusCode":400,"timestamp":"2025-06-08T00:35:33.389Z","url":"/store-merkle-nft","userId":"anon_bb94d5f0-5c76-4b3b-bdee-f233d0cd1448"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:39:18.825Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"74ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:39:18.899Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:39:34.906Z","url":"/api/entries","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"225ms","method":"POST","requestId":"da50ee3b-194a-49f5-9a95-c1b55272c501","responseSize":296652,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:39:35.133Z","url":"/","userId":"anon_e75da3f9-a74a-449c-bda7-80e60a4be90e"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:39:35.150Z","url":"/api/blockchain/create-did","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"16022ms","method":"POST","requestId":"942cd2a1-f41a-4874-a9fa-973d5c0f7186","responseSize":358,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:39:51.172Z","url":"/create-did","userId":"anon_e75da3f9-a74a-449c-bda7-80e60a4be90e"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:39:51.182Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"32ms","method":"POST","requestId":"0b99a355-ac41-467a-8764-247af31f139f","responseSize":511,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:39:51.214Z","url":"/create-merkle-tree","userId":"anon_e75da3f9-a74a-449c-bda7-80e60a4be90e"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:39:51.217Z","url":"/api/blockchain/store-merkle-nft","userAgent":"node"}
+Merkle NFT storage failed: Error: Unknown letter: ":". Allowed: rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@scure/base/index.ts:82:33
+    at Array.map (<anonymous>)
+    at decode (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@scure/base/index.ts:78:20)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@scure/base/index.ts:49:50
+    at Object.decode (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/@scure/base/index.ts:49:48)
+    at Codec._decodeRaw (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-address-codec/src/xrp-codec.ts:130:24)
+    at Codec.decodeChecked (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-address-codec/src/xrp-codec.ts:100:27)
+    at Codec.decode (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-address-codec/src/xrp-codec.ts:59:29)
+    at decodeSeed (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-address-codec/src/xrp-codec.ts:201:31)
+    at deriveKeypair (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ripple-keypairs/src/index.ts:53:29)
+[31merror[39m: Request completed with error {"duration":"137ms","method":"POST","requestId":"710405bf-efb3-4a32-aee2-b35f0e03c898","responseSize":208,"service":"violette-backend","statusCode":400,"timestamp":"2025-06-08T00:39:51.354Z","url":"/store-merkle-nft","userId":"anon_e75da3f9-a74a-449c-bda7-80e60a4be90e"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:39:51.355Z","url":"/api/entries/sZSuFUdoutgolw5yVGXf","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"150ms","method":"GET","requestId":"36640512-beb2-453a-b7e3-ef3a62467eb8","responseSize":296696,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:39:51.506Z","url":"/sZSuFUdoutgolw5yVGXf","userId":"anon_e75da3f9-a74a-449c-bda7-80e60a4be90e"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:40:53.336Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"346ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:40:53.682Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:41:07.452Z","url":"/api/entries","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"267ms","method":"POST","requestId":"51937aeb-19b9-4be8-a337-9fff0c5341b4","responseSize":296732,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:41:07.720Z","url":"/","userId":"anon_feaf6ff3-803d-44ef-9fca-d6f5507cc923"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:41:07.738Z","url":"/api/blockchain/create-did","userAgent":"node"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"16272ms","method":"POST","requestId":"cb4a110f-b06b-431f-bfb0-31202bbe4fa7","responseSize":358,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:41:24.010Z","url":"/create-did","userId":"anon_feaf6ff3-803d-44ef-9fca-d6f5507cc923"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:41:24.023Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"106ms","method":"POST","requestId":"15445496-424b-4428-9694-f581ee924481","responseSize":511,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:41:24.129Z","url":"/create-merkle-tree","userId":"anon_feaf6ff3-803d-44ef-9fca-d6f5507cc923"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:41:24.134Z","url":"/api/blockchain/store-merkle-nft","userAgent":"node"}
+NFT minted successfully: {
+  nftTokenId: '',
+  didId: 'did:xrpl:rw2P9u9jKm6854C3nMGw6TxxKUmzsw7J82:daa58934-ffdf-4b60-a450-268fddbda482',
+  merkleRoot: '2cf20966ec54d756c9ec2e119d5425d7b3c90e2a87ac4e35bc42e37324e9a267',
+  transactionHash: 'B230A6EA5A9AADBE178ED976F21ABBA6D17842399D1C1F49B708F70A82E06238'
+}
+[32minfo[39m: Request completed {"duration":"15288ms","method":"POST","requestId":"200b126d-df1d-45ba-b052-6fdf76d9064a","responseSize":387,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:41:39.422Z","url":"/store-merkle-nft","userId":"anon_feaf6ff3-803d-44ef-9fca-d6f5507cc923"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:41:40.518Z","url":"/api/entries/rlktofGF3UxmhyfM5NUW","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"148ms","method":"GET","requestId":"972264d3-0b8e-44c2-b238-773c18524dc4","responseSize":296776,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:41:40.666Z","url":"/rlktofGF3UxmhyfM5NUW","userId":"anon_feaf6ff3-803d-44ef-9fca-d6f5507cc923"}
