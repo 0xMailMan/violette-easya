@@ -13,7 +13,7 @@ class AuthService {
     constructor() {
         this.JWT_ALGORITHM = 'HS256';
         this.SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours
-        this.DEFAULT_PERMISSIONS = ['read', 'write', 'discover'];
+        this.DEFAULT_PERMISSIONS = ['read', 'write', 'discover', 'blockchain'];
     }
     async createAnonymousSession() {
         try {

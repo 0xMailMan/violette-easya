@@ -39,6 +39,18 @@ declare class BlockchainService implements DIDManagementService, MerkleTreeServi
         serverState: string;
         baseFee: string;
     }>;
+    storeMerkleAsNFT(params: {
+        didId: string;
+        merkleRoot: string;
+        entryId?: string;
+        metadata?: any;
+        userId: string;
+    }): Promise<{
+        success: boolean;
+        nftTokenId?: string;
+        transactionHash?: string;
+        error?: string;
+    }>;
 }
 export declare const blockchainService: BlockchainService;
 export default blockchainService;

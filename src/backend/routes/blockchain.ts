@@ -4,6 +4,7 @@ import { asyncHandler } from '../middleware/error-handler';
 import { APIResponse } from '../../types/backend';
 import blockchainService from '../services/blockchain';
 import { Timestamp } from 'firebase-admin/firestore';
+import { officialDIDService } from '../services/official-did';
 
 const router = Router();
 
@@ -114,43 +115,7 @@ router.get('/verify/:hash', asyncHandler(async (req, res) => {
   res.status(200).json(response);
 }));
 
-// GET /api/blockchain/resolve-did/:did - Resolve DID
-router.get('/resolve-did/:did', asyncHandler(async (req, res) => {
-  const { did } = req.params;
-
-  if (!did) {
-    const response: APIResponse = {
-      success: false,
-      error: 'DID is required',
-      timestamp: new Date().toISOString(),
-      requestId: req.requestId!,
-    };
-    res.status(400).json(response);
-    return;
-  }
-
-  try {
-    const didResolution = await blockchainService.resolveDID(did);
-
-    const response: APIResponse = {
-      success: true,
-      data: didResolution,
-      timestamp: new Date().toISOString(),
-      requestId: req.requestId!,
-    };
-
-    res.status(200).json(response);
-  } catch (error) {
-    const response: APIResponse = {
-      success: false,
-      error: error.message,
-      timestamp: new Date().toISOString(),
-      requestId: req.requestId!,
-    };
-
-    res.status(404).json(response);
-  }
-}));
+// Note: DID resolution is now handled by the official DID service below
 
 // POST /api/blockchain/create-merkle-tree - Create Merkle tree from entries
 router.post('/create-merkle-tree', asyncHandler(async (req, res) => {
@@ -306,5 +271,110 @@ router.post('/store-merkle-nft', [authMiddleware, requirePermission('blockchain'
     res.status(500).json(response);
   }
 }));
+
+// Create official W3C compliant DID
+router.post('/create-official-did', async (req, res) => {
+  try {
+    console.log('Creating official W3C compliant DID...');
+
+    const { anonymizedId, privacyPreferences } = req.body;
+
+    if (!anonymizedId) {
+      return res.status(400).json({
+        success: false,
+        error: 'anonymizedId is required'
+      });
+    }
+
+    // Check if DID amendment is enabled
+    const isDIDEnabled = await officialDIDService.isDIDAmendmentEnabled();
+    if (!isDIDEnabled) {
+      return res.status(503).json({
+        success: false,
+        error: 'DID amendment not enabled on this XRPL network'
+      });
+    }
+
+    const userMetadata = {
+      anonymizedId,
+      createdAt: Timestamp.now(),
+      privacyPreferences: privacyPreferences || { anonymousMode: true }
+    };
+
+    const result = await officialDIDService.createOfficialDID(userMetadata);
+
+    if (!result.success) {
+      return res.status(500).json({
+        success: false,
+        error: result.error || 'Failed to create official DID'
+      });
+    }
+
+    console.log('Official DID created successfully:', {
+      didId: result.didId,
+      xrplAddress: result.xrplAddress,
+      transactionHash: result.transactionHash
+    });
+
+    return res.json({
+      success: true,
+      data: {
+        didId: result.didId,
+        xrplAddress: result.xrplAddress,
+        didDocument: result.didDocument,
+        transactionHash: result.transactionHash,
+        verificationLink: `https://testnet.xrpl.org/transactions/${result.transactionHash}`,
+        compliance: 'W3C DID Standard Compliant'
+      }
+    });
+
+  } catch (error) {
+    console.error('Official DID creation error:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error'
+    });
+  }
+});
+
+// Resolve official DID
+router.get('/resolve-did/:didId', async (req, res) => {
+  try {
+    const { didId } = req.params;
+    
+    // URL decode the DID (in case it was encoded)
+    const decodedDidId = decodeURIComponent(didId);
+    
+    console.log('Resolving DID:', decodedDidId);
+
+    const result = await officialDIDService.resolveDID(decodedDidId);
+
+    if (!result.success) {
+      return res.status(404).json({
+        success: false,
+        error: result.error || 'DID not found'
+      });
+    }
+
+    return res.json({
+      success: true,
+      data: {
+        didDocument: result.didDocument,
+        didId: result.didId,
+        xrplAddress: result.xrplAddress,
+        lastUpdated: result.lastUpdated,
+        accountLink: `https://testnet.xrpl.org/accounts/${result.xrplAddress}`,
+        compliance: 'W3C DID Standard Compliant'
+      }
+    });
+
+  } catch (error) {
+    console.error('DID resolution error:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error'
+    });
+  }
+});
 
 export { router as blockchainRoutes }; 

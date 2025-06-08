@@ -75,6 +75,13 @@ class FirebaseService {
     blockchainRecord(txHash) {
         return this.blockchainRecords().doc(txHash);
     }
+    // Entries collection
+    userEntries(userId) {
+        return this.db.collection('entries').doc(userId).collection('items');
+    }
+    userEntry(userId, entryId) {
+        return this.userEntries(userId).doc(entryId);
+    }
     // ============================================================================
     // User Management
     // ============================================================================
@@ -238,6 +245,40 @@ class FirebaseService {
     }
     async runTransaction(updateFunction) {
         return this.db.runTransaction(updateFunction);
+    }
+    // ============================================================================
+    // Entry Management
+    // ============================================================================
+    async createEntry(userId, entryData) {
+        const docRef = this.userEntries(userId).doc();
+        await docRef.set({
+            ...entryData,
+            createdAt: firestore_1.Timestamp.now(),
+            updatedAt: firestore_1.Timestamp.now(),
+        });
+        return docRef.id;
+    }
+    async getEntry(userId, entryId) {
+        const doc = await this.userEntry(userId, entryId).get();
+        return doc.exists ? { id: doc.id, ...doc.data() } : null;
+    }
+    async getUserEntries(userId) {
+        const snapshot = await this.userEntries(userId)
+            .orderBy('createdAt', 'desc')
+            .get();
+        return snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+        }));
+    }
+    async updateEntry(userId, entryId, updateData) {
+        await this.userEntry(userId, entryId).update({
+            ...updateData,
+            updatedAt: firestore_1.Timestamp.now(),
+        });
+    }
+    async deleteEntry(userId, entryId) {
+        await this.userEntry(userId, entryId).delete();
     }
     // Health check
     async healthCheck() {

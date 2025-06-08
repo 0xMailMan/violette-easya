@@ -694,3 +694,1006 @@ NFT minted successfully: {
 [32minfo[39m: Request completed {"duration":"15288ms","method":"POST","requestId":"200b126d-df1d-45ba-b052-6fdf76d9064a","responseSize":387,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:41:39.422Z","url":"/store-merkle-nft","userId":"anon_feaf6ff3-803d-44ef-9fca-d6f5507cc923"}
 [32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:41:40.518Z","url":"/api/entries/rlktofGF3UxmhyfM5NUW","userAgent":"node"}
 [32minfo[39m: Request completed {"duration":"148ms","method":"GET","requestId":"972264d3-0b8e-44c2-b238-773c18524dc4","responseSize":296776,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:41:40.666Z","url":"/rlktofGF3UxmhyfM5NUW","userId":"anon_feaf6ff3-803d-44ef-9fca-d6f5507cc923"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:43:21.547Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"73ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:43:21.620Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:43:36.536Z","url":"/api/entries","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"242ms","method":"POST","requestId":"4bb49ae1-66b9-4688-abcd-eb7b14e3327b","responseSize":296650,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:43:36.785Z","url":"/","userId":"anon_326d33ab-a4b8-4ef1-823d-515a29197672"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:43:36.829Z","url":"/api/blockchain/create-did","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"13652ms","method":"POST","requestId":"4d54b12f-2e4e-4ae6-a098-9bd2ccfdfce5","responseSize":358,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:43:50.481Z","url":"/create-did","userId":"anon_326d33ab-a4b8-4ef1-823d-515a29197672"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:43:50.490Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"41ms","method":"POST","requestId":"e2a7c116-3194-4237-807b-8754b5dc77d5","responseSize":511,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:43:50.531Z","url":"/create-merkle-tree","userId":"anon_326d33ab-a4b8-4ef1-823d-515a29197672"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:43:50.533Z","url":"/api/blockchain/store-merkle-nft","userAgent":"node"}
+NFT minted successfully: {
+  nftTokenId: '',
+  didId: 'did:xrpl:rGxUoHUH5HAgGhmuYgmpj161uAHXbfx1M1:62b36eb1-1572-4050-8047-73b026a6196c',
+  merkleRoot: '71a86a03ab57df8b0d025fd1e761d5834456db2eb402b48fed132482faa9aae4',
+  transactionHash: 'DC8E36D9B2E86CBE2C4F95BF85951DE1BE599EFBB4BC19E1CADFE22E9D014A25'
+}
+[32minfo[39m: Request completed {"duration":"15137ms","method":"POST","requestId":"f0aa307e-1fbc-4122-9eb6-0db2d7baf417","responseSize":387,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:44:05.670Z","url":"/store-merkle-nft","userId":"anon_326d33ab-a4b8-4ef1-823d-515a29197672"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:44:06.756Z","url":"/api/entries/4ENj8h94z6Q7WStfbwfo","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"226ms","method":"GET","requestId":"7ec0b79f-ada5-43d0-90aa-f0869aa1b774","responseSize":296694,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:44:06.983Z","url":"/4ENj8h94z6Q7WStfbwfo","userId":"anon_326d33ab-a4b8-4ef1-823d-515a29197672"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(319,7): error TS2322: Type 'Response<any, Record<string, any>, number>' is not assignable to type 'void'.
+src/backend/routes/blockchain.ts(328,7): error TS2322: Type 'Response<any, Record<string, any>, number>' is not assignable to type 'void'.
+src/backend/routes/blockchain.ts(343,7): error TS2322: Type 'Response<any, Record<string, any>, number>' is not assignable to type 'void'.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2322, 2322, 2322, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(312,37): error TS7030: Not all code paths return a value.
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030, 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/routes/blockchain.ts(377,35): error TS7030: Not all code paths return a value.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 7030 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T01:01:56.036Z","url":"/api/health","userAgent":"curl/8.7.1"}
+[31merror[39m: Request completed with error {"duration":"3ms","method":"GET","responseSize":120,"service":"violette-backend","statusCode":404,"timestamp":"2025-06-08T01:01:56.038Z","url":"/api/health"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T01:02:07.945Z","url":"/api/blockchain/create-official-did","userAgent":"axios/1.9.0"}
+[31merror[39m: Request completed with error {"duration":"1ms","method":"POST","requestId":"62af4382-f7f0-43bf-b547-02c7c02e7cf5","responseSize":118,"service":"violette-backend","statusCode":401,"timestamp":"2025-06-08T01:02:07.946Z","url":"/create-official-did"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T01:02:49.951Z","url":"/api/auth/anonymous","userAgent":"axios/1.9.0"}
+[32minfo[39m: Request completed {"duration":"386ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T01:02:50.337Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T01:02:50.343Z","url":"/api/blockchain/create-official-did","userAgent":"axios/1.9.0"}
+Creating official W3C compliant DID...
+Creating official DID with transaction: {
+  TransactionType: 'DIDSet',
+  Account: 'rMGZZaT1ywakfzfyt8pdViNkAdUaPGG4KB',
+  DIDDocument: '7B2240636F6E74657874223A2268747470733A2F2F773369642E6F72672F6469642F7631222C226964223A226469643A7872706C3A313A724D475A5A6154317977616B667A66797438706456694E6B41645561504747344B42222C227075626C69634B6579223A5B7B226964223A226469643A7872706C3A313A724D475A5A6154317977616B667A66797438706456694E6B41645561504747344B42236B6579732D31222C2274797065223A5B2243727970746F677261706869634B6579222C2245636473614B6F626C69747A5075626C69634B6579225D2C226375727665223A22736563703235366B31222C227075626C69634B6579486578223A22454431313535344538353737313541353741334534454631443641363242464430453830434530353934353642363730353043353736303341424437334433373438227D5D2C2261757468656E7469636174696F6E223A5B226469643A7872706C3A313A724D475A5A6154317977616B667A66797438706456694E6B41645561504747344B42236B6579732D31225D2C2273657276696365223A5B7B226964223A226469643A7872706C3A313A724D475A5A6154317977616B667A66797438706456694E6B41645561504747344B422376696F6C657474652D6469617279222C2274797065223A2256696F6C65747465446961727953657276696365222C2273657276696365456E64706F696E74223A2268747470733A2F2F76696F6C657474652E6170702F70726F66696C65227D5D7D'
+}
+Official DID creation failed: XrplError: The latest ledger sequence 7918500 is greater than the transaction's LastLedgerSequence (7918499).
+Preliminary result: temMALFORMED
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/xrpl/src/sugar/submit.ts:125:11
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/xrpl/dist/npm/sugar/submit.js:5:58) {
+  data: undefined
+}
+[31merror[39m: Request completed with error {"duration":"82095ms","method":"POST","requestId":"57049778-10fb-44d8-b830-6a7be090828f","responseSize":160,"service":"violette-backend","statusCode":500,"timestamp":"2025-06-08T01:04:12.438Z","url":"/create-official-did","userId":"anon_f7bc624f-8f14-422e-982d-05b9ce7bed5c"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/services/official-did.ts(163,35): error TS2339: Property 'getTransactionErrorMessage' does not exist on type 'OfficialDIDService'.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2339 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T01:06:17.014Z","url":"/api/auth/anonymous","userAgent":"axios/1.9.0"}
+[32minfo[39m: Request completed {"duration":"330ms","method":"POST","responseSize":562,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T01:06:17.344Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T01:06:17.351Z","url":"/api/blockchain/create-official-did","userAgent":"axios/1.9.0"}
+Creating official W3C compliant DID...
+Official DID creation failed: Error: DID document too large: 397 bytes (max 256)
+    at OfficialDIDService.createOfficialDID (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/official-did.ts:112:15)
+    at async /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:340:20
+[31merror[39m: Request completed with error {"duration":"7411ms","method":"POST","requestId":"dabf2ab9-2b42-46b7-b029-89c46c0c934c","responseSize":71,"service":"violette-backend","statusCode":500,"timestamp":"2025-06-08T01:06:24.762Z","url":"/create-official-did","userId":"anon_57ba7d6f-a9b6-4704-bf58-f1c2d9d7dd02"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T01:06:52.076Z","url":"/api/auth/anonymous","userAgent":"axios/1.9.0"}
+[32minfo[39m: Request completed {"duration":"302ms","method":"POST","responseSize":562,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T01:06:52.378Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T01:06:52.385Z","url":"/api/blockchain/create-official-did","userAgent":"axios/1.9.0"}
+Creating official W3C compliant DID...
+Official DID creation failed: Error: DID document too large: 280 bytes (max 256)
+    at OfficialDIDService.createOfficialDID (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/official-did.ts:110:15)
+    at async /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:340:20
+[31merror[39m: Request completed with error {"duration":"8286ms","method":"POST","requestId":"532b6f08-bb0e-4964-931a-b7d84512631e","responseSize":71,"service":"violette-backend","statusCode":500,"timestamp":"2025-06-08T01:07:00.671Z","url":"/create-official-did","userId":"anon_c61df65f-cb54-4bed-b588-34a968311f6f"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/services/official-did.ts(143,9): error TS2322: Type 'DIDDocument' is not assignable to type '{ '@context': string; id: string; publicKey: { id: string; type: string; publicKeyHex: string; }[]; }'.
+  Types of property 'publicKey' are incompatible.
+    Type 'PublicKey[]' is not assignable to type '{ id: string; type: string; publicKeyHex: string; }[]'.
+      Type 'PublicKey' is not assignable to type '{ id: string; type: string; publicKeyHex: string; }'.
+        Types of property 'type' are incompatible.
+          Type 'string[]' is not assignable to type 'string'.
+src/backend/services/official-did.ts(205,9): error TS2322: Type '{ '@context': string; id: string; publicKey: { id: string; type: string; publicKeyHex: string; }[]; }' is not assignable to type 'DIDDocument'.
+  Types of property 'publicKey' are incompatible.
+    Type '{ id: string; type: string; publicKeyHex: string; }[]' is not assignable to type 'PublicKey[]'.
+      Type '{ id: string; type: string; publicKeyHex: string; }' is not assignable to type 'PublicKey'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type 'string[]'.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2322, 2322 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/services/official-did.ts(143,9): error TS2322: Type 'DIDDocument' is not assignable to type '{ '@context': string; id: string; publicKey: { id: string; type: string; publicKeyHex: string; }[]; }'.
+  Types of property 'publicKey' are incompatible.
+    Type 'PublicKey[]' is not assignable to type '{ id: string; type: string; publicKeyHex: string; }[]'.
+      Type 'PublicKey' is not assignable to type '{ id: string; type: string; publicKeyHex: string; }'.
+        Types of property 'type' are incompatible.
+          Type 'string[]' is not assignable to type 'string'.
+src/backend/services/official-did.ts(205,9): error TS2322: Type '{ '@context': string; id: string; publicKey: { id: string; type: string; publicKeyHex: string; }[]; }' is not assignable to type 'DIDDocument'.
+  Types of property 'publicKey' are incompatible.
+    Type '{ id: string; type: string; publicKeyHex: string; }[]' is not assignable to type 'PublicKey[]'.
+      Type '{ id: string; type: string; publicKeyHex: string; }' is not assignable to type 'PublicKey'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type 'string[]'.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2322, 2322 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+Error: listen EADDRINUSE: address already in use :::8001
+    at Server.setupListenHandle [as _listen2] (node:net:1939:16)
+    at listenInCluster (node:net:1996:12)
+    at Server.listen (node:net:2101:7)
+    at Function.listen (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/application.js:635:24)
+    at VioletteBackendServer.start (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:177:30)
+    at Object.<anonymous> (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/server.ts:231:10)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1618:23)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 8001
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m

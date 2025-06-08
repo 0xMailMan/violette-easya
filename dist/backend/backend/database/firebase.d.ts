@@ -17,6 +17,8 @@ declare class FirebaseService {
     userRecommendations(userId: string): CollectionReference<RecommendationItem>;
     blockchainRecords(): CollectionReference<BlockchainRecord>;
     blockchainRecord(txHash: string): DocumentReference<BlockchainRecord>;
+    userEntries(userId: string): CollectionReference<any>;
+    userEntry(userId: string, entryId: string): DocumentReference<any>;
     createUser(userId: string, userData: Partial<UserProfile>): Promise<void>;
     getUserProfile(userId: string): Promise<UserProfile | null>;
     updateUserProfile(userId: string, updates: Partial<UserProfile>): Promise<void>;
@@ -43,6 +45,11 @@ declare class FirebaseService {
     getUserAnalytics(userId: string): Promise<UserAnalytics | null>;
     batchWrite(operations: (() => Promise<void>)[]): Promise<void>;
     runTransaction<T>(updateFunction: (transaction: any) => Promise<T>): Promise<T>;
+    createEntry(userId: string, entryData: any): Promise<string>;
+    getEntry(userId: string, entryId: string): Promise<any | null>;
+    getUserEntries(userId: string): Promise<any[]>;
+    updateEntry(userId: string, entryId: string, updateData: any): Promise<void>;
+    deleteEntry(userId: string, entryId: string): Promise<void>;
     healthCheck(): Promise<boolean>;
 }
 export declare const firebaseService: FirebaseService;

@@ -7,6 +7,7 @@ const users_1 = require("./users");
 const ai_1 = require("./ai");
 const discovery_1 = require("./discovery");
 const blockchain_1 = require("./blockchain");
+const entries_1 = require("./entries");
 const createAPIRoutes = () => {
     const router = (0, express_1.Router)();
     // Mount route modules
@@ -15,6 +16,7 @@ const createAPIRoutes = () => {
     router.use('/ai', ai_1.aiRoutes);
     router.use('/discovery', discovery_1.discoveryRoutes);
     router.use('/blockchain', blockchain_1.blockchainRoutes);
+    router.use('/entries', entries_1.entriesRoutes);
     return router;
 };
 exports.createAPIRoutes = createAPIRoutes;

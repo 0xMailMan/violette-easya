@@ -12,13 +12,15 @@ import {
   CogIcon,
   XMarkIcon,
   UserIcon,
-  HeartIcon
+  HeartIcon,
+  LinkIcon
 } from '@heroicons/react/24/outline'
 import {
   HomeIcon as HomeIconSolid,
   CalendarIcon as CalendarIconSolid,
   PhotoIcon as PhotoIconSolid,
-  CogIcon as CogIconSolid
+  CogIcon as CogIconSolid,
+  LinkIcon as LinkIconSolid
 } from '@heroicons/react/24/solid'
 import { useAppStore } from '@/store'
 import { cn } from '@/lib/utils'
@@ -52,6 +54,13 @@ const navItems: NavItem[] = [
     icon: PhotoIcon,
     activeIcon: PhotoIconSolid,
     description: 'Browse photos and memories'
+  },
+  {
+    href: '/cross-chain',
+    label: 'Cross-Chain Verification',
+    icon: LinkIcon,
+    activeIcon: LinkIconSolid,
+    description: 'NFT ownership verification'
   },
   {
     href: '/settings',

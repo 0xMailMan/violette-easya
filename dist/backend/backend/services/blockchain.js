@@ -47,12 +47,12 @@ class BlockchainService {
             if (config_1.default.xrpl.isTestnet) {
                 await this.client.fundWallet(userWallet);
             }
-            // Create NFT to represent the DID
+            // Create NFT to represent the DID - use direct object without type constraints
             const nftMintTx = {
                 TransactionType: 'NFTokenMint',
                 Account: userWallet.address,
-                NFTTokenTaxon: 0,
-                Flags: 8, // tfTransferable
+                NFTokenTaxon: 0,
+                Flags: 8, // tfTransferable  
                 Memos: [
                     {
                         Memo: {
@@ -150,7 +150,7 @@ class BlockchainService {
                 hash: response.result.hash,
                 ledgerIndex: response.result.ledger_index || 0,
                 success: true,
-                fee: (0, xrpl_1.dropsToXrp)(response.result.Fee || '0'),
+                fee: String((0, xrpl_1.dropsToXrp)(response.result.Fee || '0')),
             };
         }
         catch (error) {
@@ -246,10 +246,14 @@ class BlockchainService {
         try {
             // Create leaf nodes from diary entries
             const leaves = entries.map(entry => {
+                // Handle both Firestore Timestamp objects and plain numbers
+                const timestamp = typeof entry.timestamp === 'number'
+                    ? entry.timestamp
+                    : entry.timestamp.toMillis();
                 const entryData = JSON.stringify({
                     id: entry.id,
                     contentHash: crypto_1.default.createHash('sha256').update(entry.content).digest('hex'),
-                    timestamp: entry.timestamp.toMillis(),
+                    timestamp: timestamp,
                     tags: entry.tags,
                 });
                 return crypto_1.default.createHash('sha256').update(entryData).digest('hex');
@@ -376,7 +380,7 @@ class BlockchainService {
             const response = await this.client.request({
                 command: 'server_info',
             });
-            return response.result.info.validated_ledger?.base_fee_xrp || '0.00001';
+            return String(response.result.info.validated_ledger?.base_fee_xrp || '0.00001');
         }
         catch (error) {
             console.error('Failed to estimate transaction fee:', error);
@@ -421,7 +425,7 @@ class BlockchainService {
                 connected: this.initialized,
                 ledgerIndex: response.result.info.validated_ledger?.seq || 0,
                 serverState: response.result.info.server_state || 'unknown',
-                baseFee: response.result.info.validated_ledger?.base_fee_xrp || '0.00001',
+                baseFee: String(response.result.info.validated_ledger?.base_fee_xrp || '0.00001'),
             };
         }
         catch (error) {
@@ -431,6 +435,83 @@ class BlockchainService {
                 ledgerIndex: 0,
                 serverState: 'unknown',
                 baseFee: '0.00001',
+            };
+        }
+    }
+    // ============================================================================
+    // NFT Storage for Merkle Proofs
+    // ============================================================================
+    async storeMerkleAsNFT(params) {
+        try {
+            await this.ensureConnection();
+            // Get DID record to find the associated wallet
+            const didRecord = await firebase_1.default.getDIDRecord(params.userId);
+            if (!didRecord) {
+                return {
+                    success: false,
+                    error: 'DID not found for user',
+                };
+            }
+            // For demonstration purposes, generate a new wallet to fund and use for NFT minting
+            // In production, you'd either store the private key securely or use a different approach
+            const userWallet = xrpl_1.Wallet.generate();
+            // Fund the wallet on testnet
+            if (config_1.default.xrpl.isTestnet) {
+                await this.client.fundWallet(userWallet);
+            }
+            // Create NFT with merkle proof data
+            const nftMintTx = {
+                TransactionType: 'NFTokenMint',
+                Account: userWallet.address,
+                NFTokenTaxon: 1, // Use taxon 1 for merkle proof NFTs
+                Flags: 8, // tfTransferable
+                Memos: [
+                    {
+                        Memo: {
+                            MemoType: Buffer.from('MERKLE_PROOF', 'utf8').toString('hex').toUpperCase(),
+                            MemoData: Buffer.from(JSON.stringify({
+                                didId: params.didId,
+                                merkleRoot: params.merkleRoot,
+                                entryId: params.entryId,
+                                timestamp: Date.now(),
+                                metadata: params.metadata,
+                            }), 'utf8').toString('hex').toUpperCase(),
+                        },
+                    },
+                ],
+            };
+            // Submit and wait for validation
+            const prepared = await this.client.autofill(nftMintTx);
+            const signed = userWallet.sign(prepared);
+            const result = await this.client.submitAndWait(signed.tx_blob);
+            if (result.result.meta?.TransactionResult === 'tesSUCCESS') {
+                // Extract NFT Token ID from result
+                const nftTokenId = this.extractNFTTokenId(result);
+                // Store NFT record in Firebase (simplified for now)
+                console.log('NFT minted successfully:', {
+                    nftTokenId,
+                    didId: params.didId,
+                    merkleRoot: params.merkleRoot,
+                    transactionHash: result.result.hash,
+                });
+                return {
+                    success: true,
+                    nftTokenId,
+                    transactionHash: result.result.hash,
+                };
+            }
+            else {
+                return {
+                    success: false,
+                    error: `Transaction failed: ${result.result.meta?.TransactionResult}`,
+                };
+            }
+        }
+        catch (error) {
+            console.error('Merkle NFT storage failed:', error);
+            return {
+                success: false,
+                error: error.message,
             };
         }
     }
