@@ -67,12 +67,12 @@ class BlockchainService implements DIDManagementService, MerkleTreeService {
         await this.client.fundWallet(userWallet);
       }
 
-      // Create NFT to represent the DID
-      const nftMintTx = {
-        TransactionType: 'NFTokenMint' as const,
+      // Create NFT to represent the DID - use direct object without type constraints
+      const nftMintTx: any = {
+        TransactionType: 'NFTokenMint',
         Account: userWallet.address,
-        NFTTokenTaxon: 0,
-        Flags: 8, // tfTransferable
+        NFTokenTaxon: 0,
+        Flags: 8, // tfTransferable  
         Memos: [
           {
             Memo: {
@@ -86,7 +86,7 @@ class BlockchainService implements DIDManagementService, MerkleTreeService {
             },
           },
         ],
-      } as any;
+      };
 
       // Submit and wait for validation
       const response = await this.client.submitAndWait(nftMintTx, { wallet: userWallet });

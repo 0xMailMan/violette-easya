@@ -197,3 +197,117 @@ Error occurred: {
 [32minfo[39m: Request completed {"duration":"54ms","method":"POST","requestId":"6f657e4d-272b-4e25-ac6a-e133951ea7b2","responseSize":511,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:04:14.998Z","url":"/create-merkle-tree","userId":"anon_f35b0406-7957-4eb4-bec8-af44aa88092f"}
 [32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:04:28.318Z","url":"/api/auth/anonymous","userAgent":"node"}
 [32minfo[39m: Request completed {"duration":"58ms","method":"POST","responseSize":533,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:04:28.376Z","url":"/anonymous"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:10:00.126Z","url":"/health","userAgent":"curl/8.7.1"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"2003ms","method":"GET","responseSize":106,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:10:02.129Z","url":"/health"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:10:10.073Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"293ms","method":"POST","responseSize":532,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:10:10.366Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:10:10.382Z","url":"/api/blockchain/network-status","userAgent":"node"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"1579ms","method":"GET","requestId":"8b15f0c9-3ce2-4444-b78f-489c4e43d327","responseSize":195,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:10:11.960Z","url":"/network-status","userId":"anon_0f9a179d-ee93-410d-9e74-0f061fb573ac"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:10:11.967Z","url":"/api/blockchain/create-did","userAgent":"node"}
+[31merror[39m: Request completed with error {"duration":"42ms","method":"POST","requestId":"6845b623-8cea-4c79-8c14-df6e2500bf25","responseSize":111,"service":"violette-backend","statusCode":403,"timestamp":"2025-06-08T00:10:12.009Z","url":"/create-did","userId":"anon_0f9a179d-ee93-410d-9e74-0f061fb573ac"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:10:43.764Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"303ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:10:44.067Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:10:44.075Z","url":"/api/blockchain/network-status","userAgent":"node"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"1952ms","method":"GET","requestId":"73cc9e99-ae6a-47d3-a17c-5e5945591cb2","responseSize":195,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:10:46.027Z","url":"/network-status","userId":"anon_966530f9-e6a5-42a2-af8f-21dc112c806d"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:10:46.032Z","url":"/api/blockchain/create-did","userAgent":"node"}
+DID creation failed: ValidationError: NFTokenMint: missing field NFTokenTaxon
+    at validateNFTokenMint (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/xrpl/src/models/transactions/NFTokenMint.ts:136:11)
+    at validate (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/xrpl/src/models/transactions/transaction.ts:326:26)
+    at Wallet.sign (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/xrpl/src/Wallet/index.ts:409:13)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/xrpl/src/sugar/submit.ts:258:17
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/xrpl/dist/npm/sugar/submit.js:5:58) {
+  data: undefined
+}
+[31merror[39m: Request completed with error {"duration":"9860ms","method":"POST","requestId":"866a2af3-f147-4e93-8799-ed146daf8914","responseSize":157,"service":"violette-backend","statusCode":400,"timestamp":"2025-06-08T00:10:55.892Z","url":"/create-did","userId":"anon_966530f9-e6a5-42a2-af8f-21dc112c806d"}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+TSError: ⨯ Unable to compile TypeScript:
+src/backend/services/blockchain.ts(92,56): error TS2345: Argument of type '{ TransactionType: string; Account: string; NFTokenTaxon: number; Flags: number; Memos: { Memo: { MemoType: string; MemoData: string; }; }[]; }' is not assignable to parameter of type 'string | SubmittableTransaction'.
+  Type '{ TransactionType: string; Account: string; NFTokenTaxon: number; Flags: number; Memos: { Memo: { MemoType: string; MemoData: string; }; }[]; }' is not assignable to type 'AMMBid | AMMCreate | AMMDelete | AMMDeposit | AMMVote | AMMWithdraw | AccountDelete | AccountSet | ... 34 more ... | XChainModifyBridge'.
+    Type '{ TransactionType: string; Account: string; NFTokenTaxon: number; Flags: number; Memos: { Memo: { MemoType: string; MemoData: string; }; }[]; }' is not assignable to type 'NFTokenMint'.
+      Types of property 'TransactionType' are incompatible.
+        Type 'string' is not assignable to type '"NFTokenMint"'.
+
+    at createTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:859:12)
+    at reportTSError (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:863:19)
+    at getOutput (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1077:36)
+    at Object.compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1433:41)
+    at Module.m._compile (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1617:30)
+    at loadTS (node:internal/modules/cjs/loader:1826:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  diagnosticCodes: [ 2345 ]
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:11:42.849Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"311ms","method":"POST","responseSize":563,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:11:43.160Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:11:43.169Z","url":"/api/blockchain/network-status","userAgent":"node"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"1670ms","method":"GET","requestId":"05267537-fe8a-4287-8985-85cd9fe173d4","responseSize":195,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:11:44.839Z","url":"/network-status","userId":"anon_e1f0e656-07f8-4dbb-b2aa-39b23d413187"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:11:44.845Z","url":"/api/blockchain/create-did","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"13701ms","method":"POST","requestId":"208d8917-0fa8-480b-aab9-929cf61eb980","responseSize":358,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:11:58.545Z","url":"/create-did","userId":"anon_e1f0e656-07f8-4dbb-b2aa-39b23d413187"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:11:58.552Z","url":"/api/blockchain/resolve-did/did:xrpl:rfJYp9xfKSxgx7ANF73ULqt1WbZrJ6eSJw:1d61366f-8e3a-4122-a577-dfbe23341da1","userAgent":"node"}
+DID resolution failed: Error: DID not found
+    at BlockchainService.resolveDID (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:265:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:133:27
+[31merror[39m: Request completed with error {"duration":"108ms","method":"GET","requestId":"3a2bf6fa-d2ec-49d4-9671-8826c134aae2","responseSize":131,"service":"violette-backend","statusCode":404,"timestamp":"2025-06-08T00:11:58.660Z","url":"/resolve-did/did:xrpl:rfJYp9xfKSxgx7ANF73ULqt1WbZrJ6eSJw:1d61366f-8e3a-4122-a577-dfbe23341da1","userId":"anon_e1f0e656-07f8-4dbb-b2aa-39b23d413187"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:11:58.662Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"40ms","method":"POST","requestId":"1ac6ae67-cc69-4dae-9626-f97cf726277e","responseSize":511,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:11:58.702Z","url":"/create-merkle-tree","userId":"anon_e1f0e656-07f8-4dbb-b2aa-39b23d413187"}

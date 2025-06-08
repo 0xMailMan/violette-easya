@@ -25,7 +25,7 @@ declare global {
 class AuthService implements AuthSystem {
   private readonly JWT_ALGORITHM = 'HS256';
   private readonly SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours
-  private readonly DEFAULT_PERMISSIONS = ['read', 'write', 'discover'];
+  private readonly DEFAULT_PERMISSIONS = ['read', 'write', 'discover', 'blockchain'];
 
   async createAnonymousSession(): Promise<SessionToken> {
     try {
