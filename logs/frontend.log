@@ -30,3 +30,95 @@
  ✓ Compiled in 192ms
  ✓ Compiled in 263ms
  ✓ Compiled in 307ms
+ GET / 200 in 793ms
+ ○ Compiling /cross-chain ...
+ ✓ Compiled /cross-chain in 2.4s
+ ⨯ ./src/lib/cross-chain-wallet.ts:1:1
+Module not found: Can't resolve 'ethers'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { ethers } [36mfrom[39m [32m'ethers'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33m*[39m [36mas[39m xrpl [36mfrom[39m [32m'xrpl'[39m[33m;[39m[0m
+[0m [90m 3 |[39m [36mimport[39m { [33mUserAddresses[39m[33m,[39m [33mWalletConnection[39m } [36mfrom[39m [32m'../types/cross-chain'[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m { [33mNETWORKS[39m } [36mfrom[39m [32m'./cross-chain-config'[39m[33m;[39m[0m
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/lib/nft-verification.ts:1:1
+Module not found: Can't resolve 'ethers'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { ethers } [36mfrom[39m [32m'ethers'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m { [33mUnichainNFTData[39m[33m,[39m [33mVerificationProof[39m[33m,[39m [33mVerificationMessage[39m[33m,[39m [33mBlockscoutResponse[39m } [36mfrom[39m [32m'../types/cross-chain'[39m[33m;[39m[0m
+[0m [90m 3 |[39m [36mimport[39m { [33mCONTRACTS[39m[33m,[39m [33mAPI_ENDPOINTS[39m } [36mfrom[39m [32m'./cross-chain-config'[39m[33m;[39m[0m
+[0m [90m 4 |[39m[0m
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/lib/xrpl-evm-nft-minter.ts:1:1
+Module not found: Can't resolve 'ethers'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { ethers } [36mfrom[39m [32m'ethers'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m { [33mUnichainNFTData[39m[33m,[39m [33mVerificationProof[39m[33m,[39m [33mMirrorNFTResult[39m } [36mfrom[39m [32m'../types/cross-chain'[39m[33m;[39m[0m
+[0m [90m 3 |[39m [36mimport[39m { [33mNETWORKS[39m[33m,[39m [33mCONTRACTS[39m[33m,[39m [33mMIRROR_NFT_ABI[39m } [36mfrom[39m [32m'./cross-chain-config'[39m[33m;[39m[0m
+[0m [90m 4 |[39m[0m
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1020ms
+ GET /cross-chain 500 in 4358ms
+ ⨯ ./src/lib/cross-chain-wallet.ts:1:1
+Module not found: Can't resolve 'ethers'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { ethers } [36mfrom[39m [32m'ethers'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m [33m*[39m [36mas[39m xrpl [36mfrom[39m [32m'xrpl'[39m[33m;[39m[0m
+[0m [90m 3 |[39m [36mimport[39m { [33mUserAddresses[39m[33m,[39m [33mWalletConnection[39m } [36mfrom[39m [32m'../types/cross-chain'[39m[33m;[39m[0m
+[0m [90m 4 |[39m [36mimport[39m { [33mNETWORKS[39m } [36mfrom[39m [32m'./cross-chain-config'[39m[33m;[39m[0m
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/lib/nft-verification.ts:1:1
+Module not found: Can't resolve 'ethers'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { ethers } [36mfrom[39m [32m'ethers'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m { [33mUnichainNFTData[39m[33m,[39m [33mVerificationProof[39m[33m,[39m [33mVerificationMessage[39m[33m,[39m [33mBlockscoutResponse[39m } [36mfrom[39m [32m'../types/cross-chain'[39m[33m;[39m[0m
+[0m [90m 3 |[39m [36mimport[39m { [33mCONTRACTS[39m[33m,[39m [33mAPI_ENDPOINTS[39m } [36mfrom[39m [32m'./cross-chain-config'[39m[33m;[39m[0m
+[0m [90m 4 |[39m[0m
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/lib/xrpl-evm-nft-minter.ts:1:1
+Module not found: Can't resolve 'ethers'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { ethers } [36mfrom[39m [32m'ethers'[39m[33m;[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m { [33mUnichainNFTData[39m[33m,[39m [33mVerificationProof[39m[33m,[39m [33mMirrorNFTResult[39m } [36mfrom[39m [32m'../types/cross-chain'[39m[33m;[39m[0m
+[0m [90m 3 |[39m [36mimport[39m { [33mNETWORKS[39m[33m,[39m [33mCONTRACTS[39m[33m,[39m [33mMIRROR_NFT_ABI[39m } [36mfrom[39m [32m'./cross-chain-config'[39m[33m;[39m[0m
+[0m [90m 4 |[39m[0m
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /cross-chain 500 in 39ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 661ms
+ GET /favicon.ico 500 in 692ms

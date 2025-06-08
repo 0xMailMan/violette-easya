@@ -1697,3 +1697,12 @@ Error: listen EADDRINUSE: address already in use :::8001
   port: 8001
 }
 [31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode

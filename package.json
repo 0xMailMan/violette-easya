@@ -25,7 +25,9 @@
     "ai-server": "node src/backend/ai-server.js",
     "start:all": "./start-all-servers.sh",
     "stop:all": "pkill -f 'ai-server|nodemon|next'",
-    "test:cross-chain": "node test-cross-chain.js"
+    "test:cross-chain": "node test-cross-chain.js",
+    "test:runner": "node test-runner.js",
+    "test:enhanced": "node test-full-workflow.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.3",
