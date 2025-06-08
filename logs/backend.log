@@ -1,0 +1,199 @@
+
+> easya@0.1.0 backend:dev
+> nodemon src/backend/server.ts
+
+[33m[nodemon] 3.1.10[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: ts,json[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:00:16.693Z","url":"/health","userAgent":"curl/8.7.1"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"1981ms","method":"GET","responseSize":106,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:00:18.674Z","url":"/health"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:00:46.707Z","url":"/health","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"264ms","method":"GET","responseSize":106,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:00:46.971Z","url":"/health"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:00:52.872Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"68ms","method":"POST","responseSize":533,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:00:52.940Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:00:52.943Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+Merkle tree creation failed: TypeError: entry.timestamp.toMillis is not a function
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:303:38
+    at Array.map (<anonymous>)
+    at BlockchainService.createMerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:299:30)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:170:40
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/middleware/error-handler.ts:86:21
+    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/index.js:284:15
+Error occurred: {
+  message: 'entry.timestamp.toMillis is not a function',
+  stack: 'TypeError: entry.timestamp.toMillis is not a function\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:303:38\n' +
+    '    at Array.map (<anonymous>)\n' +
+    '    at BlockchainService.createMerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:299:30)\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:170:40\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/middleware/error-handler.ts:86:21\n' +
+    '    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)\n' +
+    '    at next (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:149:13)\n' +
+    '    at Route.dispatch (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:119:3)\n' +
+    '    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/index.js:284:15',
+  url: '/api/blockchain/create-merkle-tree',
+  method: 'POST',
+  requestId: 'c0b74f8b-c402-423b-8e78-160d9298e983',
+  userId: 'anon_de0dc413-64b5-44da-bcec-b7dbfb7ca758'
+}
+[31merror[39m: Request completed with error {"duration":"68ms","method":"POST","requestId":"c0b74f8b-c402-423b-8e78-160d9298e983","responseSize":160,"service":"violette-backend","statusCode":500,"timestamp":"2025-06-08T00:00:53.011Z","url":"/api/blockchain/create-merkle-tree","userId":"anon_de0dc413-64b5-44da-bcec-b7dbfb7ca758"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:00:53.013Z","url":"/api/blockchain/network-status","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"313ms","method":"GET","requestId":"fcbc2066-bc20-432e-a6cb-ab1ce343324e","responseSize":195,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:00:53.326Z","url":"/network-status","userId":"anon_de0dc413-64b5-44da-bcec-b7dbfb7ca758"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:02:13.239Z","url":"/health","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"276ms","method":"GET","responseSize":106,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:02:13.515Z","url":"/health"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:02:19.490Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"59ms","method":"POST","responseSize":533,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:02:19.549Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:02:19.553Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+Merkle tree creation failed: TypeError: entry.timestamp.toMillis is not a function
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:303:38
+    at Array.map (<anonymous>)
+    at BlockchainService.createMerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:299:30)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:170:40
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/middleware/error-handler.ts:86:21
+    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/index.js:284:15
+Error occurred: {
+  message: 'entry.timestamp.toMillis is not a function',
+  stack: 'TypeError: entry.timestamp.toMillis is not a function\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:303:38\n' +
+    '    at Array.map (<anonymous>)\n' +
+    '    at BlockchainService.createMerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:299:30)\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:170:40\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/middleware/error-handler.ts:86:21\n' +
+    '    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)\n' +
+    '    at next (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:149:13)\n' +
+    '    at Route.dispatch (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:119:3)\n' +
+    '    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/index.js:284:15',
+  url: '/api/blockchain/create-merkle-tree',
+  method: 'POST',
+  requestId: 'd499dfdc-70ea-4330-8343-a9e688081708',
+  userId: 'anon_57088188-d0a3-465b-b604-21c76dfb5678'
+}
+[31merror[39m: Request completed with error {"duration":"58ms","method":"POST","requestId":"d499dfdc-70ea-4330-8343-a9e688081708","responseSize":160,"service":"violette-backend","statusCode":500,"timestamp":"2025-06-08T00:02:19.611Z","url":"/api/blockchain/create-merkle-tree","userId":"anon_57088188-d0a3-465b-b604-21c76dfb5678"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:02:19.613Z","url":"/api/blockchain/network-status","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"313ms","method":"GET","requestId":"a0573d6b-205d-468c-a51d-eef14dde9bc9","responseSize":195,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:02:19.926Z","url":"/network-status","userId":"anon_57088188-d0a3-465b-b604-21c76dfb5678"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:02:52.703Z","url":"/health","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"269ms","method":"GET","responseSize":106,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:02:52.973Z","url":"/health"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:03:00.283Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"55ms","method":"POST","responseSize":533,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:03:00.338Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:03:00.342Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+Merkle tree creation failed: TypeError: entry.timestamp.toMillis is not a function
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:303:38
+    at Array.map (<anonymous>)
+    at BlockchainService.createMerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:299:30)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:170:40
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/middleware/error-handler.ts:86:21
+    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/index.js:284:15
+Error occurred: {
+  message: 'entry.timestamp.toMillis is not a function',
+  stack: 'TypeError: entry.timestamp.toMillis is not a function\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:303:38\n' +
+    '    at Array.map (<anonymous>)\n' +
+    '    at BlockchainService.createMerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:299:30)\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:170:40\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/middleware/error-handler.ts:86:21\n' +
+    '    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)\n' +
+    '    at next (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:149:13)\n' +
+    '    at Route.dispatch (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:119:3)\n' +
+    '    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/index.js:284:15',
+  url: '/api/blockchain/create-merkle-tree',
+  method: 'POST',
+  requestId: '77afa47d-5d69-4760-807a-3253c0971a02',
+  userId: 'anon_aa1b5023-3fde-4bc5-a0ad-f6e34dc82349'
+}
+[31merror[39m: Request completed with error {"duration":"25ms","method":"POST","requestId":"77afa47d-5d69-4760-807a-3253c0971a02","responseSize":160,"service":"violette-backend","statusCode":500,"timestamp":"2025-06-08T00:03:00.367Z","url":"/api/blockchain/create-merkle-tree","userId":"anon_aa1b5023-3fde-4bc5-a0ad-f6e34dc82349"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:03:00.368Z","url":"/api/blockchain/network-status","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"315ms","method":"GET","requestId":"310f4b64-49dc-44a3-b58c-ccb9bcb750e7","responseSize":195,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:03:00.683Z","url":"/network-status","userId":"anon_aa1b5023-3fde-4bc5-a0ad-f6e34dc82349"}
+Error occurred: {
+  message: `Unexpected token 'u', ..."oMillis":function(){"... is not valid JSON`,
+  stack: `SyntaxError: Unexpected token 'u', ..."oMillis":function(){"... is not valid JSON\n` +
+    '    at JSON.parse (<anonymous>)\n' +
+    '    at parse (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/body-parser/lib/types/json.js:92:19)\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/body-parser/lib/read.js:128:18\n' +
+    '    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)\n' +
+    '    at invokeCallback (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/raw-body/index.js:238:16)\n' +
+    '    at done (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/raw-body/index.js:227:7)\n' +
+    '    at IncomingMessage.onEnd (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/raw-body/index.js:287:7)\n' +
+    '    at IncomingMessage.emit (node:events:507:28)\n' +
+    '    at IncomingMessage.emit (node:domain:489:12)\n' +
+    '    at endReadableNT (node:internal/streams/readable:1696:12)',
+  url: '/api/blockchain/create-merkle-tree',
+  method: 'POST',
+  requestId: undefined,
+  userId: undefined
+}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node src/backend/server.ts`[39m
+Firebase initialized successfully
+🚀 Violette Backend Server running on port 8001
+📚 API Documentation available at http://localhost:8001/docs
+🔍 Health check available at http://localhost:8001/health
+⚠️  Running in testnet mode
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:03:48.242Z","url":"/health","userAgent":"node"}
+XRPL client connected
+[32minfo[39m: Request completed {"duration":"1788ms","method":"GET","responseSize":106,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:03:50.030Z","url":"/health"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:03:56.941Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"66ms","method":"POST","responseSize":533,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:03:57.007Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:03:57.013Z","url":"/api/blockchain/create-merkle-tree","userAgent":"node"}
+Merkle tree creation failed: TypeError: f is not a function
+    at MerkleTree.hashFn (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/merkletreejs/dist/Base.js:280:23)
+    at MerkleTree.createHashes (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/merkletreejs/dist/MerkleTree.js:165:33)
+    at MerkleTree.processLeaves (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/merkletreejs/dist/MerkleTree.js:114:14)
+    at new MerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/merkletreejs/dist/MerkleTree.js:86:14)
+    at BlockchainService.createMerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:315:20)
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:170:40
+    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/middleware/error-handler.ts:86:21
+    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:119:3)
+Error occurred: {
+  message: 'f is not a function',
+  stack: 'TypeError: f is not a function\n' +
+    '    at MerkleTree.hashFn (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/merkletreejs/dist/Base.js:280:23)\n' +
+    '    at MerkleTree.createHashes (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/merkletreejs/dist/MerkleTree.js:165:33)\n' +
+    '    at MerkleTree.processLeaves (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/merkletreejs/dist/MerkleTree.js:114:14)\n' +
+    '    at new MerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/merkletreejs/dist/MerkleTree.js:86:14)\n' +
+    '    at BlockchainService.createMerkleTree (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/services/blockchain.ts:315:20)\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/routes/blockchain.ts:170:40\n' +
+    '    at /Users/0xMailMan/Desktop/MailMan/violette/violette-easya/src/backend/middleware/error-handler.ts:86:21\n' +
+    '    at Layer.handle [as handle_request] (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/layer.js:95:5)\n' +
+    '    at next (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:149:13)\n' +
+    '    at Route.dispatch (/Users/0xMailMan/Desktop/MailMan/violette/violette-easya/node_modules/express/lib/router/route.js:119:3)',
+  url: '/api/blockchain/create-merkle-tree',
+  method: 'POST',
+  requestId: 'fd3f3dfe-1c1c-4445-9a03-245fdaabda16',
+  userId: 'anon_10876a68-bc87-4fc0-8c73-6908a8be45d0'
+}
+[31merror[39m: Request completed with error {"duration":"62ms","method":"POST","requestId":"fd3f3dfe-1c1c-4445-9a03-245fdaabda16","responseSize":137,"service":"violette-backend","statusCode":500,"timestamp":"2025-06-08T00:03:57.074Z","url":"/api/blockchain/create-merkle-tree","userId":"anon_10876a68-bc87-4fc0-8c73-6908a8be45d0"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"GET","service":"violette-backend","timestamp":"2025-06-08T00:03:57.076Z","url":"/api/blockchain/network-status","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"306ms","method":"GET","requestId":"3265185c-74d3-4d5c-a04a-d4884fad1cd9","responseSize":195,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:03:57.382Z","url":"/network-status","userId":"anon_10876a68-bc87-4fc0-8c73-6908a8be45d0"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:04:14.863Z","url":"/api/auth/anonymous","userAgent":"curl/8.7.1"}
+[32minfo[39m: Request completed {"duration":"70ms","method":"POST","responseSize":533,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:04:14.933Z","url":"/anonymous"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:04:14.944Z","url":"/api/blockchain/create-merkle-tree","userAgent":"curl/8.7.1"}
+[32minfo[39m: Request completed {"duration":"54ms","method":"POST","requestId":"6f657e4d-272b-4e25-ac6a-e133951ea7b2","responseSize":511,"service":"violette-backend","statusCode":200,"timestamp":"2025-06-08T00:04:14.998Z","url":"/create-merkle-tree","userId":"anon_f35b0406-7957-4eb4-bec8-af44aa88092f"}
+[32minfo[39m: Incoming request {"ip":"::1","method":"POST","service":"violette-backend","timestamp":"2025-06-08T00:04:28.318Z","url":"/api/auth/anonymous","userAgent":"node"}
+[32minfo[39m: Request completed {"duration":"58ms","method":"POST","responseSize":533,"service":"violette-backend","statusCode":201,"timestamp":"2025-06-08T00:04:28.376Z","url":"/anonymous"}

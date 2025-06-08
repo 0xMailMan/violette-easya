@@ -1,0 +1,11 @@
+
+> easya@0.1.0 ai-server
+> node src/backend/ai-server.js
+
+🚀 AI Processing Server running on port 8000
+✅ Health check: http://localhost:8000/health
+🤖 AI Provider: Anthropic Claude
+📊 API Status: http://localhost:8000/api/status
+🧠 AI Analysis: POST http://localhost:8000/api/ai/analyze
+🔢 Embeddings: POST http://localhost:8000/api/ai/generate-embedding
+✅ Anthropic API connected and ready

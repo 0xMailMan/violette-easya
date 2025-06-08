@@ -297,10 +297,15 @@ class BlockchainService implements DIDManagementService, MerkleTreeService {
     try {
       // Create leaf nodes from diary entries
       const leaves = entries.map(entry => {
+        // Handle both Firestore Timestamp objects and plain numbers
+        const timestamp = typeof entry.timestamp === 'number' 
+          ? entry.timestamp 
+          : entry.timestamp.toMillis();
+          
         const entryData = JSON.stringify({
           id: entry.id,
           contentHash: crypto.createHash('sha256').update(entry.content).digest('hex'),
-          timestamp: entry.timestamp.toMillis(),
+          timestamp: timestamp,
           tags: entry.tags,
         });
         return crypto.createHash('sha256').update(entryData).digest('hex');

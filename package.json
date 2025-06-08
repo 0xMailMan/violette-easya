@@ -18,8 +18,11 @@
     "test:firestore": "node test-firestore.js",
     "test:workflow": "node test-frontend-backend.js",
     "test:blockchain": "node test-blockchain.js",
+    "test:complete": "node test-complete-system.js",
     "debug:ai": "open http://localhost:3000/debug-ai-test.html",
-    "ai-server": "node src/backend/ai-server.js"
+    "ai-server": "node src/backend/ai-server.js",
+    "start:all": "./start-all-servers.sh",
+    "stop:all": "pkill -f 'ai-server|nodemon|next'"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.3",
